@@ -1,2 +1,2 @@
 #!/bin/sh
-docker exec -it db-forums-mongo-1 mongosh -u admin -p padelapp1234
+docker exec -it db_mongo_1 mongosh -u admin -p padelapp1234
