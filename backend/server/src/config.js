@@ -1,6 +1,13 @@
 require("dotenv").config();
 
-const envVarNames = ["SERVER_PORT"];
+const envVarNames = [
+  "SERVER_PORT",
+  "DB_USER",
+  "DB_PASSWORD",
+  "DB_HOST",
+  "DB_PORT",
+  "DB_DATABASE",
+];
 
 let envVars = {};
 
@@ -11,6 +18,12 @@ envVarNames.forEach((varName) => {
   envVars[varName] = process.env[varName];
 });
 
+const getMongoURL = () => {
+  const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DATABASE } = envVars;
+  return `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?authSource=admin`;
+};
+
 module.exports = {
   ...envVars,
+  MONGO_URL: getMongoURL(),
 };
