@@ -6,12 +6,10 @@ const userSchema = mongoose.Schema(
     idCompeticion: {
       type: Schema.ObjectId,
       ref: "Competicion",
-      required: true,
     },
     idPartido: {
       type: Schema.ObjectId,
       ref: "Partido",
-      required: true,
     },
     nombre: {
       type: String,
