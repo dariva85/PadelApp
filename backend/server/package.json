@@ -4,7 +4,10 @@
   "description": "La aplicación para organizar tus partidos de padel.",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "up_db": "docker compose -f ../db/docker-compose.yml up -d",
+    "stop_db": "docker compose -f ../db/docker-compose.yml stop",
+    "connect_db": "node ../db/db-console.sh"
   },
   "keywords": [],
   "author": "",
