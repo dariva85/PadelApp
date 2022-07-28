@@ -21,7 +21,7 @@ const userSchema = mongoose.Schema(
     apellidos: {
       type: String,
       required: true,
-      maxlength: 30,
+      maxlength: 40,
     },
     email: {
       type: String,
@@ -29,25 +29,27 @@ const userSchema = mongoose.Schema(
       required: true,
       trim: true,
       lowercase: true,
+      maxlength: 20,
     },
     username: {
       type: String,
       required: true,
-      maxlength: 15,
+      maxlength: 20,
     },
     direccion: {
       type: String,
+      maxlength: 40,
     },
     codigopostal: {
       type: Number,
     },
     ciudad: {
       type: String,
-      maxlength: 15,
+      maxlength: 20,
     },
     provincia: {
       type: String,
-      maxlength: 15,
+      maxlength: 20,
     },
     imagenperfil: {
       data: Buffer,
