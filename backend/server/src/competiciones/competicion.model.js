@@ -3,14 +3,18 @@ const { Schema } = mongoose;
 
 const competicionSchema = mongoose.Schema(
   {
-    idUsuario: [{
-      type: Schema.ObjectId,
-      ref: "Usuario",
-    }],
-    idPartido: [{
-      type: Schema.ObjectId,
-      ref: "Partido",
-    }],
+    idUsuario: [
+      {
+        type: Schema.ObjectId,
+        ref: "Usuario",
+      },
+    ],
+    idPartido: [
+      {
+        type: Schema.ObjectId,
+        ref: "Partido",
+      },
+    ],
     nombre: {
       type: String,
       required: true,
@@ -46,10 +50,16 @@ const competicionSchema = mongoose.Schema(
       type: Date,
       required: true,
     },
-    fechapartidos: [{
-      type: Date,
-      required: true,
-    }],
+    fechapartidos: [
+      {
+        type: Date,
+        required: true,
+      },
+    ],
+    tipo: {
+      type: String,
+      maxlength: 20,
+    },
   },
   { timestamps: false }
 );
