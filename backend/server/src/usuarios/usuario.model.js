@@ -3,15 +3,18 @@ const { Schema } = mongoose;
 
 const userSchema = mongoose.Schema(
   {
-    idCompeticion: [{
-      type: Schema.ObjectId,
-      ref: "Competicion",
-    }]
-    ,
-    idPartido: [{
-      type: Schema.ObjectId,
-      ref: "Partido",
-    }],
+    idCompeticion: [
+      {
+        type: Schema.ObjectId,
+        ref: "Competicion",
+      },
+    ],
+    idPartido: [
+      {
+        type: Schema.ObjectId,
+        ref: "Partido",
+      },
+    ],
     nombre: {
       type: String,
       required: true,
@@ -41,6 +44,7 @@ const userSchema = mongoose.Schema(
     },
     codigopostal: {
       type: Number,
+      max: 99999,
     },
     ciudad: {
       type: String,
