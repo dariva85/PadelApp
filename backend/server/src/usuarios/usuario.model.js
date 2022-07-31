@@ -3,14 +3,18 @@ const { Schema } = mongoose;
 
 const userSchema = mongoose.Schema(
   {
-    idCompeticion: {
-      type: Schema.ObjectId,
-      ref: "Competicion",
-    },
-    idPartido: {
-      type: Schema.ObjectId,
-      ref: "Partido",
-    },
+    idCompeticion: [
+      {
+        type: Schema.ObjectId,
+        ref: "Competicion",
+      },
+    ],
+    idPartido: [
+      {
+        type: Schema.ObjectId,
+        ref: "Partido",
+      },
+    ],
     nombre: {
       type: String,
       required: true,
@@ -25,9 +29,9 @@ const userSchema = mongoose.Schema(
       type: String,
       unique: true,
       required: true,
-      trim: true,
-      lowercase: true,
-      maxlength: 20,
+      trim: true, // trim hace que "  hello " == "  hello" == "hello " == "hello"
+      lowercase: true, // // Always convert to lowercase
+      maxlength: 320,
     },
     username: {
       type: String,
@@ -40,6 +44,7 @@ const userSchema = mongoose.Schema(
     },
     codigopostal: {
       type: Number,
+      max: 99999,
     },
     ciudad: {
       type: String,
@@ -56,12 +61,12 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: true,
-      select: false,
+      select: false, // Hace que este Schema no retorne la contrasenya.
     },
   },
   { timestamps: false }
 );
 
-const Usuario = mongoose.model("usuario", userSchema);
+const Usuario = mongoose.model("Usuario", userSchema);
 
 module.exports = Usuario;
