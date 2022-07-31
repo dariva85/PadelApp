@@ -3,14 +3,14 @@ const { Schema } = mongoose;
 
 const competicionSchema = mongoose.Schema(
   {
-    idUsuario: {
+    idUsuario: [{
       type: Schema.ObjectId,
       ref: "Usuario",
-    },
-    idPartido: {
+    }],
+    idPartido: [{
       type: Schema.ObjectId,
       ref: "Partido",
-    },
+    }],
     nombre: {
       type: String,
       required: true,
@@ -46,14 +46,14 @@ const competicionSchema = mongoose.Schema(
       type: Date,
       required: true,
     },
-    fechapartidos: {
+    fechapartidos: [{
       type: Date,
       required: true,
-    },
+    }],
   },
   { timestamps: false }
 );
 
-const Competicion = mongoose.model("competicion", competicionSchema);
+const Competicion = mongoose.model("Competicion", competicionSchema);
 
 module.exports = Competicion;
