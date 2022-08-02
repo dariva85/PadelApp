@@ -28,18 +28,17 @@ const partidoSchema = mongoose.Schema(
       type: Date,
       required: true,
     },
-    fechavalidacion: {
+    fechaValidacion: {
       type: Date,
     },
     direccion: {
       type: String,
       maxlength: 40,
     },
-    allscoreboard: [scoreboard],
+    allScoreBoard: [scoreboard],
   },
   { timestamps: false }
 );
 
 const Partido = mongoose.model("Partido", partidoSchema);
-
 module.exports = Partido;
