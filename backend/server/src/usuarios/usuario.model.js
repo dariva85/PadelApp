@@ -42,7 +42,7 @@ const userSchema = mongoose.Schema(
       type: String,
       maxlength: 40,
     },
-    codigopostal: {
+    codigoPostal: {
       type: Number,
       max: 99999,
     },
@@ -54,7 +54,7 @@ const userSchema = mongoose.Schema(
       type: String,
       maxlength: 20,
     },
-    imagenperfil: {
+    imagenPerfil: {
       data: Buffer,
       contentType: String,
     },
