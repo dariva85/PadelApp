@@ -4,8 +4,8 @@ const Partido = require("../partidos/partido.model");
 
 const createOne = async (req, res) => {
   try {
-    const newUser = req.body;
-    const doc = await Competicion.create(newUser);
+    const newCompetition = req.body;
+    const doc = await Competicion.create(newCompetition);
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
@@ -39,7 +39,7 @@ const findOne = async (req, res) => {
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get user" });
+    res.status(500).json({ error: "Cannot get competition" });
   }
 };
 
@@ -67,7 +67,7 @@ const findAllofOneUser = async (req, res) => {
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get books" });
+    res.status(500).json({ error: "Cannot get competitions" });
   }
 };
 
@@ -81,7 +81,7 @@ const findAllofOneMatch = async (req, res) => {
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get books" });
+    res.status(500).json({ error: "Cannot get competitions" });
   }
 };
 

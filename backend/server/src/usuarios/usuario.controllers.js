@@ -67,7 +67,7 @@ const findAllofOneCompetition = async (req, res) => {
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get books" });
+    res.status(500).json({ error: "Cannot get users" });
   }
 };
 
@@ -81,7 +81,7 @@ const findAllofOneMatch = async (req, res) => {
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get books" });
+    res.status(500).json({ error: "Cannot get users" });
   }
 };
 
