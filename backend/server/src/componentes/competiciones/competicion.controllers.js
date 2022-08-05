@@ -1,11 +1,11 @@
-const Usuario = require("./usuario.model");
-const Competicion = require("../competiciones/competicion.model");
+const Competicion = require("./competicion.model");
+const Usuario = require("../../usuarios/usuario.model");
 const Partido = require("../partidos/partido.model");
 
 const createOne = async (req, res) => {
   try {
-    const newUser = req.body;
-    const doc = await Usuario.create(newUser);
+    const newCompetition = req.body;
+    const doc = await Competicion.create(newCompetition);
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
@@ -16,7 +16,7 @@ const createOne = async (req, res) => {
 const updateOne = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Usuario.findOneAndUpdate({ _id: id }, req.body, {
+    const doc = await Competicion.findOneAndUpdate({ _id: id }, req.body, {
       new: true,
     });
     if (!doc) {
@@ -32,21 +32,21 @@ const updateOne = async (req, res) => {
 const findOne = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Usuario.findOne({ _id: id });
+    const doc = await Competicion.findOne({ _id: id });
     if (!doc) {
       return res.status(404).json({ error: "Not found" });
     }
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get user" });
+    res.status(500).json({ error: "Cannot get competition" });
   }
 };
 
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Usuario.findOneAndDelete({ _id: id }, { new: true });
+    const doc = await Competicion.findOneAndDelete({ _id: id }, { new: true });
     if (!doc) {
       return res.status(404).json({ error: "Not found" });
     }
@@ -57,31 +57,31 @@ const deleteOne = async (req, res) => {
   }
 };
 
-const findAllofOneCompetition = async (req, res) => {
+const findAllofOneUser = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Competicion.find({ usuario: id }).lean().exec();
+    const doc = await Usuario.find({ competicion: id }).lean().exec();
     if (!doc) {
       return res.status(404).json({ error: "Not found" });
     }
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get users" });
+    res.status(500).json({ error: "Cannot get competitions" });
   }
 };
 
 const findAllofOneMatch = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Partido.find({ usuario: id }).lean().exec();
+    const doc = await Partido.find({ competicion: id }).lean().exec();
     if (!doc) {
       return res.status(404).json({ error: "Not found" });
     }
     res.status(200).json({ results: [doc] });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Cannot get users" });
+    res.status(500).json({ error: "Cannot get competitions" });
   }
 };
 
@@ -90,6 +90,6 @@ module.exports = {
   updateOne,
   findOne,
   deleteOne,
-  findAllofOneCompetition,
+  findAllofOneUser,
   findAllofOneMatch,
 };

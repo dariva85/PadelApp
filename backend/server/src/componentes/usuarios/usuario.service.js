@@ -1,9 +1,9 @@
 const { Router } = require("express");
 const userControllers = require("./usuario.controllers");
-const matchControllers = require("../partidos/partido.controllers");
+const matchControllers = require("../componentes/partidos/partido.controllers");
 const competitionControllers = require("../competiciones/competicion.controllers");
 const routerCompeticiones = require("../competiciones/competicion.service");
-const routerPartidos = require("../partidos/partido.service");
+const routerPartidos = require("../componentes/partidos/partido.service");
 
 const routerUsuarios = Router();
 
