@@ -257,9 +257,26 @@ async function main() {
 
   console.log("Inserting Inscripciones");
 
+  let d = new Date();
+  let mondays = [];
+
+  d.setDate(1);
+  // Get the first Monday in the month
+  while (d.getDay() !== 1) {
+    d.setDate(d.getDate() + 1);
+  }
+  d.setMinutes(0);
+  d.setSeconds(0);
+  d.setHours(19);
+  // Get all the other Mondays in the month
+  while (d.getMonth() !== 11) {
+    var pushDate = new Date(d.getTime());
+    mondays.push(pushDate);
+    d.setDate(d.getDate() + 7);
+  }
+
   const Inscripciones = await db.collection("Inscripcion").insertMany([
     {
-      _id: idInscripcion,
       inscritos: [
         { id: idDavid, timesStamp: new Date() },
         {
@@ -284,13 +301,28 @@ async function main() {
       idCompeticion: idLiga1,
       nombre: "Padel Semanal",
       FechaInicio: new Date(new Date().setMonth(new Date().getMonth() - 1)),
-      FechaFin: new Date(new Date().setDay(new Date().getDay() + 1)),
+      FechaFin: new Date(new Date().setDate(new Date().getDay() + 1)),
       Titulo: "JuegoDiario",
-      FechaPartido: new Date(new Date().setDay(new Date().getDay() + 2)),
+      FechaPartido: new Date(new Date().setDate(new Date().getDay() + 2)),
       MaxInscritos: 8,
       Estado: "Open",
     },
   ]);
+
+  for (var i = 0; i < mondays.length; i++) {
+    console.log(mondays[i]);
+    let Inscripcions = await db.collection("Inscripcion").insertOne({
+      inscritos: [],
+      idCompeticion: idLiga1,
+      nombre: "Padel Semanal",
+      fechaInicio: mondays[i],
+      fechaFin: new Date().setDate(mondays[i].getDay() + 7),
+      titulo: "JuegoDiario",
+      fechaPartido: new Date().setDate(mondays[i].getDay() + 7),
+      maxInscritos: 8,
+      estado: "Open",
+    });
+  }
   console.log("The database was started without any problems.");
   client.close();
 }
