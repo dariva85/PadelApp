@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const childPair = new Schema({
-  player: [{ type: String, required: true }],
+  player: [{ type: Schema.ObjectId, required: true }],
   scoreboard: { type: Number, required: true },
 }); //Este objeto es el par de jugadores de un equipo y su puntuacón.
 const scoreboard = new Schema({ final_score: [childPair] }); //Son 2 equipos con sus dos puntuaciones
