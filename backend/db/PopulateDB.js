@@ -11,6 +11,16 @@ const envVarNames = [
 ];
 
 let envVars = {};
+let idDavid = mongodb.ObjectId("62adf55dd1d8cd0272ddab9b");
+let idTomas = mongodb.ObjectId("62adf55dd1d8cd0272ddab9c");
+let idMarti = mongodb.ObjectId("62adf55dd1d8cd0272ddab9d");
+let idAlex = mongodb.ObjectId("62adf55dd1d8cd0272ddab9e");
+
+let idLiga1 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9a");
+let idLiga2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9f");
+
+let idPartido1 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9g");
+let idPartido2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9h");
 
 envVarNames.forEach((varName) => {
   if (process.env[varName] === undefined) {
@@ -30,14 +40,14 @@ const client = new mongodb.MongoClient(getMongoURL(), {
 
 async function main() {
   console.log("Connecting...");
-  
+
   await client.connect();
   const db = client.db("Padel");
 
   console.log("Inserting Users");
-  const users = await db.collection("usuario").insertMany([
+  const users = await db.collection("Usuario").insertMany([
     {
-      _id: mongodb.ObjectId("62adf55dd1d8cd0272ddab9b"),
+      _id: idDavid,
       idCompeticion: [],
       idPartido: [],
       nombre: "David",
@@ -52,7 +62,7 @@ async function main() {
       password: "1234",
     },
     {
-      _id: mongodb.ObjectId("62adf55dd1d8cd0272ddab9c"),
+      _id: idTomas,
       idCompeticion: [],
       idPartido: [],
       nombre: "Tomas",
@@ -67,7 +77,7 @@ async function main() {
       password: "12345",
     },
     {
-      _id: mongodb.ObjectId("62adf55dd1d8cd0272ddab9d"),
+      _id: idMarti,
       idCompeticion: [],
       idPartido: [],
       nombre: "Marti",
@@ -82,7 +92,7 @@ async function main() {
       password: "123456",
     },
     {
-      _id: mongodb.ObjectId("62adf55dd1d8cd0272ddab9e"),
+      _id: idAlex,
       idCompeticion: [],
       idPartido: [],
       nombre: "Alex",
@@ -100,14 +110,10 @@ async function main() {
 
   console.log("Inserting Competitions");
 
-  const competitions = await db.collection("competicion").insertMany([
+  const competitions = await db.collection("Competicion").insertMany([
     {
-      idUsuario: [
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9b"),
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9c"),
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9d"),
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9e"),
-      ],
+      _id: idLiga1,
+      idUsuario: [idDavid, idTomas, idMarti, idAlex],
       idPartido: [],
       nombre: "Padel Semanal",
       descripcion: "Competición de padel de repetición semanal",
@@ -121,10 +127,8 @@ async function main() {
       tipo: "Liga",
     },
     {
-      idUsuario: [
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9b"),
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9c"),
-      ],
+      _id: idLiga2,
+      idUsuario: [idDavid, idTomas],
       idPartido: [],
       nombre: "Americana UpClub",
       descripcion: "Competición de padel ",
@@ -138,10 +142,7 @@ async function main() {
       tipo: "Americana",
     },
     {
-      idUsuario: [
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9d"),
-        mongodb.ObjectId("62adf55dd1d8cd0272ddab9e"),
-      ],
+      idUsuario: [idMarti, idAlex],
       idPartido: [],
       nombre: "Liga Interclub",
       descripcion: "Competición Interclub",
@@ -155,7 +156,35 @@ async function main() {
       tipo: "Liga",
     },
   ]);
+  console.log("Inserting Partidos");
 
+  const partido = await db.collection("Partido").insertMany([
+    {
+      _id: idPartido1,
+      idUsuario: [
+        idDavid, idTomas, idMarti, idAlex
+      ],
+      idCompeticion: idLiga1,
+      estado: "Pendiente de validar usuarios",
+      fecha: new Date(new Date().setMonth(new Date().getDay + 3)),
+      fechaValidacion: new Date(new Date().setMonth(new Date().getDay + 10)),
+      direccion: "Pamplona",
+      //TODO, FALTA COMPONENTE. SET
+    },
+    {
+      
+      _id: idPartido1,
+      idUsuario: [
+        idDavid, idTomas, idMarti, idAlex
+      ],
+      idCompeticion: idLiga2,
+      estado: "Pendiente de validar usuarios",
+      fecha: new Date(new Date().setMonth(new Date().getDay + 3)),
+      fechaValidacion: new Date(new Date().setMonth(new Date().getDay + 10)),
+      direccion: "Gerona",
+      //TODO, FALTA COMPONENTE. SET
+    },
+  ]);
   console.log("The database was started without any problems.");
   client.close();
 }
