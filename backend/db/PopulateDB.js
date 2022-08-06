@@ -254,6 +254,43 @@ async function main() {
       ],
     },
   ]);
+
+  console.log("Inserting Inscripciones");
+
+  const Inscripciones = await db.collection("Inscripcion").insertMany([
+    {
+      _id: idInscripcion,
+      inscritos: [
+        { id: idDavid, timesStamp: new Date() },
+        {
+          id: idTomas,
+          timesStamp: new Date(
+            new Date().setMinutes(new Date().getMinutes() - 1)
+          ),
+        },
+        {
+          id: idMarti,
+          timesStamp: new Date(
+            new Date().setMinutes(new Date().getMinutes() - 2)
+          ),
+        },
+        {
+          id: idAlex,
+          timesStamp: new Date(
+            new Date().setMinutes(new Date().getMinutes() - 3)
+          ),
+        },
+      ],
+      idCompeticion: idLiga1,
+      nombre: "Padel Semanal",
+      FechaInicio: new Date(new Date().setMonth(new Date().getMonth() - 1)),
+      FechaFin: new Date(new Date().setDay(new Date().getDay() + 1)),
+      Titulo: "JuegoDiario",
+      FechaPartido: new Date(new Date().setDay(new Date().getDay() + 2)),
+      MaxInscritos: 8,
+      Estado: "Open",
+    },
+  ]);
   console.log("The database was started without any problems.");
   client.close();
 }
