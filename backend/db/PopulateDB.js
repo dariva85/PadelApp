@@ -19,8 +19,8 @@ let idAlex = mongodb.ObjectId("62adf55dd1d8cd0272ddab9e");
 let idLiga1 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9a");
 let idLiga2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9f");
 
-let idPartido1 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9g");
-let idPartido2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9h");
+let idPartido1 = mongodb.ObjectId("62adf55dd1d8cd0272ddab91");
+let idPartido2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab92");
 
 envVarNames.forEach((varName) => {
   if (process.env[varName] === undefined) {
@@ -161,28 +161,97 @@ async function main() {
   const partido = await db.collection("Partido").insertMany([
     {
       _id: idPartido1,
-      idUsuario: [
-        idDavid, idTomas, idMarti, idAlex
-      ],
+      idUsuario: [idDavid, idTomas, idMarti, idAlex],
       idCompeticion: idLiga1,
       estado: "Pendiente de validar usuarios",
       fecha: new Date(new Date().setMonth(new Date().getDay + 3)),
       fechaValidacion: new Date(new Date().setMonth(new Date().getDay + 10)),
       direccion: "Pamplona",
-      //TODO, FALTA COMPONENTE. SET
+      allScoreBoard: [
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 6,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 1,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 6,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 2,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 6,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 3,
+            },
+          ],
+        },
+      ],
     },
     {
-      
-      _id: idPartido1,
-      idUsuario: [
-        idDavid, idTomas, idMarti, idAlex
-      ],
+      _id: idPartido2,
+      idUsuario: [idDavid, idTomas, idMarti, idAlex],
       idCompeticion: idLiga2,
       estado: "Pendiente de validar usuarios",
       fecha: new Date(new Date().setMonth(new Date().getDay + 3)),
       fechaValidacion: new Date(new Date().setMonth(new Date().getDay + 10)),
       direccion: "Gerona",
-      //TODO, FALTA COMPONENTE. SET
+      allScoreBoard: [
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 0,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 6,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 4,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 6,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 6,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 6,
+            },
+          ],
+        },
+      ],
     },
   ]);
   console.log("The database was started without any problems.");
