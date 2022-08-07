@@ -183,11 +183,11 @@ async function main() {
         {
           final_score: [
             {
-              player: [idMarti, idTomas],
+              player: [idMarti, idAlex],
               scoreboard: 6,
             },
             {
-              player: [idAlex, idDavid],
+              player: [idTomas, idDavid],
               scoreboard: 2,
             },
           ],
@@ -195,11 +195,11 @@ async function main() {
         {
           final_score: [
             {
-              player: [idMarti, idTomas],
+              player: [idAlex, idTomas],
               scoreboard: 6,
             },
             {
-              player: [idAlex, idDavid],
+              player: [idMarti, idDavid],
               scoreboard: 3,
             },
           ],
@@ -230,11 +230,11 @@ async function main() {
         {
           final_score: [
             {
-              player: [idMarti, idTomas],
+              player: [idMarti, idAlex],
               scoreboard: 4,
             },
             {
-              player: [idAlex, idDavid],
+              player: [idTomas, idDavid],
               scoreboard: 6,
             },
           ],
@@ -242,12 +242,12 @@ async function main() {
         {
           final_score: [
             {
-              player: [idMarti, idTomas],
-              scoreboard: 6,
+              player: [idAlex, idTomas],
+              scoreboard: 7,
             },
             {
-              player: [idAlex, idDavid],
-              scoreboard: 6,
+              player: [idMarti, idDavid],
+              scoreboard: 5,
             },
           ],
         },
@@ -310,7 +310,6 @@ async function main() {
   ]);
 
   for (var i = 0; i < mondays.length; i++) {
-    console.log(mondays[i]);
     let Inscripcions = await db.collection("Inscripcion").insertOne({
       inscritos: [],
       idCompeticion: idLiga1,
@@ -323,6 +322,62 @@ async function main() {
       estado: "Open",
     });
   }
+
+  console.log("Inserting Ranking");
+  let Ranking = await db.collection("Ranking").insertMany([
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idAlex,
+      clasificacion: {
+        posicion: 1,
+        tendencia: 1,
+        partidosJugados: 6,
+        partidosGanados: 4,
+        pardisosPerdidos: 2,
+        puntosAFavor: 30,
+        puntosEnContra: 22,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idTomas,
+      clasificacion: {
+        posicion: 2,
+        tendencia: 1,
+        partidosJugados: 6,
+        partidosGanados: 4,
+        pardisosPerdidos: 2,
+        puntosAFavor: 27,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idMarti,
+      clasificacion: {
+        posicion: 3,
+        tendencia: 0,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        pardisosPerdidos: 4,
+        puntosAFavor: 24,
+        puntosEnContra: 28,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idDavid,
+      clasificacion: {
+        posicion: 4,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        pardisosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+  ]);
   console.log("The database was started without any problems.");
   client.close();
 }
