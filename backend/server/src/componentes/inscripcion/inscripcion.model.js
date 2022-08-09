@@ -45,7 +45,6 @@ const rankingSchema = mongoose.Schema(
       maxlength: 40,
       required: true,
     },
-    allValidadores: [inscrito],
   },
   { timestamps: false }
 );
