@@ -31,6 +31,7 @@ envVarNames.forEach((varName) => {
 
 const getMongoURL = () => {
   const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DATABASE } = envVars;
+
   return `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?authSource=admin`;
 };
 
@@ -42,7 +43,7 @@ async function main() {
   console.log("Connecting...");
 
   await client.connect();
-  const db = client.db("Padel");
+  const db = client.db(envVars.DB_DATABASE);
 
   console.log("Inserting Users");
   const users = await db.collection("Usuario").insertMany([
