@@ -205,6 +205,7 @@ async function main() {
           ],
         },
       ],
+      allValidadores: [idDavid, idTomas, idMarti, idAlex],
     },
     {
       _id: idPartido2,
@@ -252,6 +253,7 @@ async function main() {
           ],
         },
       ],
+      allValidadores: [idDavid, idTomas, idMarti, idAlex],
     },
   ]);
 
