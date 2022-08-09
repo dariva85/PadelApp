@@ -36,6 +36,12 @@ const partidoSchema = mongoose.Schema(
       maxlength: 40,
     },
     allScoreBoard: [scoreboard],
+    allValidadores: [
+      {
+        type: Schema.ObjectId,
+        ref: "Usuario",
+      },
+    ],
   },
   { timestamps: false }
 );
