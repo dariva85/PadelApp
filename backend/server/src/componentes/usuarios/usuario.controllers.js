@@ -1,6 +1,6 @@
-const Usuario = require("./usuario.model");
+const Usuario = require("./usuario.model.js");
 const Competicion = require("../competiciones/competicion.model");
-const Partido = require("../componentes/partidos/partido.model");
+const Partido = require("../partidos/partido.model");
 
 const createOne = async (req, res) => {
   try {
