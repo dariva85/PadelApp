@@ -4,8 +4,10 @@ const rankingControllers = require("./ranking.controllers");
 const routerRankings = Router();
 
 routerRankings.post("/", rankingControllers.createOne);
-routerRankings.put("/:id", rankingControllers.updateOne);
-routerRankings.get("/:id", rankingControllers.findOne);
-routerRankings.delete("/:id", rankingControllers.deleteOne);
+routerRankings
+  .route("/:id")
+  .put(rankingControllers.updateOne)
+  .get(rankingControllers.findOne)
+  .delete(rankingControllers.deleteOne);
 
 module.exports = routerRankings;

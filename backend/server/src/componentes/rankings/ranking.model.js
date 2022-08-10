@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-
 const scoreboard = new Schema({
   posicion: Number,
   nombre: {
@@ -9,12 +8,13 @@ const scoreboard = new Schema({
     ref: "usuarios",
   },
   puntos: Number,
-  pj: Number,
-  pg: Number,
-  pp: Number,
-  jf: Number,
-  dj: Number,
-}); 
+  tendencia: Number,
+  partidosJugados: Number,
+  partidosGanados: Number,
+  pardisosPerdidos: Number,
+  puntosAFavor: Number,
+  puntosEnContra: Number,
+});
 
 const rankingSchema = mongoose.Schema(
   {

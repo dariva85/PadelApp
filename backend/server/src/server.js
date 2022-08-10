@@ -6,8 +6,9 @@ const db = require("./db");
 const UserRouter = require("./componentes/usuarios/usuario.service.js");
 const PartidoRouter = require("./componentes/partidos/partido.service.js");
 const CompeticionRouter = require("./componentes/competiciones/competicion.service.js");
-const InscripcionRouter = require("./componentes/inscripcion/inscripcion.service.js");
 const RankingRouter = require("./componentes/rankings/ranking.service.js");
+//const InscripcionRouter = require("./componentes/inscripcion/inscripcion.service.js");
+
 const app = express();
 
 app.use(cors());
@@ -16,10 +17,11 @@ app.use(express.json());
 
 //Hay que habilitar todos los endpoints que se vayan a utilizar
 app.use("/usuarios/", UserRouter);
-app.use("/", PartidoRouter);
-app.use("/", RankingRouter);
+app.use("/partidos/", PartidoRouter);
+app.use("/competiciones/", CompeticionRouter);
+app.use("/rankings/", RankingRouter);
 // NOT WORKING YET app.use("/", InscripcionRouter);
-app.use("/", PartidoRouter);
+
 
 app.get("/", async (req, res) => {
   res.status(200).json({ ok: true });

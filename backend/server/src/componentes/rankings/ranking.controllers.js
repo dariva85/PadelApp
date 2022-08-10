@@ -1,5 +1,5 @@
 const Ranking = require("./ranking.model");
-
+//Checked
 const createOne = async (req, res) => {
   try {
     const newRanking = req.body;
@@ -10,7 +10,7 @@ const createOne = async (req, res) => {
     res.status(500).json({ error: "Creation failed" });
   }
 };
-
+//Checked
 const updateOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -26,7 +26,7 @@ const updateOne = async (req, res) => {
     res.status(500).json({ error: "Cannot update" });
   }
 };
-
+//Checked
 const findOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -40,7 +40,7 @@ const findOne = async (req, res) => {
     res.status(500).json({ error: "Cannot get ranking" });
   }
 };
-
+//Checked
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
