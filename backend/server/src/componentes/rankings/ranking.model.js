@@ -6,7 +6,7 @@ const scoreboard = new Schema({
   posicion: Number,
   nombre: {
     type: Schema.ObjectId,
-    ref: "Usuario",
+    ref: "usuarios",
   },
   puntos: Number,
   pj: Number,
@@ -20,13 +20,13 @@ const rankingSchema = mongoose.Schema(
   {
     idCompeticion: {
       type: Schema.ObjectId,
-      ref: "Competicion",
+      ref: "competiciones",
     },
     clasificacion: [scoreboard],
   },
   { timestamps: false }
 );
 
-const Ranking = mongoose.model("Ranking", rankingSchema);
+const Ranking = mongoose.model("rankings", rankingSchema);
 
 module.exports = Ranking;

@@ -5,7 +5,7 @@ const inscrito = new Schema(
   {
     idUser: {
       type: Schema.ObjectId,
-      ref: "Usuario",
+      ref: "usuarios",
     },
   },
   { timestamps: true }
@@ -16,7 +16,7 @@ const rankingSchema = mongoose.Schema(
     allInscritos: [inscrito],
     idCompeticion: {
       type: Schema.ObjectId,
-      ref: "Competicion",
+      ref: "competiciones",
     },
 
     fechaInicio: {
@@ -49,6 +49,6 @@ const rankingSchema = mongoose.Schema(
   { timestamps: false }
 );
 
-const Ranking = mongoose.model("Inscripcion", rankingSchema);
+const Ranking = mongoose.model("inscripciones", rankingSchema);
 
 module.exports = Ranking;

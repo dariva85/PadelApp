@@ -12,12 +12,12 @@ const partidoSchema = mongoose.Schema(
     idUsuario: [
       {
         type: Schema.ObjectId,
-        ref: "Usuario",
+        ref: "usuarios",
       },
     ],
     idCompeticion: {
       type: Schema.ObjectId,
-      ref: "Competicion",
+      ref: "competiciones",
     },
     estado: {
       type: String,
@@ -39,12 +39,12 @@ const partidoSchema = mongoose.Schema(
     allValidadores: [
       {
         type: Schema.ObjectId,
-        ref: "Usuario",
+        ref: "usuarios",
       },
     ],
   },
   { timestamps: false }
 );
 
-const Partido = mongoose.model("Partido", partidoSchema);
+const Partido = mongoose.model("partidos", partidoSchema);
 module.exports = Partido;

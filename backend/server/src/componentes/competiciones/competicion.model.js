@@ -6,13 +6,13 @@ const competicionSchema = mongoose.Schema(
     idUsuario: [
       {
         type: Schema.ObjectId,
-        ref: "Usuario",
+        ref: "usuarios",
       },
     ],
     idPartido: [
       {
         type: Schema.ObjectId,
-        ref: "Partido",
+        ref: "partidos",
       },
     ],
     nombre: {
@@ -64,6 +64,6 @@ const competicionSchema = mongoose.Schema(
   { timestamps: false }
 );
 
-const Competicion = mongoose.model("Competicion", competicionSchema);
+const Competicion = mongoose.model("competiciones", competicionSchema);
 
 module.exports = Competicion;

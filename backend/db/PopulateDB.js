@@ -46,7 +46,7 @@ async function main() {
   const db = client.db(envVars.DB_DATABASE);
 
   console.log("Inserting Users");
-  const users = await db.collection("Usuario").insertMany([
+  const users = await db.collection("usuarios").insertMany([
     {
       _id: idDavid,
       idCompeticion: [],
@@ -111,7 +111,7 @@ async function main() {
 
   console.log("Inserting Competitions");
 
-  const competitions = await db.collection("Competicion").insertMany([
+  const competitions = await db.collection("competiciones").insertMany([
     {
       _id: idLiga1,
       idUsuario: [idDavid, idTomas, idMarti, idAlex],
@@ -159,7 +159,7 @@ async function main() {
   ]);
   console.log("Inserting Partidos");
 
-  const partido = await db.collection("Partido").insertMany([
+  const partido = await db.collection("partidos").insertMany([
     {
       _id: idPartido1,
       idUsuario: [idDavid, idTomas, idMarti, idAlex],
@@ -278,7 +278,7 @@ async function main() {
     d.setDate(d.getDate() + 7);
   }
 
-  const Inscripciones = await db.collection("Inscripcion").insertMany([
+  const Inscripciones = await db.collection("inscripciones").insertMany([
     {
       inscritos: [
         { id: idDavid, timesStamp: new Date() },
@@ -313,7 +313,7 @@ async function main() {
   ]);
 
   for (var i = 0; i < mondays.length; i++) {
-    let Inscripcions = await db.collection("Inscripcion").insertOne({
+    let Inscripcions = await db.collection("inscripciones").insertOne({
       inscritos: [],
       idCompeticion: idLiga1,
       nombre: "Padel Semanal",
@@ -327,7 +327,7 @@ async function main() {
   }
 
   console.log("Inserting Ranking");
-  let Ranking = await db.collection("Ranking").insertMany([
+  let Ranking = await db.collection("rankings").insertMany([
     {
       idCompeticion: idLiga1,
       idUsuario: idAlex,
