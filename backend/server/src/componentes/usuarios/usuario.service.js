@@ -9,9 +9,12 @@ routerUsuarios
   .get(userControllers.findOne)
   .delete(userControllers.deleteOne);
 
+//Este endpoint no es necesario. Usuario ya posee la lista de competiciones a la que pertenece.
 routerUsuarios
   .route("/:id/competiciones")
   .get(userControllers.findAllofOneCompetition);
+
+//Este endpoint no es necesario. Usuario ya posee la lista de partidos a la que pertenece.
 routerUsuarios.route("/:id/partidos").get(userControllers.findAllofOneMatch);
 
 module.exports = routerUsuarios;
