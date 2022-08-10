@@ -8,10 +8,10 @@ const routerUsuarios = require("../usuarios/usuario.service");
 const routerPartidos = Router();
 
 routerPartidos.post("/", matchControllers.createOne);
-routerPartidos.put("/:id", matchControllers.updateOne);
-routerPartidos.get("/:id", matchControllers.findOne);
-routerPartidos.delete("/:id", matchControllers.deleteOne);
-/// NOT WORKING routerCompeticiones.get("/:id/partidos",competitionControllers.findAllofOneMatch);
-/// NOT WORKING  routerUsuarios.get("/:id/partidos", userControllers.findAllofOneMatch);
+routerPartidos
+  .route("/:id")
+  .put(matchControllers.updateOne)
+  .get(matchControllers.findOne)
+  .delete(matchControllers.deleteOne);
 
 module.exports = routerPartidos;

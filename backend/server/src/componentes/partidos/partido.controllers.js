@@ -2,6 +2,7 @@ const Partido = require("./partido.model");
 const Competicion = require("../competiciones/competicion.model");
 const Usuario = require("../usuarios/usuario.model");
 
+//Checked
 const createOne = async (req, res) => {
   try {
     const newMatch = req.body;
@@ -13,6 +14,7 @@ const createOne = async (req, res) => {
   }
 };
 
+//Checked
 const updateOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -29,6 +31,7 @@ const updateOne = async (req, res) => {
   }
 };
 
+//Checked
 const findOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -43,6 +46,7 @@ const findOne = async (req, res) => {
   }
 };
 
+//Checked
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -57,6 +61,7 @@ const deleteOne = async (req, res) => {
   }
 };
 
+//Checked
 const findAllofOneCompetition = async (req, res) => {
   const { id } = req.params;
   try {
@@ -71,6 +76,7 @@ const findAllofOneCompetition = async (req, res) => {
   }
 };
 
+//Checked
 const findAllofOneUser = async (req, res) => {
   const { id } = req.params;
   try {
