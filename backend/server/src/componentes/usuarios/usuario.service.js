@@ -1,20 +1,17 @@
 const { Router } = require("express");
 const userControllers = require("./usuario.controllers");
-const matchControllers = require("../partidos/partido.controllers");
-const competitionControllers = require("../competiciones/competicion.controllers");
-const routerCompeticiones = require("../competiciones/competicion.service");
-const routerPartidos = require("../partidos/partido.service");
 
 const routerUsuarios = Router();
+routerUsuarios.route("/").post(userControllers.createOne);
+routerUsuarios
+  .route("/:id")
+  .put(userControllers.updateOne)
+  .get(userControllers.findOne)
+  .delete(userControllers.deleteOne);
 
-routerUsuarios.post("/", userControllers.createOne);
-routerUsuarios.put("/:id", userControllers.updateOne);
-routerUsuarios.get("/:id", userControllers.findOne);
-routerUsuarios.delete("/:id", userControllers.deleteOne);
-routerCompeticiones.get(
-  "/:id/usuarios",
-  competitionControllers.findAllofOneUser
-);
-routerPartidos.get("/:id/usuarios", matchControllers.findAllofOneUser);
+routerUsuarios
+  .route("/:id/competiciones")
+  .get(userControllers.findAllofOneCompetition);
+routerUsuarios.route("/:id/partidos").get(userControllers.findAllofOneMatch);
 
 module.exports = routerUsuarios;

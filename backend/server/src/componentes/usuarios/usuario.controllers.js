@@ -2,9 +2,12 @@ const Usuario = require("./usuario.model.js");
 const Competicion = require("../competiciones/competicion.model");
 const Partido = require("../partidos/partido.model");
 
+//Checked
 const createOne = async (req, res) => {
   try {
     const newUser = req.body;
+    console.log(newUser);
+    console.log(req.params);
     const doc = await Usuario.create(newUser);
     res.status(200).json({ results: [doc] });
   } catch (e) {
@@ -13,6 +16,7 @@ const createOne = async (req, res) => {
   }
 };
 
+//Checked
 const updateOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -29,10 +33,13 @@ const updateOne = async (req, res) => {
   }
 };
 
+//Checked
 const findOne = async (req, res) => {
   const { id } = req.params;
+  console.log(id);
   try {
-    const doc = await Usuario.findOne({ _id: id });
+    const doc = await Usuario.findById(id).lean().exec();
+    console.log(doc);
     if (!doc) {
       return res.status(404).json({ error: "Not found" });
     }
@@ -43,6 +50,7 @@ const findOne = async (req, res) => {
   }
 };
 
+//Checked
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -57,6 +65,7 @@ const deleteOne = async (req, res) => {
   }
 };
 
+//Checked
 const findAllofOneCompetition = async (req, res) => {
   const { id } = req.params;
   try {
@@ -71,6 +80,7 @@ const findAllofOneCompetition = async (req, res) => {
   }
 };
 
+//Checked
 const findAllofOneMatch = async (req, res) => {
   const { id } = req.params;
   try {
