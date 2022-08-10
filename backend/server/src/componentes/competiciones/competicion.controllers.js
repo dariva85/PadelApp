@@ -2,6 +2,7 @@ const Competicion = require("./competicion.model");
 const Usuario = require("../usuarios/usuario.model");
 const Partido = require("../partidos/partido.model");
 
+//Checked
 const createOne = async (req, res) => {
   try {
     const newCompetition = req.body;
@@ -12,7 +13,7 @@ const createOne = async (req, res) => {
     res.status(500).json({ error: "Creation failed" });
   }
 };
-
+//Checked
 const updateOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -28,7 +29,7 @@ const updateOne = async (req, res) => {
     res.status(500).json({ error: "Cannot update" });
   }
 };
-
+//Checked
 const findOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -43,6 +44,7 @@ const findOne = async (req, res) => {
   }
 };
 
+//Checked
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
