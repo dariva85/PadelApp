@@ -6,13 +6,13 @@ const competicionSchema = mongoose.Schema(
     idUsuario: [
       {
         type: Schema.ObjectId,
-        ref: "Usuario",
+        ref: "usuarios",
       },
     ],
     idPartido: [
       {
         type: Schema.ObjectId,
-        ref: "Partido",
+        ref: "partidos",
       },
     ],
     nombre: {
@@ -30,11 +30,11 @@ const competicionSchema = mongoose.Schema(
       maxlength: 40,
       required: true,
     },
-    ninscritos: {
+    nInscritos: {
       type: Number,
       required: true,
     },
-    ntotal: {
+    maxInscritos: {
       type: Number,
       required: true,
     },
@@ -42,15 +42,15 @@ const competicionSchema = mongoose.Schema(
       type: String,
       maxlength: 400,
     },
-    fechainicio: {
+    fechaInicio: {
       type: Date,
       required: true,
     },
-    fechafin: {
+    fechaFin: {
       type: Date,
       required: true,
     },
-    fechapartidos: [
+    fechaPartidos: [
       {
         type: Date,
         required: true,
@@ -64,6 +64,6 @@ const competicionSchema = mongoose.Schema(
   { timestamps: false }
 );
 
-const Competicion = mongoose.model("Competicion", competicionSchema);
+const Competicion = mongoose.model("competiciones", competicionSchema);
 
 module.exports = Competicion;

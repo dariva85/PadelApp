@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const childPair = new Schema({
-  player: [{ type: String, required: true }],
+  player: [{ type: Schema.ObjectId, required: true }],
   scoreboard: { type: Number, required: true },
 }); //Este objeto es el par de jugadores de un equipo y su puntuacón.
 const scoreboard = new Schema({ final_score: [childPair] }); //Son 2 equipos con sus dos puntuaciones
@@ -12,12 +12,12 @@ const partidoSchema = mongoose.Schema(
     idUsuario: [
       {
         type: Schema.ObjectId,
-        ref: "Usuario",
+        ref: "usuarios",
       },
     ],
     idCompeticion: {
       type: Schema.ObjectId,
-      ref: "Competicion",
+      ref: "competiciones",
     },
     estado: {
       type: String,
@@ -28,18 +28,23 @@ const partidoSchema = mongoose.Schema(
       type: Date,
       required: true,
     },
-    fechavalidacion: {
+    fechaValidacion: {
       type: Date,
     },
     direccion: {
       type: String,
       maxlength: 40,
     },
-    allscoreboard: [scoreboard],
+    allScoreBoard: [scoreboard],
+    allValidadores: [
+      {
+        type: Schema.ObjectId,
+        ref: "usuarios",
+      },
+    ],
   },
   { timestamps: false }
 );
 
-const Partido = mongoose.model("Partido", partidoSchema);
-
+const Partido = mongoose.model("partidos", partidoSchema);
 module.exports = Partido;

@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "nodemon .",
     "up_db": "docker compose -f ../db/docker-compose.yml up -d",
-    "stop_db": "docker compose -f ../db/docker-compose.yml stop",
-    "connect_db": "node ../db/db-console.sh"
+    "stop_db": "docker compose -f ../db/docker-compose.yml stop"
   },
   "keywords": [],
   "author": "",
