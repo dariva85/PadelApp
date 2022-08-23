@@ -15,14 +15,14 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-require("./componentes/usuarios/usuario.controllers").addRoutesTo(app);
-
 //Hay que habilitar todos los endpoints que se vayan a utilizar
 app.use("/usuarios/", UserRouter);
 app.use("/partidos/", PartidoRouter);
 app.use("/competiciones/", CompeticionRouter);
 app.use("/rankings/", RankingRouter);
 // NOT WORKING YET app.use("/", InscripcionRouter);
+//Este endpoint está en usuario pero no está atado al path "/usuarios"
+require("./componentes/usuarios/usuario.controllers").addRoutesTo(app);
 
 app.get("/", async (req, res) => {
   res.status(200).json({ ok: true });
