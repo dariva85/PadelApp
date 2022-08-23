@@ -1,6 +1,33 @@
-const Usuario = require("./usuario.model.js");
+const { needsAuthToken } = require("./auth/auth.middleware");
+const Usuario = require("./usuario.model");
+const Auth = require("./auth/auth.service");
 const Competicion = require("../competiciones/competicion.model");
 const Partido = require("../partidos/partido.model");
+
+const login = async (req, res) => {
+  const loginData = req.body;
+  console.log(loginData);
+  const token = await Auth.authenticateUser(loginData);
+  res.status(200).json(token);
+};
+
+const register = async (req, res) => {
+  const userData = req.body;
+  try {
+    await Auth.createUser(userData);
+  } catch (e) {
+    switch (e.name) {
+      default:
+        throw e;
+    }
+  }
+  res.status(200).json({ status: `User created` });
+};
+
+const addRoutesTo = (app) => {
+  app.post("/register", register);
+  app.post("/login", login);
+};
 
 //Checked
 const createOne = async (req, res) => {
@@ -96,6 +123,7 @@ const findAllofOneMatch = async (req, res) => {
 };
 
 module.exports = {
+  addRoutesTo,
   createOne,
   updateOne,
   findOne,

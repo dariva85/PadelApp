@@ -1,8 +1,10 @@
 const { Router } = require("express");
+const User = require("./usuario.model");
 const userControllers = require("./usuario.controllers");
 
 const routerUsuarios = Router();
 routerUsuarios.route("/").post(userControllers.createOne);
+
 routerUsuarios
   .route("/:id")
   .put(userControllers.updateOne)
@@ -17,4 +19,6 @@ routerUsuarios
 //Este endpoint no es necesario. Usuario ya posee la lista de partidos a la que pertenece.
 routerUsuarios.route("/:id/partidos").get(userControllers.findAllofOneMatch);
 
-module.exports = routerUsuarios;
+module.exports = {
+  routerUsuarios
+};

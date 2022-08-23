@@ -1,7 +1,8 @@
 //Auth Service
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const config = require("../../config");
+const config = require("../../../config");
+const User = require('../usuario.model');
 
 const encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt();
@@ -45,9 +46,32 @@ const decodeToken = (token) => {
   }
 };
 
+const createUser = async ({ username, nombre, apellidos, email, password: plaintextPassword }) => {
+  const encryptedPassword = await encryptPassword(plaintextPassword);
+  return await User.create({ username, nombre, apellidos, email, password: encryptedPassword });
+};
+
+const authenticateUser = async ({ email, password }) => {
+  if (!email || !password) {
+    //Error
+  }
+  const user = await User.findOne({ email }).select("+password").lean().exec();
+  if (!user) {
+    //Error
+  }
+  const passwordMatches = await comparePasswords(password, user.password);
+  if (!passwordMatches) {
+    //Error
+  }
+  const token = createToken(email);
+  return token;
+};
+
 module.exports = {
   encryptPassword,
   comparePasswords,
   createToken,
   decodeToken,
+  createUser,
+  authenticateUser,
 };
