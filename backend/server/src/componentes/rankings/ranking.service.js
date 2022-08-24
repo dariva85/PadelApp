@@ -1,13 +1,14 @@
 const { Router } = require("express");
+const { catchErrors } = require("../../errors");
 const rankingControllers = require("./ranking.controllers");
 
 const routerRankings = Router();
 
-routerRankings.post("/", rankingControllers.createOne);
+routerRankings.post("/", catchErrors(rankingControllers.createOne));
 routerRankings
   .route("/:id")
-  .put(rankingControllers.updateOne)
-  .get(rankingControllers.findOne)
-  .delete(rankingControllers.deleteOne);
+  .put(catchErrors(rankingControllers.updateOne))
+  .get(catchErrors(rankingControllers.findOne))
+  .delete(catchErrors(rankingControllers.deleteOne));
 
 module.exports = routerRankings;

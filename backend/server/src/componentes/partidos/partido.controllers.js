@@ -1,93 +1,123 @@
 const Partido = require("./partido.model");
 const Competicion = require("../competiciones/competicion.model");
 const Usuario = require("../usuarios/usuario.model");
+const { errMalformed } = require("../../errors");
 
 //Checked
 const createOne = async (req, res) => {
+  const newMatch = req.body;
+  let doc = {};
   try {
-    const newMatch = req.body;
     const doc = await Partido.create(newMatch);
     res.status(200).json({ results: [doc] });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ error: "Creation failed" });
+  } catch(e) {
+      errMalformed(res, e.message, e.name);
   }
 };
 
 //Checked
 const updateOne = async (req, res) => {
   const { id } = req.params;
+  let doc = {};
   try {
-    const doc = await Partido.findOneAndUpdate({ _id: id }, req.body, {
+    doc = await Partido.findOneAndUpdate({ _id: id }, req.body, {
       new: true,
     });
-    if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+    if(doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    } else {
+      res.status(200).json({ results: [doc] });
     }
-    return res.status(200).json({ results: doc });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ error: "Cannot update" });
+  } catch(e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+    } else {
+      console.log(e);
+      errMalformed(res, e.message, e.name);
+    }
   }
 };
 
 //Checked
-const findOne = async (req, res) => {
+const findOne = async (req, res) => {  
   const { id } = req.params;
+  let doc = {};
   try {
-    const doc = await Partido.findOne({ _id: id });
-    if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+    doc = await Partido.findOne({ _id: id });
+    if(doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    } else {
+      res.status(200).json({ results: [doc] });
     }
-    res.status(200).json({ results: [doc] });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ error: "Cannot get match" });
+  } catch(e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+    } else {
+      errMalformed(res, '', '');
+    }
   }
 };
 
 //Checked
 const deleteOne = async (req, res) => {
   const { id } = req.params;
+  let doc = {};
+
   try {
     const doc = await Partido.findOneAndDelete({ _id: id }, { new: true });
-    if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+    if(doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    } else {
+      res.status(200).json({ results: [doc] });
     }
-    res.status(200).json({ results: [doc] });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ error: "Cannot delete" });
+  } catch(e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+    } else {
+      errMalformed(res, '', '');
+    }
   }
 };
 
 //Checked
 const findAllofOneCompetition = async (req, res) => {
   const { id } = req.params;
+  let doc = {};
+
   try {
-    const doc = await Competicion.find({ partido: id }).lean().exec();
-    if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+    doc = await Competicion.find({ partido: id }).lean().exec();
+    if(doc === null) {
+      errMalformed(res, `Competition with id '${id}' not found`, 'NotFound');
+    } else {
+      res.status(200).json({ results: [doc] });
     }
-    res.status(200).json({ results: [doc] });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ error: "Cannot get matches" });
+  } catch(e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+    } else {
+      errMalformed(res, '', '');
+    }
   }
 };
 
 //Checked
 const findAllofOneUser = async (req, res) => {
   const { id } = req.params;
+  const doc = {};
+
   try {
-    const doc = await Usuario.find({ partido: id }).lean().exec();
-    if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+    doc = await Usuario.find({ partido: id }).lean().exec();
+    if(doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, 'NotFound');
+    } else {
+      res.status(200).json({ results: [doc] });
     }
-    res.status(200).json({ results: [doc] });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ error: "Cannot get matches" });
+  } catch(e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+    } else {
+      errMalformed(res, '', '');
+    }
   }
 };
 

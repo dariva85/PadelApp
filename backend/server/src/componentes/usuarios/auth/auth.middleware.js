@@ -1,18 +1,18 @@
 //Middleware
+const { errUnauthorized } = require("../../../errors");
 const auth = require("./auth.service");
 
 const needsAuthToken = async (req, res, next) => {
   try {
     const header = req.headers["authorization"];
     if (!header) {
-      //Error
+      errUnauthorized(`Missing authentication header`);
     }
     if (!header.startsWith("Bearer ")) {
-      //Error
+      errUnauthorized(`Authorization header must be "Bearer" type`);
     }
     const token = header.slice("Bearer ".length);
     const { email } = auth.decodeToken(token);
-    // TODO: opcional: cargar los datos del usuario
     req.userEmail = email;
     next();
   } catch (e) {

@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { catchErrors } = require("../../errors");
 const matchControllers = require("./partido.controllers");
 const userControllers = require("../usuarios/usuario.controllers");
 const competitionControllers = require("../competiciones/competicion.controllers");
@@ -7,11 +8,11 @@ const routerUsuarios = require("../usuarios/usuario.service");
 
 const routerPartidos = Router();
 
-routerPartidos.post("/", matchControllers.createOne);
+routerPartidos.post("/", catchErrors(matchControllers.createOne));
 routerPartidos
   .route("/:id")
-  .put(matchControllers.updateOne)
-  .get(matchControllers.findOne)
-  .delete(matchControllers.deleteOne);
+  .put(catchErrors(matchControllers.updateOne))
+  .get(catchErrors(matchControllers.findOne))
+  .delete(catchErrors(matchControllers.deleteOne));
 
 module.exports = routerPartidos;
