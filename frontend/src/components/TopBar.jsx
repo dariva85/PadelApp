@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
 import TestImage from "../assets/test_usr_image.jpeg";
+import { useNavigate } from "react-router-dom";
 
 export default function TopBar(props) {
+  const navigate = useNavigate();
+
   const AddNavBarLinkedItems = (LinkedItems) => {
     console.log(LinkedItems);
     if (LinkedItems != undefined) {
@@ -11,7 +14,7 @@ export default function TopBar(props) {
         return (
           <div
             class="nav-link"
-            onClick={(item) => {
+            onClick={() => {
               navigate(item.link);
             }}
           >
@@ -23,14 +26,12 @@ export default function TopBar(props) {
   };
   const AddNavBar = (props) => {
     try {
-      console.log(props.props.Title.length);
-      if (props.props.Title.length !== 0) {
+      console.log(props.title.length);
+      if (props.title.length !== 0) {
         return (
           <div id="nav-menu">
-            <div id="grey-nav">{props.props.Title}</div>
-            <div id="yellow-nav">
-              {AddNavBarLinkedItems(props.props.LinkedItems)}
-            </div>
+            <div id="grey-nav">{props.title}</div>
+            <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
           </div>
         );
       }
