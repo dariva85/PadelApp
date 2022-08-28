@@ -40,7 +40,7 @@
 }
 
 .error-message {
-  columns: var(--Canceled_Option_Color);
+  color: var(--Canceled_Option_Color);
 }
 
 .login > label > div {

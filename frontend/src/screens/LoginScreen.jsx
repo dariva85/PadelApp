@@ -25,7 +25,11 @@ export default function LoginScreen(onLogin) {
     if (success) {
       SaveToken(token);
     } else {
-      setMessage(error);
+      if (error == "InvalidData") {
+        setMessage("Los datos introducidos son incorrectos.");
+      } else {
+        setMessage(error);
+      }
     }
   };
 

@@ -6,10 +6,18 @@ const Competicion = require("../competiciones/competicion.model");
 const Partido = require("../partidos/partido.model");
 
 const login = async (req, res) => {
-  const loginData = req.body;
-  console.log(loginData);
-  const token = await Auth.authenticateUser(loginData);
-  res.status(200).json(token);
+  try {
+    const loginData = req.body;
+    console.log(loginData);
+    const token = await Auth.authenticateUser(loginData);
+    res.status(200).json(token);
+  } catch (e) {
+    if (e == "InvalidData") {
+      errMalformed(res, e, "ValidationError");
+    } else {
+      errMalformed(res, e, "");
+    }
+  }
 };
 
 const register = async (req, res) => {
@@ -41,8 +49,8 @@ const createOne = async (req, res) => {
     doc = await Usuario.create(newUser);
     res.status(200).json({ results: [doc] });
   } catch (e) {
-    if(e.code === 11000) {
-      errMalformed(res, e, 'DuplicateValue');
+    if (e.code === 11000) {
+      errMalformed(res, e, "DuplicateValue");
     } else {
       errMalformed(res, e, e.name);
     }
@@ -58,14 +66,14 @@ const updateOne = async (req, res) => {
     doc = await Usuario.findOneAndUpdate({ _id: id }, req.body, {
       new: true,
     });
-    if(doc === null) {
-      errMalformed(res, `User with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
       console.log(e);
       errMalformed(res, e.message, e.name);
@@ -78,17 +86,17 @@ const findOne = async (req, res) => {
   const { id } = req.params;
   let doc = {};
   console.log(id);
-  
+
   try {
     doc = await Usuario.findById(id).lean().exec();
-    if(doc === null) {
-      errMalformed(res, `User with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
       console.log(e);
       errMalformed(res, e.message, e.name);
@@ -103,14 +111,14 @@ const deleteOne = async (req, res) => {
 
   try {
     doc = await Usuario.findOneAndDelete({ _id: id }, { new: true });
-    if(doc === null) {
-      errMalformed(res, `User with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
       console.log(e);
       errMalformed(res, e.message, e.name);
@@ -125,14 +133,14 @@ const findAllofOneCompetition = async (req, res) => {
 
   try {
     const doc = await Competicion.find({ usuario: id }).lean().exec();
-    if(doc === null) {
-      errMalformed(res, `Competition with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Competition with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
       console.log(e);
       errMalformed(res, e.message, e.name);
@@ -147,14 +155,14 @@ const findAllofOneMatch = async (req, res) => {
 
   try {
     doc = await Partido.find({ usuario: id }).lean().exec();
-    if(doc === null) {
-      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
       console.log(e);
       errMalformed(res, e.message, e.name);

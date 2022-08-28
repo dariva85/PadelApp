@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken");
-
 export const readToken = () => {
   const tokenStr = localStorage.getItem("token");
   return tokenStr !== null ? JSON.parse(tokenStr) : null;
@@ -13,5 +11,7 @@ export const deleteToken = () => {
 
 export const isTokenValid = () => {
   const tokenStr = localStorage.getItem("token");
-  return jwt.verify(token);
+  const expiry = JSON.parse(atob(tokenStr.split(".")[1])).exp;
+  console.log(expiry);
+  return Math.floor(new Date().getTime() / 1000) <= expiry;
 };

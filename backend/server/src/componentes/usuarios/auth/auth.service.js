@@ -2,7 +2,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("../../../config");
-const User = require('../usuario.model');
+const User = require("../usuario.model");
 
 const encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt();
@@ -46,22 +46,34 @@ const decodeToken = (token) => {
   }
 };
 
-const createUser = async ({ username, nombre, apellidos, email, password: plaintextPassword }) => {
+const createUser = async ({
+  username,
+  nombre,
+  apellidos,
+  email,
+  password: plaintextPassword,
+}) => {
   const encryptedPassword = await encryptPassword(plaintextPassword);
-  return await User.create({ username, nombre, apellidos, email, password: encryptedPassword });
+  return await User.create({
+    username,
+    nombre,
+    apellidos,
+    email,
+    password: encryptedPassword,
+  });
 };
 
 const authenticateUser = async ({ email, password }) => {
   if (!email || !password) {
-    //Error
+    throw "InvalidData";
   }
   const user = await User.findOne({ email }).select("+password").lean().exec();
   if (!user) {
-    //Error
+    throw "InvalidData";
   }
   const passwordMatches = await comparePasswords(password, user.password);
   if (!passwordMatches) {
-    //Error
+    throw "InvalidData";
   }
   const token = createToken(email);
   return token;
