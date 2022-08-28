@@ -13,7 +13,8 @@ export default function TopBar(props) {
       return LinkedItems.map((item) => {
         return (
           <div
-            class="nav-link"
+            id={item.name}
+            className="nav-link"
             onClick={() => {
               navigate(item.link);
             }}
@@ -26,7 +27,6 @@ export default function TopBar(props) {
   };
   const AddNavBar = (props) => {
     try {
-      console.log(props.title.length);
       if (props.title.length !== 0) {
         return (
           <div id="nav-menu">
@@ -38,14 +38,20 @@ export default function TopBar(props) {
     } catch (e) {}
   };
 
+  const AddUserAvatar = (props) => {
+    try {
+      if (props.userID.length !== 0) {
+        return <img id="usr-image" src={TestImage} />;
+      }
+    } catch (e) {}
+  };
+
   return (
     <>
       <div id="main-div">
         <div id="yellow-div"></div>
         <img id="logo" src={PanteresLogo}></img>
-        <div id="grey-div">
-          <img id="usr-image" src={TestImage} />
-        </div>
+        <div id="grey-div">{AddUserAvatar(props)}</div>
       </div>
       {AddNavBar(props)}
     </>

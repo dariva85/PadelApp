@@ -1,7 +1,7 @@
 .login-screen {
   background-color: #ffffff;
   font-family: sans-serif;
-  color: white;
+  color: var(--Secondary_Color_BG_Ligth_Colored);
   min-height: 100vh;
   min-width: 100vh;
 }
@@ -10,4 +10,58 @@
   position: relative;
   top: 0;
   left: 0;
+}
+
+#login-container {
+  position: flex;
+  text-align: center;
+}
+
+.login {
+  margin-top: 4rem;
+  display: inline-block;
+  background-color: var(--Ligth_Colored_BG);
+  width: fit-content;
+  height: fit-content;
+  border-radius: 20px;
+  padding: 4rem;
+}
+
+.login input {
+  padding: 0.4rem 0.6rem;
+  font-size: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-width: 0px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.error-message {
+  columns: var(--Canceled_Option_Color);
+}
+
+.login > label > div {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.submit {
+  max-width: 10rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem;
+  margin-top: 4rem;
+  border-width: 1px;
+  background-color: var(--Accept);
+  color: var(--Secondary_Color_BG_Ligth_Colored);
+}
+
+h1 {
+  margin-top: 0rem;
+  color: var(--Primary_Color_BG_Ligth_Colored);
 }

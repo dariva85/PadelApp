@@ -4,8 +4,8 @@ import "./MatchesScreen.css";
 
 export default function MatchesScreen() {
   let LinkedMenuItems = [
-    { name: "Mis Competiciones", link: "/main/competitions" },
-    { name: "Market", link: "/main/market" },
+    { name: "Mis Competiciones", link: "/me/competitions" },
+    { name: "Market", link: "/me/market" },
   ];
 
   return (

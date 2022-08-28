@@ -1,6 +1,11 @@
 :root {
-  --Primary_Color_BG_Dark_Colored: #2d5e72;
-  --Primary_Color_BG_Ligth_Colored: #f8d417;
+  --Dark_Colored_BG: #2d5e72;
+  --Ligth_Colored_BG: #f8d417;
+  --Primary_Color_BG_Ligth_Colored: #2d5e72;
+  --Primary_Color_BG_Dark_Colored: #f8d417;
+  --Secondary_Color_BG_Ligth_Colored: #1e1e1e;
+  --Accept: #3c9e7e;
+  --Canceled_Option_Color: #C61E1E;
 }
 #root {
   height: 100%;

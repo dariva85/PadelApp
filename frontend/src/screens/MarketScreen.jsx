@@ -4,8 +4,8 @@ import "./MarketScreen.css";
 
 export default function MarketScreen() {
   let LinkedMenuItems = [
-    { name: "Mis competiciones", link: "/main/competitions" },
-    { name: "Mis Partidos", link: "/main/matches" },
+    { name: "Mis competiciones", link: "/me/competitions" },
+    { name: "Mis Partidos", link: "/me/matches" },
   ];
 
   return (
