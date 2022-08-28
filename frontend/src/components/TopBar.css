@@ -92,7 +92,7 @@
 
 .nav-link {
   -webkit-transform: skew(30deg);
-  transform: skew(-30deg);
+  transform: skew(30deg);
   -moz-transform: skew(20deg);
   -o-transform: skew(20deg);
   cursor: pointer;
