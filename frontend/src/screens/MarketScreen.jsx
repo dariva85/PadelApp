@@ -9,7 +9,7 @@ export default function MarketScreen() {
   ];
 
   return (
-    <div className="market-screen">
+    <div className="main-screen">
       <TopBar title="Market" linkedItems={LinkedMenuItems} />
     </div>
   );
