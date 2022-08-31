@@ -1,30 +1,34 @@
 import React, { Component, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import TopBar from "../components/TopBar";
-import "./CompetitionInscriptionScreen.css";
-import * as api from "../api/api.js";
+import TopBar from "../../components/TopBar";
+import "./RankingScreen.css";
+import * as api from "../../api/api.js";
 
-export default function CompetitionInscriptionScreen() {
+export default function RankingScreen() {
   const { competitionId } = useParams();
   const [competition, setCompetition] = useState([]);
 
   let LinkedMenuItems = [
-    { name: "Inscripción", link: "", highlight: true },
+    {
+      name: "Incripción",
+      link: `/me/competitions/${competitionId}/Inscription`,
+    },
     {
       name: "Partidos",
-      link: "/me/competitions/${props.Competition._id}/Matches",
+      link: `/me/competitions/${competitionId}/Matches`,
     },
     {
       name: "Ranking",
-      link: "/me/competitions/${props.Competition._id}/Ranking",
+      link: ``,
+      highlight: true,
     },
     {
       name: "Información",
-      link: "/me/competitions/${props.Competition._id}/Information",
+      link: `/me/competitions/${competitionId}/Information`,
     },
   ];
 
-  const LoadCompetitions = async () => {
+  const LoadCompetition = async () => {
     const {
       success,
       result: Competition,
@@ -39,7 +43,7 @@ export default function CompetitionInscriptionScreen() {
   };
 
   useEffect(() => {
-    LoadCompetitions();
+    LoadCompetition();
   }, []);
 
   return (

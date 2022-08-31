@@ -30,7 +30,7 @@ export default function CompetitionBtn(props) {
   return (
     <div
       onClick={() => {
-        navigate(`/me/competitions/${props.Competition._id}/Inscriptions`);
+        navigate(`/me/competitions/${props.Competition._id}/Inscription`);
       }}
       className="btn-container"
     >

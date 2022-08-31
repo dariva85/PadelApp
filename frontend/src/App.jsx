@@ -5,7 +5,10 @@ import LoginScreen from "./screens/LoginScreen";
 import CompetitionsScreen from "./screens/CompetitionsScreen";
 import MatchesScreen from "./screens/MatchesScreen";
 import MarketScreen from "./screens/MarketScreen";
-import CompetitionInscriptionScreen from "./screens/CompetitionInscriptionScreen";
+import InscriptionScreen from "./screens/Competition/InscriptionScreen";
+import InformationScreen from "./screens/Competition/InformationScreen";
+import CompetitionMatchesScreen from "./screens/Competition/CompetitionMatchesScreen";
+import RankingScreen from "./screens/Competition/RankingScreen";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
@@ -39,10 +42,34 @@ function App() {
             }
           />
           <Route
-            path="/me/competitions/:competitionId/Inscriptions"
+            path="/me/competitions/:competitionId/Inscription"
             element={
               <ProtectedRoute>
-                <CompetitionInscriptionScreen />
+                <InscriptionScreen />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/me/competitions/:competitionId/Matches"
+            element={
+              <ProtectedRoute>
+                <CompetitionMatchesScreen />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/me/competitions/:competitionId/Ranking"
+            element={
+              <ProtectedRoute>
+                <RankingScreen />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/me/competitions/:competitionId/Information"
+            element={
+              <ProtectedRoute>
+                <InformationScreen />
               </ProtectedRoute>
             }
           />
