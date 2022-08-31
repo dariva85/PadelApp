@@ -5,6 +5,7 @@ import LoginScreen from "./screens/LoginScreen";
 import CompetitionsScreen from "./screens/CompetitionsScreen";
 import MatchesScreen from "./screens/MatchesScreen";
 import MarketScreen from "./screens/MarketScreen";
+import CompetitionInscriptionScreen from "./screens/CompetitionInscriptionScreen";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
@@ -34,6 +35,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <MarketScreen />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/me/competitions/:competitionId/Inscriptions"
+            element={
+              <ProtectedRoute>
+                <CompetitionInscriptionScreen />
               </ProtectedRoute>
             }
           />

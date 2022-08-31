@@ -8,21 +8,27 @@ export default function TopBar(props) {
   const navigate = useNavigate();
 
   const AddNavBarLinkedItems = (LinkedItems) => {
-    console.log(LinkedItems);
     if (LinkedItems != undefined) {
       return LinkedItems.map((item) => {
         return (
           <div
-            id={item.name}
             className="nav-link"
             onClick={() => {
               navigate(item.link);
             }}
           >
-            {item.name}
+            {AddNavBarItemName(item)}
           </div>
         );
       });
+    }
+  };
+
+  const AddNavBarItemName = (item) => {
+    if (item.highlight !== undefined) {
+      return <strong>{item.name}</strong>;
+    } else {
+      return item.name;
     }
   };
   const AddNavBar = (props) => {

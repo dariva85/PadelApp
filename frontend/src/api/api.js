@@ -34,7 +34,10 @@ const authApiCall = (method, path, body) => {
     Authorization: `Bearer ${accessToken}`,
   });
 };
-export const getTodoList = () => authApiCall("GET", "/users/me/todos");
+export const getCompetitions = (id) =>
+  authApiCall("GET", `/competiciones/userId/${id}`);
+export const getCompetition = (id) =>
+  authApiCall("GET", `/competiciones/${id}`);
 export const addTodo = (todo) => authApiCall("POST", "/users/me/todos", todo);
 export const updateTodo = (todo) =>
   authApiCall("PUT", `/users/me/todos/${todo._id}`, todo);

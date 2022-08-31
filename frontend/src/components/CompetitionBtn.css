@@ -1,0 +1,40 @@
+.btn-container {
+  box-sizing: border-box;
+  width: 37rem;
+  height: 11rem;
+  background: var(--Secondary_Color_BG_Dark_Colored);
+  border: 4px solid var(--Primary_Color_BG_Ligth_Colored);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+}
+
+.btn-container:hover {
+  background: var(--Ligth_Colored_BG);
+  transition: background 0.5s ease-in-out;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem;
+  margin-right: 0;
+}
+
+#competition-img {
+  max-height: 7rem;
+  max-width: 7em;
+  border: 4px solid #2d5e72;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 80px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.text-container {
+  color: var(--Primary_Color_BG_Ligth_Colored);
+  margin-left: 1.5rem;
+}

@@ -14,5 +14,7 @@ routerCompeticiones
   .put(catchErrors(competitionControllers.updateOne))
   .get(catchErrors(competitionControllers.findOne))
   .delete(catchErrors(competitionControllers.deleteOne));
-
+routerCompeticiones
+  .route("/userId/:id")
+  .get(catchErrors(competitionControllers.findAllofOneUser));
 module.exports = routerCompeticiones;

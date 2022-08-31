@@ -24,14 +24,14 @@ const updateOne = async (req, res) => {
     doc = await Competicion.findOneAndUpdate({ _id: id }, req.body, {
       new: true,
     });
-    if(doc === null) {
-      errMalformed(res, `Competition with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Competition with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
       console.log(e);
       errMalformed(res, e.message, e.name);
@@ -45,16 +45,16 @@ const findOne = async (req, res) => {
 
   try {
     doc = await Competicion.findOne({ _id: id });
-    if(doc === null) {
-      errMalformed(res, `Competition with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Competition with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
@@ -66,16 +66,16 @@ const deleteOne = async (req, res) => {
 
   try {
     doc = await Competicion.findOneAndDelete({ _id: id }, { new: true });
-    if(doc === null) {
-      errMalformed(res, `Competition with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Competition with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
@@ -85,17 +85,17 @@ const findAllofOneUser = async (req, res) => {
   let doc = {};
 
   try {
-    doc = await Usuario.find({ competicion: id }).lean().exec();
-    if(doc === null) {
-      errMalformed(res, `User with id '${id}' not found`, 'NotFound');
+    doc = await Competicion.find({ idUsuario: id }).lean().exec();
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
@@ -106,16 +106,16 @@ const findAllofOneMatch = async (req, res) => {
 
   try {
     doc = await Partido.find({ competicion: id }).lean().exec();
-    if(doc === null) {
-      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
