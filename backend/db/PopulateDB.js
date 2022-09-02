@@ -312,15 +312,15 @@ async function main() {
     },
   ]);
 
-  for (var i = 0; i < mondays.length; i++) {
+  for (var i = 0; i < mondays.length - 1; i++) {
     let Inscripcions = await db.collection("inscripciones").insertOne({
       inscritos: [],
       idCompeticion: idLiga1,
       nombre: "Padel Semanal",
       fechaInicio: mondays[i],
-      fechaFin: new Date().setDate(mondays[i].getDay() + 7),
+      fechaFin: mondays[i + 1],
       titulo: "JuegoDiario",
-      fechaPartido: new Date().setDate(mondays[i].getDay() + 7),
+      fechaPartido: mondays[i + 1],
       maxInscritos: 8,
       estado: "Open",
     });
