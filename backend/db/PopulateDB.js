@@ -1,4 +1,5 @@
 const mongodb = require("mongodb");
+const fs = require("fs");
 require("dotenv").config();
 
 const envVarNames = [
@@ -59,7 +60,7 @@ async function main() {
       codigoPostal: 25200,
       ciudad: "Cervera",
       provincia: "Lleida",
-      imagenPerfil: null,
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
       password: "1234",
     },
     {
@@ -74,7 +75,7 @@ async function main() {
       codigoPostal: 25201,
       ciudad: "Moncada",
       provincia: "Bcn",
-      imagenPerfil: null,
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
       password: "12345",
     },
     {
@@ -89,7 +90,7 @@ async function main() {
       codigoPostal: 25202,
       ciudad: "Vic?",
       provincia: "Girona",
-      imagenPerfil: null,
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
       password: "123456",
     },
     {
@@ -104,7 +105,7 @@ async function main() {
       codigoPostal: 25203,
       ciudad: "Esplugues",
       provincia: "Barcelona",
-      imagenPerfil: null,
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
       password: "1234567",
     },
   ]);
