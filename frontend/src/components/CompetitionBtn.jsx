@@ -3,19 +3,19 @@ import "./CompetitionBtn.css";
 import TestImage from "../assets/test_usr_image.jpeg";
 import { useNavigate } from "react-router-dom";
 
-export default function CompetitionBtn(props) {
+export default function CompetitionBtn({ Competition }) {
   const navigate = useNavigate();
 
-  const AddDescription = (props) => {
+  const AddDescription = (Competition) => {
     try {
       console.log(props);
-      if (props.Competition.descripcion !== 0) {
-        return <p>{props.Competition.descripcion}</p>;
+      if (Competition.descripcion !== 0) {
+        return <p>{Competition.descripcion}</p>;
       }
     } catch (e) {}
   };
 
-  const AddImage = (props) => {
+  const AddImage = (Competition) => {
     try {
       //if (props.img !== undefined) {
       return (
@@ -30,15 +30,15 @@ export default function CompetitionBtn(props) {
   return (
     <div
       onClick={() => {
-        navigate(`/me/competitions/${props.Competition._id}/Inscription`);
+        navigate(`/me/competitions/${Competition._id}/Inscription`);
       }}
       className="btn-container"
     >
       <div className="info-container">
-        {AddImage(props)}
+        {AddImage(Competition)}
         <div className="text-container">
-          <h2>{props.Competition.nombre}</h2>
-          {AddDescription(props)}
+          <h2>{Competition.nombre}</h2>
+          {AddDescription(Competition)}
         </div>
       </div>
     </div>
