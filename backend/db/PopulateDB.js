@@ -1,5 +1,12 @@
 const mongodb = require("mongodb");
-const fs = require("fs");
+const fs = require("fs");//Auth Service
+const bcrypt = require("bcrypt");
+
+const encryptPassword = async (password) => {
+  const salt = await bcrypt.genSalt();
+  return await bcrypt.hash(password, salt);
+};
+
 require("dotenv").config();
 
 const envVarNames = [
@@ -45,7 +52,7 @@ async function main() {
 
   await client.connect();
   const db = client.db(envVars.DB_DATABASE);
-  /*
+  
   console.log("Inserting Users");
   const users = await db.collection("usuarios").insertMany([
     {
@@ -61,7 +68,7 @@ async function main() {
       ciudad: "Cervera",
       provincia: "Lleida",
       imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
-      password: "1234",
+      password: await encryptPassword("fullstack"),
     },
     {
       _id: idTomas,
@@ -76,7 +83,7 @@ async function main() {
       ciudad: "Moncada",
       provincia: "Bcn",
       imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
-      password: "12345",
+      password: await encryptPassword("fullstack"),
     },
     {
       _id: idMarti,
@@ -91,7 +98,7 @@ async function main() {
       ciudad: "Vic?",
       provincia: "Girona",
       imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
-      password: "123456",
+      password: await encryptPassword("fullstack"),
     },
     {
       _id: idAlex,
@@ -106,10 +113,10 @@ async function main() {
       ciudad: "Esplugues",
       provincia: "Barcelona",
       imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
-      password: "1234567",
+      password: await encryptPassword("fullstack"),
     },
   ]);
-*/
+
   console.log("Inserting Competitions");
 
   const competitions = await db.collection("competiciones").insertMany([
