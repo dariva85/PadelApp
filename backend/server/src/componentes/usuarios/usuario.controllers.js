@@ -105,6 +105,27 @@ const findOne = async (req, res) => {
 };
 
 //Checked
+const findOneByEmail = async (req, res) => {
+  const { email } = req.params;
+  let doc = {};
+
+  try {
+    doc = await Usuario.findOne({ email: email }).lean().exec();
+    if (doc === null) {
+      errMalformed(res, `User with email '${email}' not found`, "NotFound");
+    } else {
+      res.status(200).json({ results: [doc] });
+    }
+  } catch (e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${email}' is not valid id`, "NotFound");
+    } else {
+      errMalformed(res, e.message, e.name);
+    }
+  }
+};
+
+//Checked
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   let doc = {};
@@ -178,4 +199,5 @@ module.exports = {
   deleteOne,
   findAllofOneCompetition,
   findAllofOneMatch,
+  findOneByEmail,
 };

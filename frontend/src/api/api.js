@@ -36,8 +36,18 @@ const authApiCall = (method, path, body) => {
 };
 export const getCompetitions = (id) =>
   authApiCall("GET", `/competiciones/userId/${id}`);
+export const getUsuario = (email) =>
+  authApiCall("GET", `/usuarios/email/${email}`);
 export const getCompetition = (id) =>
   authApiCall("GET", `/competiciones/${id}`);
+export const findAllOpenedInscriptions = (id) =>
+  authApiCall("GET", `/inscription/opened/${id}`);
+export const signUpOnCompetition = ({ signupdata }) =>
+  authApiCall(
+    "PUT",
+    `/inscription/signup/${signupdata.inscriptionId}`,
+    signupdata
+  );
 export const addTodo = (todo) => authApiCall("POST", "/users/me/todos", todo);
 export const updateTodo = (todo) =>
   authApiCall("PUT", `/users/me/todos/${todo._id}`, todo);

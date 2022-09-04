@@ -12,7 +12,7 @@ const envVarNames = [
 ];
 
 let envVars = {};
-let idDavid = mongodb.ObjectId("62adf55dd1d8cd0272ddab9b");
+let idDavid = mongodb.ObjectId("63132b99a1f7b03b4ca2e03a");
 let idTomas = mongodb.ObjectId("62adf55dd1d8cd0272ddab9c");
 let idMarti = mongodb.ObjectId("62adf55dd1d8cd0272ddab9d");
 let idAlex = mongodb.ObjectId("62adf55dd1d8cd0272ddab9e");
@@ -45,7 +45,7 @@ async function main() {
 
   await client.connect();
   const db = client.db(envVars.DB_DATABASE);
-
+  /*
   console.log("Inserting Users");
   const users = await db.collection("usuarios").insertMany([
     {
@@ -109,7 +109,7 @@ async function main() {
       password: "1234567",
     },
   ]);
-
+*/
   console.log("Inserting Competitions");
 
   const competitions = await db.collection("competiciones").insertMany([
@@ -261,22 +261,45 @@ async function main() {
 
   console.log("Inserting Inscripciones");
 
-  let d = new Date();
+  let m = new Date();
+  let w = new Date();
+  let f = new Date();
   let mondays = [];
+  let wednesdays = [];
+  let fridays = [];
 
-  d.setDate(1);
+  m.setDate(1);
+  m.setMonth(m.getMonth() - 1);
+  w.setDate(3);
+  w.setMonth(w.getMonth() - 1);
+  f.setDate(5);
+  f.setMonth(f.getMonth() - 1);
   // Get the first Monday in the month
-  while (d.getDay() !== 1) {
-    d.setDate(d.getDate() + 1);
+  while (m.getDay() !== 1) {
+    m.setDate(m.getDate() + 1);
+    w.setDate(w.getDate() + 1);
+    f.setDate(f.getDate() + 1);
   }
-  d.setMinutes(0);
-  d.setSeconds(0);
-  d.setHours(19);
+  m.setMinutes(0);
+  m.setSeconds(0);
+  m.setHours(19);
+  w.setMinutes(0);
+  w.setSeconds(0);
+  w.setHours(19);
+  f.setMinutes(0);
+  f.setSeconds(0);
+  f.setHours(19);
   // Get all the other Mondays in the month
-  while (d.getMonth() !== 11) {
-    var pushDate = new Date(d.getTime());
+  while (m.getMonth() !== 11) {
+    var pushDate = new Date(m.getTime());
     mondays.push(pushDate);
-    d.setDate(d.getDate() + 7);
+    m.setDate(m.getDate() + 7);
+    var pushDate = new Date(w.getTime());
+    wednesdays.push(pushDate);
+    w.setDate(w.getDate() + 7);
+    var pushDate = new Date(f.getTime());
+    fridays.push(pushDate);
+    f.setDate(f.getDate() + 7);
   }
 
   const Inscripciones = await db.collection("inscripciones").insertMany([
@@ -317,7 +340,7 @@ async function main() {
     let Inscripcions = await db.collection("inscripciones").insertOne({
       inscritos: [],
       idCompeticion: idLiga1,
-      nombre: "Padel Semanal",
+      nombre: "Lunes",
       fechaInicio: mondays[i],
       fechaFin: mondays[i + 1],
       titulo: "JuegoDiario",
@@ -325,8 +348,30 @@ async function main() {
       maxInscritos: 8,
       estado: "Open",
     });
+    Inscripcions = await db.collection("inscripciones").insertOne({
+      inscritos: [],
+      idCompeticion: idLiga1,
+      nombre: "Miércoles",
+      fechaInicio: wednesdays[i],
+      fechaFin: wednesdays[i + 1],
+      titulo: "JuegoDiario",
+      fechaPartido: wednesdays[i + 1],
+      maxInscritos: 8,
+      estado: "Open",
+    });
+    Inscripcions = await db.collection("inscripciones").insertOne({
+      inscritos: [],
+      idCompeticion: idLiga1,
+      nombre: "Viernes",
+      fechaInicio: fridays[i],
+      fechaFin: fridays[i + 1],
+      titulo: "JuegoDiario",
+      fechaPartido: fridays[i + 1],
+      maxInscritos: 8,
+      estado: "Open",
+    });
   }
-
+  
   console.log("Inserting Ranking");
   let Ranking = await db.collection("rankings").insertMany([
     {

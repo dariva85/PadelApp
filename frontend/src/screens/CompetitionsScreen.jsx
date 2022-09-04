@@ -3,6 +3,7 @@ import TopBar from "../components/TopBar";
 import CompetitionBtn from "../components/CompetitionBtn";
 import "./CompetitionsScreen.css";
 import * as api from "../api/api.js";
+import * as usr from "../User";
 
 export default function CompetitionsScreen() {
   const [competitions, setCompetitions] = useState([]);
@@ -17,7 +18,7 @@ export default function CompetitionsScreen() {
       success,
       result: dbCompetitions,
       error,
-    } = await api.getCompetitions("62adf55dd1d8cd0272ddab9b");
+    } = await api.getCompetitions(usr.readUser()._id);
     if (success) {
       setCompetitions(dbCompetitions.results[0]);
     } else {

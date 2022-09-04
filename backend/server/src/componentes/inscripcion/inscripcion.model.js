@@ -23,7 +23,7 @@ const rankingSchema = mongoose.Schema(
       type: Date,
       required: true,
     },
-    fechaFinal: {
+    fechaFin: {
       type: Date,
       required: true,
     },
@@ -44,6 +44,10 @@ const rankingSchema = mongoose.Schema(
       type: String,
       maxlength: 40,
       required: true,
+    },
+    inscritos: {
+      type: Array,
+      default: [],
     },
   },
   { timestamps: false }

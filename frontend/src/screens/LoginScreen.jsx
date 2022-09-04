@@ -4,6 +4,7 @@ import TopBar from "../components/TopBar";
 import "./LoginScreen.css";
 import * as api from "../api/api.js";
 import * as tk from "../api/token";
+import * as usr from "../User";
 
 export default function LoginScreen(onLogin) {
   const navigate = useNavigate();
@@ -16,27 +17,48 @@ export default function LoginScreen(onLogin) {
   const SaveToken = (token) => {
     setToken(token);
     tk.saveToken(token);
-    navigate("/me/competitions");
   };
 
   const login = async (userData) => {
     const { success, result: token, error } = await api.login(userData);
-    console.log(success);
+
     if (success) {
       SaveToken(token);
+      return true;
     } else {
       if (error == "InvalidData") {
         setMessage("Los datos introducidos son incorrectos.");
       } else {
         setMessage(error);
       }
+      return false;
     }
   };
 
-  const submit = (e) => {
+  const GetAndStoreUserData = async (email) => {
+    try {
+      const { success, result: user, error } = await api.getUsuario(email);
+
+      if (success) {
+        usr.saveUser(user.results[0]);
+        return true;
+      } else {
+        setMessage("Error cargando los datos de usuario.");
+        return false;
+      }
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  };
+
+  const submit = async (e) => {
     e.preventDefault();
-    console.log("submit");
-    login({ email, password });
+    const succesLogin = await login({ email, password });
+    const successRetriveData = await GetAndStoreUserData(email);
+    if (succesLogin && successRetriveData) {
+      navigate("/me/competitions");
+    }
   };
 
   return (
