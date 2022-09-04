@@ -3,6 +3,9 @@ export const readUser = () => {
   return userStr !== null ? JSON.parse(userStr) : null;
 };
 export const saveUser = (user) => {
+  if (readUser() != null) {
+    deleteUser();
+  }
   localStorage.setItem("user", JSON.stringify(user));
 };
 export const deleteUser = () => {

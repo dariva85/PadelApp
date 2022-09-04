@@ -3,6 +3,7 @@ import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
 import TestImage from "../assets/test_usr_image.jpeg";
 import { useNavigate } from "react-router-dom";
+import * as usr from "../User";
 
 export default function TopBar(props) {
   const navigate = useNavigate();
@@ -44,10 +45,15 @@ export default function TopBar(props) {
     } catch (e) {}
   };
 
-  const AddUserAvatar = (props) => {
+  const AddUserAvatar = () => {
     try {
-      if (props.userID.length !== 0) {
-        return <img id="usr-image" src={TestImage} />;
+      if (usr.readUser().imagenPerfil !== undefined) {
+        return (
+          <img
+            id="usr-image"
+            src={`data:image/jpeg;base64, ${usr.readUser().imagenPerfil}`}
+          />
+        );
       }
     } catch (e) {}
   };
@@ -57,7 +63,7 @@ export default function TopBar(props) {
       <div id="main-div">
         <div id="yellow-div"></div>
         <img id="logo" src={PanteresLogo}></img>
-        <div id="grey-div">{AddUserAvatar(props)}</div>
+        <div id="grey-div">{AddUserAvatar()}</div>
       </div>
       {AddNavBar(props)}
     </>

@@ -48,8 +48,3 @@ export const signUpOnCompetition = ({ signupdata }) =>
     `/inscription/signup/${signupdata.inscriptionId}`,
     signupdata
   );
-export const addTodo = (todo) => authApiCall("POST", "/users/me/todos", todo);
-export const updateTodo = (todo) =>
-  authApiCall("PUT", `/users/me/todos/${todo._id}`, todo);
-export const deleteTodo = (todo) =>
-  authApiCall("DELETE", `/users/me/todos/${todo._id}`);
