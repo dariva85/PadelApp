@@ -1,0 +1,138 @@
+#mainCard {
+    background-color: var(--Ligth_Colored_BG);
+    width: 350px;
+    height: 350px;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1px;
+    
+  }
+
+  #tittlematch {
+    width: 348px;
+    height: 10%;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    font-size: 21px;
+    background-color:aliceblue;
+    color: #4D4D4D;
+    text-align: center;
+    border-radius: 13px 13px 0px 0px;  
+}
+
+#tittlematch p{
+    margin: 0px;
+    margin-top: 2%;
+}
+
+.black {
+    background-color:black;
+    width: 46px;
+    height: 47px;
+    margin: 5px;
+}
+
+.marcador {
+  width: 100%;
+}
+.MarcadorGrande {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0% 10% 0% 10%;
+  margin: 1% 0%;
+  
+}
+
+.MarcadorNombres{
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  color: #2D5E72;
+
+}
+
+.MarcadorNumeros{
+
+  display: flex;
+  height: 25px;
+  width: 40px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: #4D4D4D;
+  border-radius: 15px;
+  background-color: aliceblue;
+  padding: 0% 2%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Rayita{
+
+  height: 25px;
+  width: 0.5px;
+  background-color: rgb(77, 77, 77,0.75);
+
+}
+
+.RayitaBlanca{
+
+  height: 1px;
+  margin-top: 1%;
+  width: 80%;
+  background-color: aliceblue;
+
+}
+#calendario{
+  color: #4D4D4D;
+
+  width: 35px ;
+  height: 20px;
+  flex: 1;
+  border-radius: 4px;
+}
+
+.ParteSuperiorCartaPartido{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  justify-content: space-around;
+  margin: 2% 0%;
+  margin-top: 5%;
+}
+
+.fecha{
+  color: #4D4D4D;
+  flex: 7;
+  padding: 0% 10%;
+}
+
+.BotonEstado{
+  background-color: aliceblue;
+  color: #EA9413;
+  height: 20px;
+  padding: 1.5% 5% ;
+  flex: 1;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.ButtonAccept{
+
+  width: 75px;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: 5%;
+  color:rgba(10, 10, 10);
+  background-color: #3C9E7E;
+
+}
