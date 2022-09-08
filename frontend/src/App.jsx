@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import LoginScreen from "./screens/LoginScreen";
 import CompetitionsScreen from "./screens/CompetitionsScreen";
@@ -9,73 +9,52 @@ import InscriptionScreen from "./screens/Competition/InscriptionScreen";
 import InformationScreen from "./screens/Competition/InformationScreen";
 import CompetitionMatchesScreen from "./screens/Competition/CompetitionMatchesScreen";
 import RankingScreen from "./screens/Competition/RankingScreen";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+import * as tk from "./api/token";
+import { useEffect } from "react";
 
 function App() {
+  const [token, setToken] = useState(tk.isTokenValid());
+  let location = useLocation();
+
+  const login = () => {
+    tk.saveToken(token);
+    setToken(tk.isTokenValid());
+  };
+
+  const logout = () => {
+    tk.deleteToken();
+    setToken(tk.isTokenValid());
+  };
+
+  useEffect(() => {
+    setToken(tk.isTokenValid());
+  }, [location]);
+
+  if (!token) {
+    return <LoginScreen onLogin={login} />;
+  }
   return (
-    <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LoginScreen />} />
-          <Route
-            path="/me/competitions"
-            element={
-              <ProtectedRoute>
-                <CompetitionsScreen />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/me/matches"
-            element={
-              <ProtectedRoute>
-                <MatchesScreen />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/me/market"
-            element={
-              <ProtectedRoute>
-                <MarketScreen />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/me/competitions/:competitionId/Inscription"
-            element={
-              <ProtectedRoute>
-                <InscriptionScreen />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/me/competitions/:competitionId/Matches"
-            element={
-              <ProtectedRoute>
-                <CompetitionMatchesScreen />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/me/competitions/:competitionId/Ranking"
-            element={
-              <ProtectedRoute>
-                <RankingScreen />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/me/competitions/:competitionId/Information"
-            element={
-              <ProtectedRoute>
-                <InformationScreen />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </React.StrictMode>
+    <Routes>
+      <Route path="/" element={<CompetitionsScreen />} />
+      <Route path="/me/matches" element={<MatchesScreen />} />
+      <Route path="/me/market" element={<MarketScreen />} />
+      <Route
+        path="/me/competitions/:competitionId/Inscription"
+        element={<InscriptionScreen />}
+      />
+      <Route
+        path="/me/competitions/:competitionId/Matches"
+        element={<CompetitionMatchesScreen />}
+      />
+      <Route
+        path="/me/competitions/:competitionId/Ranking"
+        element={<RankingScreen />}
+      />
+      <Route
+        path="/me/competitions/:competitionId/Information"
+        element={<InformationScreen />}
+      />
+    </Routes>
   );
 }
 

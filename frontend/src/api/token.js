@@ -13,9 +13,9 @@ export const isTokenValid = () => {
   try {
     const tokenStr = localStorage.getItem("token");
     const expiry = JSON.parse(atob(tokenStr.split(".")[1])).exp;
-    console.log(expiry);
     return Math.floor(new Date().getTime() / 1000) <= expiry;
   } catch (e) {
+    console.log("not valid");
     return false;
   }
 };
