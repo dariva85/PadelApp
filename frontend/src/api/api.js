@@ -48,3 +48,4 @@ export const signUpOnCompetition = ({ signupdata }) =>
     `/inscription/signup/${signupdata.inscriptionId}`,
     signupdata
   );
+export const getMatches = (id) => authApiCall("GET", `/partidos/userId/${id}`);

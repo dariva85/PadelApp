@@ -10,8 +10,8 @@ const createOne = async (req, res) => {
   try {
     const doc = await Partido.create(newMatch);
     res.status(200).json({ results: [doc] });
-  } catch(e) {
-      errMalformed(res, e.message, e.name);
+  } catch (e) {
+    errMalformed(res, e.message, e.name);
   }
 };
 
@@ -23,14 +23,14 @@ const updateOne = async (req, res) => {
     doc = await Partido.findOneAndUpdate({ _id: id }, req.body, {
       new: true,
     });
-    if(doc === null) {
-      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
-  } catch(e) {
+  } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
       console.log(e);
       errMalformed(res, e.message, e.name);
@@ -39,21 +39,21 @@ const updateOne = async (req, res) => {
 };
 
 //Checked
-const findOne = async (req, res) => {  
+const findOne = async (req, res) => {
   const { id } = req.params;
   let doc = {};
   try {
     doc = await Partido.findOne({ _id: id });
-    if(doc === null) {
-      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
-  } catch(e) {
+  } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
@@ -65,16 +65,16 @@ const deleteOne = async (req, res) => {
 
   try {
     const doc = await Partido.findOneAndDelete({ _id: id }, { new: true });
-    if(doc === null) {
-      errMalformed(res, `Match with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Match with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
-  } catch(e) {
+  } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
@@ -86,16 +86,16 @@ const findAllofOneCompetition = async (req, res) => {
 
   try {
     doc = await Competicion.find({ partido: id }).lean().exec();
-    if(doc === null) {
-      errMalformed(res, `Competition with id '${id}' not found`, 'NotFound');
+    if (doc === null) {
+      errMalformed(res, `Competition with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
-  } catch(e) {
+  } catch (e) {
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
@@ -103,20 +103,20 @@ const findAllofOneCompetition = async (req, res) => {
 //Checked
 const findAllofOneUser = async (req, res) => {
   const { id } = req.params;
-  const doc = {};
-
+  let doc = {};
   try {
-    doc = await Usuario.find({ partido: id }).lean().exec();
-    if(doc === null) {
-      errMalformed(res, `User with id '${id}' not found`, 'NotFound');
+    doc = await Partido.find({ idUsuario: id }).lean().exec();
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
-  } catch(e) {
+  } catch (e) {
+    console.log(e);
     if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+      errMalformed(res, `${id} is not valid id`, "NotFound");
     } else {
-      errMalformed(res, '', '');
+      errMalformed(res, "", "");
     }
   }
 };
