@@ -3,6 +3,7 @@ import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
+import Textransition, { presets } from "react-text-transition";
 
 export default function TopBar(props) {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ export default function TopBar(props) {
               navigate(item.link);
             }}
           >
-            {AddNavBarItemName(item)}
+            <Textransition springConfig={presets.molasses}>
+              <div className="text-transition-div">{AddNavBarItemName(item)}</div>
+            </Textransition>
           </div>
         );
       });
@@ -37,7 +40,11 @@ export default function TopBar(props) {
       if (props.title.length !== 0) {
         return (
           <div id="nav-menu">
-            <div id="grey-nav">{props.title}</div>
+            <div id="grey-nav">
+              <Textransition pringConfig={presets.molasses}>
+                <div className="text-transition-div">{props.title}</div>
+              </Textransition>
+            </div>
             <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
           </div>
         );
