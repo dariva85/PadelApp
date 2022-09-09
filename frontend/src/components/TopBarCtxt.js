@@ -70,6 +70,7 @@ export const menuByCompetition = (competitionId) => {
           link: `/me/competitions/${competitionId}/Information`,
         },
       ],
+      showUserImage: true,
     },
 
     MatchesScreen: {
@@ -88,6 +89,7 @@ export const menuByCompetition = (competitionId) => {
           link: `/me/competitions/${competitionId}/Information`,
         },
       ],
+      showUserImage: true,
     },
 
     RankingScreen: {
@@ -106,6 +108,7 @@ export const menuByCompetition = (competitionId) => {
           link: `/me/competitions/${competitionId}/Information`,
         },
       ],
+      showUserImage: true,
     },
 
     InformationScreen: {
@@ -124,6 +127,7 @@ export const menuByCompetition = (competitionId) => {
           link: `/me/competitions/${competitionId}/Ranking`,
         },
       ],
+      showUserImage: true,
     },
   };
 };

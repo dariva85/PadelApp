@@ -68,6 +68,15 @@
   margin-left: 0;
 }
 
+.btnInscription-img-container-signedup {
+  display: flex;
+  align-items: center;
+  margin-top: 0.8rem;
+  margin-right: 1.5rem;
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+}
+
 #btnInscription-inscription-img {
   max-height: 7rem;
   max-width: 7em;

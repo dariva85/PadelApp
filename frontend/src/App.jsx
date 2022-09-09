@@ -36,7 +36,6 @@ function App() {
   }, [location]);
 
   const AddTopBar = () => {
-    console.log(topBarInfo);
     if (topBarInfo != null) {
       return (
         <TopBar
@@ -46,6 +45,7 @@ function App() {
           showUserImage={
             topBarInfo.showUserImage ? topBarInfo.showUserImage : false
           }
+          logout={logout}
         />
       );
     } else {

@@ -20,7 +20,9 @@ export default function TopBar(props) {
             }}
           >
             <Textransition springConfig={presets.molasses}>
-              <div className="text-transition-div">{AddNavBarItemName(item)}</div>
+              <div className="text-transition-div">
+                {AddNavBarItemName(item)}
+              </div>
             </Textransition>
           </div>
         );
@@ -59,6 +61,10 @@ export default function TopBar(props) {
           <img
             id="usr-image"
             src={`data:image/jpeg;base64, ${usr.readUser().imagenPerfil}`}
+            onClick={() => {
+              props.logout();
+              navigate("/");
+            }}
           />
         );
       }

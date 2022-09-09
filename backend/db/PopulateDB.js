@@ -1,5 +1,5 @@
 const mongodb = require("mongodb");
-const fs = require("fs");//Auth Service
+const fs = require("fs"); //Auth Service
 const bcrypt = require("bcrypt");
 
 const encryptPassword = async (password) => {
@@ -52,7 +52,7 @@ async function main() {
 
   await client.connect();
   const db = client.db(envVars.DB_DATABASE);
-  
+  /*
   console.log("Inserting Users");
   const users = await db.collection("usuarios").insertMany([
     {
@@ -116,7 +116,7 @@ async function main() {
       password: await encryptPassword("fullstack"),
     },
   ]);
-
+*/
   console.log("Inserting Competitions");
 
   const competitions = await db.collection("competiciones").insertMany([
@@ -134,6 +134,7 @@ async function main() {
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 1)),
       Inscripciones: [],
       tipo: "Liga",
+      imagen: fs.readFileSync(`../db/UserImages/padelsemanal.jpeg`),
     },
     {
       _id: idLiga2,
@@ -149,6 +150,7 @@ async function main() {
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 2)),
       Inscripciones: [],
       tipo: "Americana",
+      imagen: fs.readFileSync(`../db/UserImages/upclub.jpeg`),
     },
     {
       idUsuario: [idMarti, idAlex],
@@ -163,6 +165,7 @@ async function main() {
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
       Inscripciones: [],
       tipo: "Liga",
+      imagen: fs.readFileSync(`../db/UserImages/padelsemanal.jpeg`),
     },
   ]);
   console.log("Inserting Partidos");
@@ -378,7 +381,7 @@ async function main() {
       estado: "Open",
     });
   }
-  
+
   console.log("Inserting Ranking");
   let Ranking = await db.collection("rankings").insertMany([
     {
@@ -437,5 +440,4 @@ async function main() {
   console.log("The database was started without any problems.");
   client.close();
 }
-
 main();
