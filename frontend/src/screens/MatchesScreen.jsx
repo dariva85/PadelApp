@@ -1,4 +1,4 @@
-import React, { Component, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./MatchesScreen.css";
 import MatchesCard from "../components/MatchesCard";
 import * as topBarCtxt from "../components/TopBarCtxt";

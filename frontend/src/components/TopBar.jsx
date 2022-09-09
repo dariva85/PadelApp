@@ -3,7 +3,6 @@ import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
-import shortid from "shortid";
 
 export default function TopBar(props) {
   const navigate = useNavigate();

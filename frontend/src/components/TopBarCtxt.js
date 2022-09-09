@@ -10,10 +10,7 @@ export const Ctxt = React.createContext({
 });
 
 export const setTopBarInfo = (NewInfo, OldInfo, setInfo) => {
-  console.log(`Old: ${OldInfo}`);
-  console.log(`New: ${NewInfo}`);
   if (NewInfo != OldInfo) {
-    console.log("set data");
     setInfo(NewInfo);
   }
 };
