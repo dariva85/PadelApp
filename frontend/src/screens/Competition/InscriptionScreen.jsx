@@ -1,31 +1,16 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import TopBar from "../../components/TopBar";
 import InscriptionBtn from "../../components/InscriptionBtn";
 import "./InscriptionScreen.css";
 import * as api from "../../api/api.js";
 import * as usr from "../../User";
+import * as topBarCtxt from "../../components/TopBarCtxt";
 
 export default function InscriptionScreen() {
   const { competitionId } = useParams();
   const [inscriptions, setInscriptions] = useState([]);
   const [competition, setCompetition] = useState([]);
-
-  let LinkedMenuItems = [
-    { name: "Inscripción", link: "", highlight: true },
-    {
-      name: "Partidos",
-      link: `/me/competitions/${competitionId}/Matches`,
-    },
-    {
-      name: "Ranking",
-      link: `/me/competitions/${competitionId}/Ranking`,
-    },
-    {
-      name: "Información",
-      link: `/me/competitions/${competitionId}/Information`,
-    },
-  ];
+  const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
 
   const LoadCompetition = async () => {
     const {
@@ -82,13 +67,17 @@ export default function InscriptionScreen() {
   };
 
   useEffect(() => {
+    topBarCtxt.setTopBarInfo(
+      topBarCtxt.menuByCompetition(competitionId).InscriptionScreen,
+      topBarInfo,
+      setTopBarInfo
+    );
     LoadCompetition();
     LoadOpenedInscriptions();
   }, []);
 
   return (
     <div className="main-screen">
-      <TopBar title={competition.nombre} linkedItems={LinkedMenuItems} />
       <div className="inscriptions-container">
         {AddInscriptiontionButtons(inscriptions)}
       </div>

@@ -1,16 +1,17 @@
-import React, { Component } from "react";
-import TopBar from "../components/TopBar";
+import React, { useContext, useEffect } from "react";
 import "./MarketScreen.css";
+import * as topBarCtxt from "../components/TopBarCtxt";
 
 export default function MarketScreen() {
-  let LinkedMenuItems = [
-    { name: "Mis competiciones", link: "/me/competitions" },
-    { name: "Mis Partidos", link: "/me/matches" },
-  ];
+  const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
 
-  return (
-    <div className="main-screen">
-      <TopBar title="Market" linkedItems={LinkedMenuItems} />
-    </div>
-  );
+  useEffect(() => {
+    topBarCtxt.setTopBarInfo(
+      topBarCtxt.menuByScreen.MarketScreen,
+      topBarInfo,
+      setTopBarInfo
+    );
+  }, []);
+
+  return <div className="main-screen"></div>;
 }

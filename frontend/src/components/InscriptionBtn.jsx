@@ -34,7 +34,6 @@ export default function InscriptionBtn({
 
   const formatDate = (date) => {
     date = new Date(Date.parse(date));
-    console.log(date);
     var hours = date.getHours();
     var minutes = date.getMinutes();
     minutes = minutes < 10 ? "0" + minutes : minutes;

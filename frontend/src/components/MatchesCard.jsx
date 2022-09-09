@@ -23,9 +23,7 @@ export default function MatchesCard(props) {
 
   const Marcador = (props) => {
     try {
-        console.log(props.final_score)
-        console.log(props.final_score[0].player[0])
-
+        
         //Aqui el orden será: 
         // Distribucion horizontal --> Div con tres hijos
         // Hijo 1

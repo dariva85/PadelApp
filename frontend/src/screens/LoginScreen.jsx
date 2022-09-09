@@ -57,7 +57,7 @@ export default function LoginScreen(onLogin) {
     const succesLogin = await login({ email, password });
     const successRetriveData = await GetAndStoreUserData(email);
     if (succesLogin && successRetriveData) {
-      navigate("/me/competitions");
+      navigate("/");
     }
   };
 

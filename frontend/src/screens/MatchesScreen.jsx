@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import TopBar from "../components/TopBar";
+import React, { Component, useContext, useEffect } from "react";
 import "./MatchesScreen.css";
+import * as topBarCtxt from "../components/TopBarCtxt";
 
 export default function MatchesScreen() {
-  let LinkedMenuItems = [
-    { name: "Mis Competiciones", link: "/me/competitions" },
-    { name: "Market", link: "/me/market" },
-  ];
+  const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
 
-  return (
-    <div className="main-screen">
-      <TopBar title="Mis Partidos" linkedItems={LinkedMenuItems} />
-    </div>
-  );
+  useEffect(() => {
+    topBarCtxt.setTopBarInfo(
+      topBarCtxt.menuByScreen.MatchesScreen,
+      topBarInfo,
+      setTopBarInfo
+    );
+  }, []);
+  return <div id="matches-main-screen" className="main-screen"></div>;
 }

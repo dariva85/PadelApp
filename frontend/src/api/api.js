@@ -3,7 +3,6 @@ const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
 const isSuccess = (httpCode) => httpCode === 200 || httpCode === 201;
 
 const apiCall = async (method, path, body, headers) => {
-  console.log(BASE_URL);
   try {
     const response = await fetch(`${BASE_URL}${path}`, {
       method,

@@ -8,7 +8,6 @@ export default function CompetitionBtn({ Competition }) {
 
   const AddDescription = (Competition) => {
     try {
-      console.log(props);
       if (Competition.descripcion !== 0) {
         return <p>{Competition.descripcion}</p>;
       }

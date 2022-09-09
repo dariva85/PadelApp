@@ -1,17 +1,13 @@
-import React, { Component, useState, useEffect } from "react";
-import TopBar from "../components/TopBar";
+import React, { Component, useState, useEffect, useContext } from "react";
 import CompetitionBtn from "../components/CompetitionBtn";
 import "./CompetitionsScreen.css";
 import * as api from "../api/api.js";
 import * as usr from "../User";
+import * as topBarCtxt from "../components/TopBarCtxt";
 
 export default function CompetitionsScreen() {
   const [competitions, setCompetitions] = useState([]);
-
-  let LinkedMenuItems = [
-    { name: "Mis Partidos", link: "/me/matches" },
-    { name: "Market", link: "/me/market" },
-  ];
+  const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
 
   const LoadCompetitions = async () => {
     const {
@@ -36,17 +32,16 @@ export default function CompetitionsScreen() {
 
   useEffect(() => {
     LoadCompetitions();
+    topBarCtxt.setTopBarInfo(
+      topBarCtxt.menuByScreen.CompetitionsScreen,
+      topBarInfo,
+      setTopBarInfo
+    );
   }, []);
 
   return (
-    <div className="main-screen">
-      <TopBar
-        id="topBar"
-        userID="tete"
-        title="Mis Competiciones"
-        linkedItems={LinkedMenuItems}
-      />
-      <div className="competitions-container">
+    <div id="competitions-main" className="main-screen">
+      <div id="competitions-container" className="competitions-container">
         {AddCompetitionButtons(competitions)}
       </div>
     </div>

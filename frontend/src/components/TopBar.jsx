@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
-import TestImage from "../assets/test_usr_image.jpeg";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
+import shortid from "shortid";
 
 export default function TopBar(props) {
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ export default function TopBar(props) {
       return LinkedItems.map((item) => {
         return (
           <div
+            id={item.link}
             className="nav-link"
             onClick={() => {
               navigate(item.link);
@@ -47,7 +48,7 @@ export default function TopBar(props) {
 
   const AddUserAvatar = () => {
     try {
-      if (usr.readUser().imagenPerfil !== undefined) {
+      if (usr.readUser().imagenPerfil !== undefined && props.showUserImage) {
         return (
           <img
             id="usr-image"

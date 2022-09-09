@@ -77,6 +77,28 @@ const deleteOne = async (req, res) => {
   }
 };
 
+const findByCompetitionId = async (req, res) => {
+  const { id } = req.params;
+  let doc = {};
+
+  try {
+    const doc = await Ranking.findById({ id }).aggregate().sort({classification: {'$substract:' : [$partidosGanados, $partidosPerdidos] } });
+    if(doc === null) {
+      errMalformed(res, `Ranking with id '${id}' not found`, 'NotFound');
+    } else {
+      res.status(200).json({ results: [doc] });
+    }
+  } catch (e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, 'NotFound');
+    } else {
+      errMalformed(res, '', '');
+    }
+  }
+};
+
+
+
 module.exports = {
   createOne,
   updateOne,
