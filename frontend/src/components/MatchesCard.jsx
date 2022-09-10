@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import "./MatchesCard.css";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
+import * as api from "../api/api.js";
 
 export default function MatchesCard(props) {
   const [Match, setTheMatch] = useState(props);
@@ -16,21 +17,22 @@ export default function MatchesCard(props) {
     Names[props.matches.usuario[auxobject]["_id"]] = props.matches.usuario[auxobject]["username"]
   }
 
-  console.log(props.matches);
+  
   const MatchValueChanged = (NumMarcador,Partido,valor) => {
-    console.log(Match)
+    
     Match.matches.allScoreBoard[Partido].final_score[NumMarcador].scoreboard = parseInt(valor.target.value);
-    console.log(Match)
+    
     setTheMatch(Match);
   }
 
   function sendResults (){
 
     //Hay que crear un endpoint donde yo le digo quien soy y que resultados les doy.
-    
+    console.log(Match.matches._id)
+    api.submitMatch(usr.readUser()._id,{
+      _id:Match.matches._id,
+      allScoreBoard:Match.matches.allScoreBoard});
 
-
-    console.log('this is:', Match);
   };
   const AddButton = (Status,match) => {
     
@@ -53,7 +55,6 @@ export default function MatchesCard(props) {
     // Caso 4: El partido está Closed.
     try {
       //Debo comprobar si estoy o no en el allvalidadores.
-      console.log(match.allValidadores.includes(usr.readUser()._id))
       if (Status === "Pending" && !match.allValidadores.includes(usr.readUser()._id)) {
         return(<div className="BotonEstado">{Status}</div>)
       }else if (Status === "Pending" && match.allValidadores.includes(usr.readUser()._id)){

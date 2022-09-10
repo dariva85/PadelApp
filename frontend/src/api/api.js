@@ -51,3 +51,6 @@ export const getMatches = (id) => authApiCall("GET", `/partidos/userId/${id}`);
 export const getRanking = (id) =>
   authApiCall("GET", `/rankings/competition/${id}`);
 export const getNamesUser = (id) => authApiCall("GET", `/usuarios/name/${id}`);
+
+export const submitMatch = (id, match ) =>
+  authApiCall("PUT", `/partidos/updatePartido/userId/${id}`, {match} );

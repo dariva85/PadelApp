@@ -8,7 +8,6 @@ const Partido = require("../partidos/partido.model");
 const login = async (req, res) => {
   try {
     const loginData = req.body;
-    console.log(loginData);
     const token = await Auth.authenticateUser(loginData);
     res.status(200).json(token);
   } catch (e) {

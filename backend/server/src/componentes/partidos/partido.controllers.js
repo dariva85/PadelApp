@@ -185,6 +185,30 @@ const findAllMatchesByUserId = async (req, res) => {
   }
 };
 
+const submitMatchesResult = async (req, res) => {
+  const { id } = req.params;
+  const { match } = req.body;
+  try {
+    doc = await Partido.findOne({ _id: match._id });
+    if (doc === null) {
+      errMalformed(res, `Match with id '${match._id}' not found`, "NotFound");
+    }
+    console.log(doc.allValidadores);
+    console.log(id);
+    console.log(doc.allValidadores.includes(id));
+    // Compruebo que no soy ya un validador.
+    // Compruebo que los resultados sean los mismos.
+  } catch (e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `Something went wrong`, "NotFound");
+    } else {
+      errMalformed(res, "", "");
+    }
+  }
+  //let doc = {};
+  res.status(200).json({ results: ["Done"] });
+};
+
 module.exports = {
   createOne,
   updateOne,
@@ -193,4 +217,5 @@ module.exports = {
   findAllofOneCompetition,
   findAllofOneUser,
   findAllMatchesByUserId,
+  submitMatchesResult,
 };
