@@ -16,5 +16,5 @@ routerPartidos
   .delete(catchErrors(matchControllers.deleteOne));
 routerPartidos
   .route("/userId/:id")
-  .get(catchErrors(matchControllers.findAllofOneUser));
+  .get(catchErrors(matchControllers.findAllMatchesByUserId));
 module.exports = routerPartidos;

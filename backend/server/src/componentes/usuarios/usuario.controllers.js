@@ -203,7 +203,7 @@ const findTheName = async (req, res) => {
     if (doc === null) {
       errMalformed(res, `User with id '${id}' not found`, "NotFound");
     } else {
-      res.status(200).json({ results: [doc.nombre] });
+      res.status(200).json({ results: [doc.username] });
     }
   } catch (e) {
     if (Object.keys(doc).length === 0) {
@@ -214,6 +214,8 @@ const findTheName = async (req, res) => {
     }
   }
 };
+
+
 
 module.exports = {
   addRoutesTo,

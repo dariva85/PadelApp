@@ -151,9 +151,11 @@ background-color: #3C9E7E;
 .MarcadorNumeros input{
 
 background-color: none;
-background-color: aliceblue;
+background-color: transparent;
 color: #4D4D4D;
+outline: none;
 width: 50%;
 text-align: center; 
 border: none;
 }
+
