@@ -3,7 +3,6 @@ const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
 const isSuccess = (httpCode) => httpCode === 200 || httpCode === 201;
 
 const apiCall = async (method, path, body, headers) => {
-  console.log(BASE_URL);
   try {
     const response = await fetch(`${BASE_URL}${path}`, {
       method,
@@ -49,4 +48,6 @@ export const signUpOnCompetition = ({ signupdata }) =>
     signupdata
   );
 export const getMatches = (id) => authApiCall("GET", `/partidos/userId/${id}`);
+export const getRanking = (id) =>
+  authApiCall("GET", `/rankings/competition/${id}`);
 export const getNamesUser = (id) => authApiCall("GET", `/usuarios/name/${id}`);

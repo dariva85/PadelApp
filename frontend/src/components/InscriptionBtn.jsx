@@ -23,7 +23,11 @@ export default function InscriptionBtn({
     try {
       const img = isUserInscribed(Inscribed) ? SignedUp : InscriptionPending;
       return (
-        <div className="btnInscription-img-container">
+        <div
+          className={`btnInscription-img-container${
+            isUserInscribed(Inscription.inscritos) ? "-signedup" : ""
+          }`}
+        >
           <img id="btnInscription-img" src={img}></img>
         </div>
       );
@@ -34,7 +38,6 @@ export default function InscriptionBtn({
 
   const formatDate = (date) => {
     date = new Date(Date.parse(date));
-    console.log(date);
     var hours = date.getHours();
     var minutes = date.getMinutes();
     minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -56,7 +59,7 @@ export default function InscriptionBtn({
     }
     return false;
   };
-  
+
   return (
     <div
       onClick={() => signUpClickEvent(Inscription._id, userId)}
@@ -77,7 +80,16 @@ export default function InscriptionBtn({
           <h1>{Inscription.nombre}</h1>
           <p>{formatDate(Inscription.fechaPartido)}</p>
         </div>
-        {AddImage(Inscription.inscritos)}
+        <div
+          className={`btnInscription-text-container${
+            isUserInscribed(Inscription.inscritos) ? "-signedup" : ""
+          }`}
+        >
+          {AddImage(Inscription.inscritos)}
+          <strong>
+            {isUserInscribed(Inscription.inscritos) ? "Inscrito" : ""}
+          </strong>
+        </div>
       </div>
     </div>
   );

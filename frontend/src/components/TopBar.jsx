@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
-import TestImage from "../assets/test_usr_image.jpeg";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
+import Textransition, { presets } from "react-text-transition";
 
 export default function TopBar(props) {
   const navigate = useNavigate();
@@ -13,12 +13,17 @@ export default function TopBar(props) {
       return LinkedItems.map((item) => {
         return (
           <div
+            id={item.link}
             className="nav-link"
             onClick={() => {
               navigate(item.link);
             }}
           >
-            {AddNavBarItemName(item)}
+            <Textransition springConfig={presets.molasses}>
+              <div className="text-transition-div">
+                {AddNavBarItemName(item)}
+              </div>
+            </Textransition>
           </div>
         );
       });
@@ -37,7 +42,11 @@ export default function TopBar(props) {
       if (props.title.length !== 0) {
         return (
           <div id="nav-menu">
-            <div id="grey-nav">{props.title}</div>
+            <div id="grey-nav">
+              <Textransition pringConfig={presets.molasses}>
+                <div className="text-transition-div">{props.title}</div>
+              </Textransition>
+            </div>
             <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
           </div>
         );
@@ -47,11 +56,15 @@ export default function TopBar(props) {
 
   const AddUserAvatar = () => {
     try {
-      if (usr.readUser().imagenPerfil !== undefined) {
+      if (usr.readUser().imagenPerfil !== undefined && props.showUserImage) {
         return (
           <img
             id="usr-image"
             src={`data:image/jpeg;base64, ${usr.readUser().imagenPerfil}`}
+            onClick={() => {
+              props.logout();
+              navigate("/");
+            }}
           />
         );
       }
@@ -59,13 +72,13 @@ export default function TopBar(props) {
   };
 
   return (
-    <>
+    <div id="top-bar-main-div">
       <div id="main-div">
         <div id="yellow-div"></div>
         <img id="logo" src={PanteresLogo}></img>
         <div id="grey-div">{AddUserAvatar()}</div>
       </div>
       {AddNavBar(props)}
-    </>
+    </div>
   );
 }

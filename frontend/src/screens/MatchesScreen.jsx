@@ -1,11 +1,12 @@
-import React, { Component, useState, useEffect } from "react";
-import TopBar from "../components/TopBar";
-import MatchesCard from "../components/MatchesCard";
+import React, { useState, useContext, useEffect } from "react";
 import "./MatchesScreen.css";
+import MatchesCard from "../components/MatchesCard";
+import * as topBarCtxt from "../components/TopBarCtxt";
 import * as api from "../api/api.js";
 import * as usr from "../User";
 
 export default function MatchesScreen() {
+  const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
   const [macthes, setMacthes] = useState([]);
   const [names, setNames] = useState([]);
   
@@ -59,8 +60,13 @@ export default function MatchesScreen() {
   };
   useEffect(() => {
     LoadMatches();
+    topBarCtxt.setTopBarInfo(
+      topBarCtxt.menuByScreen.MatchesScreen,
+      topBarInfo,
+      setTopBarInfo
+    );
   }, []);
-  
+
   return (
     <div className="main-screen">
       <TopBar title="Mis Partidos" linkedItems={LinkedMenuItems} />

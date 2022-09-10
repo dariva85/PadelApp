@@ -8,7 +8,6 @@ export default function CompetitionBtn({ Competition }) {
 
   const AddDescription = (Competition) => {
     try {
-      console.log(props);
       if (Competition.descripcion !== 0) {
         return <p>{Competition.descripcion}</p>;
       }
@@ -20,7 +19,10 @@ export default function CompetitionBtn({ Competition }) {
       //if (props.img !== undefined) {
       return (
         <div className="img-container">
-          <img id="competition-img" src={TestImage}></img>
+          <img
+            id="competition-img"
+            src={`data:image/jpeg;base64, ${Competition.imagen}`}
+          ></img>
         </div>
       );
       //}
