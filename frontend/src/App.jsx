@@ -57,8 +57,8 @@ function App() {
     return <LoginScreen onLogin={login} />;
   }
   return (
-    <div>
-      <topBarCtxt.Ctxt.Provider value={TopBarCtxtValue}>
+    <div id="app-div">
+      <topBarCtxt.Ctxt.Provider id="top-bar-ctxt" value={TopBarCtxtValue}>
         {AddTopBar()}
         <Routes>
           <Route path="/" element={<CompetitionsScreen />} />

@@ -72,13 +72,13 @@ export default function TopBar(props) {
   };
 
   return (
-    <>
+    <div id="top-bar-main-div">
       <div id="main-div">
         <div id="yellow-div"></div>
         <img id="logo" src={PanteresLogo}></img>
         <div id="grey-div">{AddUserAvatar()}</div>
       </div>
       {AddNavBar(props)}
-    </>
+    </div>
   );
 }

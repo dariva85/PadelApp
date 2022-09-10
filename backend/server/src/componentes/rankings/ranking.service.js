@@ -10,5 +10,8 @@ routerRankings
   .put(catchErrors(rankingControllers.updateOne))
   .get(catchErrors(rankingControllers.findOne))
   .delete(catchErrors(rankingControllers.deleteOne));
+routerRankings
+  .route("/competition/:id")
+  .get(catchErrors(rankingControllers.findByCompetitionId));
 
 module.exports = routerRankings;

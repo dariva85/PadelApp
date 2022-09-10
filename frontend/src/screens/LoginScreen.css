@@ -6,12 +6,6 @@
   min-width: 100vh;
 }
 
-#top-bar {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
 #login-container {
   position: flex;
   text-align: center;

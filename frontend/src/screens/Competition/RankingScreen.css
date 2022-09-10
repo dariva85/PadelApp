@@ -1,0 +1,74 @@
+#ranking-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#ranking-container h1 {
+  margin: 2rem;
+}
+
+#ranking-table {
+  text-align: left;
+  margin: 2rem;
+  border-collapse: collapse;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+}
+
+#ranking-table th {
+  color: var(--Secondary_Color_BG_Dark_Colored);
+  background-color: var(--Primary_Color_BG_Ligth_Colored);
+  padding: 1rem;
+}
+td {
+  border-bottom: 1px solid var(--Primary_Color_BG_Ligth_Colored);
+}
+
+#ranking-table td {
+  padding: 1rem;
+}
+
+tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+tr:first-child th:first-child {
+  border-bottom-left-radius: 10px;
+}
+tr:first-child th:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.position-column {
+  text-align: center;
+  width: 8rem;
+}
+
+.name-column {
+  width: 30rem;
+}
+
+.num-column {
+  text-align: center;
+  width: 3rem;
+  margin-top: 3rem;
+}
+
+#EFF {
+  text-align: center;
+}
+
+.percentage-column {
+  width: 8rem;
+  text-align: right;
+}
+
+.tendency-img {
+  width: 2rem;
+  padding-right: 1rem;
+}

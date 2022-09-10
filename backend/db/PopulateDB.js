@@ -52,7 +52,7 @@ async function main() {
 
   await client.connect();
   const db = client.db(envVars.DB_DATABASE);
-  /*
+
   console.log("Inserting Users");
   const users = await db.collection("usuarios").insertMany([
     {
@@ -116,7 +116,7 @@ async function main() {
       password: await encryptPassword("fullstack"),
     },
   ]);
-*/
+
   console.log("Inserting Competitions");
 
   const competitions = await db.collection("competiciones").insertMany([
@@ -388,11 +388,12 @@ async function main() {
       idCompeticion: idLiga1,
       idUsuario: idAlex,
       clasificacion: {
-        posicion: 1,
+        efficiencia: 0.33,
+        efficienciaPuntos: 0.15,
         tendencia: 1,
         partidosJugados: 6,
         partidosGanados: 4,
-        pardisosPerdidos: 2,
+        partidosPerdidos: 2,
         puntosAFavor: 30,
         puntosEnContra: 22,
       },
@@ -401,11 +402,12 @@ async function main() {
       idCompeticion: idLiga1,
       idUsuario: idTomas,
       clasificacion: {
-        posicion: 2,
+        efficiencia: 0.33,
+        efficienciaPuntos: 0.03,
         tendencia: 1,
         partidosJugados: 6,
         partidosGanados: 4,
-        pardisosPerdidos: 2,
+        partidosPerdidos: 2,
         puntosAFavor: 27,
         puntosEnContra: 25,
       },
@@ -414,11 +416,12 @@ async function main() {
       idCompeticion: idLiga1,
       idUsuario: idMarti,
       clasificacion: {
-        posicion: 3,
+        efficiencia: -0.33,
+        efficienciaPuntos: -0.07,
         tendencia: 0,
         partidosJugados: 6,
         partidosGanados: 2,
-        pardisosPerdidos: 4,
+        partidosPerdidos: 4,
         puntosAFavor: 24,
         puntosEnContra: 28,
       },
@@ -427,11 +430,12 @@ async function main() {
       idCompeticion: idLiga1,
       idUsuario: idDavid,
       clasificacion: {
-        posicion: 4,
+        efficiencia: -0.33,
+        efficienciaPuntos: -0.04,
         tendencia: -1,
         partidosJugados: 6,
         partidosGanados: 2,
-        pardisosPerdidos: 4,
+        partidosPerdidos: 4,
         puntosAFavor: 23,
         puntosEnContra: 25,
       },
