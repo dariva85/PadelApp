@@ -185,6 +185,10 @@ const findAllMatchesByUserId = async (req, res) => {
   }
 };
 
+const objectsEqual = (o1, o2) =>
+  Object.keys(o1).length === Object.keys(o2).length &&
+  Object.keys(o1).every((p) => o1[p] === o2[p]);
+
 const submitMatchesResult = async (req, res) => {
   const { id } = req.params;
   const { match } = req.body;
@@ -193,11 +197,32 @@ const submitMatchesResult = async (req, res) => {
     if (doc === null) {
       errMalformed(res, `Match with id '${match._id}' not found`, "NotFound");
     }
-    console.log(doc.allValidadores);
-    console.log(id);
-    console.log(doc.allValidadores.includes(id));
     // Compruebo que no soy ya un validador.
-    // Compruebo que los resultados sean los mismos.
+
+    if (!doc.allValidadores.includes(id)) {
+      let iguales = true;
+      // Compruebo que los resultados sean los mismos.
+      for (const index in doc.allScoreBoard) {
+        if (doc.allScoreBoard[index].final_score[0].scoreboard === match.allScoreBoard[index].final_score[0].scoreboard &&doc.allScoreBoard[index].final_score[1].scoreboard === match.allScoreBoard[index].final_score[1].scoreboard ){
+          console.log("Son iguales!")
+        }else{
+          console.log("Son diferentes")
+          iguales = false
+        }
+      }
+      // Si no son los mismos borro todos los validadores y me añado a validadores.
+      if(!iguales){
+
+      }else{
+      // Si es el mismo y tras añadirme la lista de validadores es
+
+      }
+    } else {
+      console.log("va bien!");
+    }
+
+   
+    
   } catch (e) {
     if (Object.keys(doc).length === 0) {
       errMalformed(res, `Something went wrong`, "NotFound");
