@@ -208,7 +208,7 @@ async function main() {
       idCompeticion: idLiga1,
       estado: "Pendiente de validar usuarios",
       fecha: new Date(new Date().setMonth(new Date().getMonth() - 1)),
-      fechaValidacion: new Date(new Date().setMonth(new Date().getDay() + 10)),
+      fechaValidacion: new Date(new Date().setDate(new Date().getDay() + 10)),
       direccion: "Pamplona",
       allScoreBoard: [
         {
@@ -255,8 +255,8 @@ async function main() {
       idUsuario: [idDavid, idTomas, idMarti, idAlex],
       idCompeticion: idLiga2,
       estado: "Pendiente de validar usuarios",
-      fecha: new Date(new Date().setDay(new Date().getDay() + 3)),
-      fechaValidacion: new Date(new Date().setMonth(new Date().getDay() + 10)),
+      fecha: new Date(new Date().setDate(new Date().getDay() + 10)),
+      fechaValidacion: new Date(new Date().setDate(new Date().getDay() + 10)),
       direccion: "Gerona",
       allScoreBoard: [
         {
