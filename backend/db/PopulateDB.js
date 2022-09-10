@@ -126,10 +126,15 @@ async function main() {
       idPartido: [],
       nombre: "Padel Semanal",
       descripcion: "Competición de padel de repetición semanal",
+      informacion: [{ titulo: "Descripción del torneo", parrafo: "" }],
       direccion: "Cualquier sitio",
       nInscritos: 4,
       maxInscritos: 200,
       reglas: "Que gane el mejor",
+      fechaInicioInscripcion: new Date(),
+      fechaFinInscripcion: new Date(
+        new Date().setMonth(new Date().getMonth() + 1)
+      ),
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 1)),
       Inscripciones: [],
@@ -142,10 +147,15 @@ async function main() {
       idPartido: [],
       nombre: "Americana UpClub",
       descripcion: "Competición de padel ",
+      informacion: [],
       direccion: "upclub",
       nInscritos: 2,
       maxInscritos: 200,
       reglas: "Que gane yo",
+      fechaInicioInscripcion: new Date(),
+      fechaFinInscripcion: new Date(
+        new Date().setMonth(new Date().getMonth() + 1)
+      ),
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 2)),
       Inscripciones: [],
@@ -157,10 +167,31 @@ async function main() {
       idPartido: [],
       nombre: "Liga Interclub",
       descripcion: "Competición Interclub",
+      informacion: [
+        {
+          titulo: "Descripción del torneo",
+          parrafo:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+        {
+          titulo: "Fechas de los partidos",
+          parrafo:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+        {
+          titulo: "Reglas",
+          parrafo:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+      ],
       direccion: "Dónde va a ser? en el Interclub",
       nInscritos: 2,
       maxInscritos: 200,
       reglas: "yo que se",
+      fechaInicioInscripcion: new Date(),
+      fechaFinInscripcion: new Date(
+        new Date().setMonth(new Date().getMonth() + 1)
+      ),
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
       Inscripciones: [],
@@ -176,8 +207,8 @@ async function main() {
       idUsuario: [idDavid, idTomas, idMarti, idAlex],
       idCompeticion: idLiga1,
       estado: "Pendiente de validar usuarios",
-      fecha: new Date(new Date().setMonth(new Date().getDay + 3)),
-      fechaValidacion: new Date(new Date().setMonth(new Date().getDay + 10)),
+      fecha: new Date(new Date().setMonth(new Date().getMonth() - 1)),
+      fechaValidacion: new Date(new Date().setMonth(new Date().getDay() + 10)),
       direccion: "Pamplona",
       allScoreBoard: [
         {
@@ -224,8 +255,8 @@ async function main() {
       idUsuario: [idDavid, idTomas, idMarti, idAlex],
       idCompeticion: idLiga2,
       estado: "Pendiente de validar usuarios",
-      fecha: new Date(new Date().setMonth(new Date().getDay + 3)),
-      fechaValidacion: new Date(new Date().setMonth(new Date().getDay + 10)),
+      fecha: new Date(new Date().setDay(new Date().getDay() + 3)),
+      fechaValidacion: new Date(new Date().setMonth(new Date().getDay() + 10)),
       direccion: "Gerona",
       allScoreBoard: [
         {
