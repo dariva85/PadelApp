@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function MatchesCard(props) {
   const [Match, setTheMatch] = useState(props);
-
+  console.log(props.names)
+  console.log(props.names["62adf55dd1d8cd0272ddab9c"])
+  console.log(props.matches.allScoreBoard[0].final_score[0].player[0])
+  console.log(props.names[props.matches.allScoreBoard[0].final_score[0].player[0]])
+  
   let NombreCompeti = "Padel semanal"
   let Fecha = String(new Date(props.matches.fecha).getDate())+"/"+String(new Date(props.matches.fecha).getMonth())+"/"+String(new Date(props.matches.fecha).getFullYear())
   let Hora = String(new Date(props.matches.fecha).getHours())+":"+String(new Date(props.matches.fecha).getMinutes())
@@ -19,14 +23,16 @@ export default function MatchesCard(props) {
     console.log(Match)
 
   }
-  const Marcador = (props,number) => {
+  const Marcador = (props,number,names) => {
+    console.log("names");
+    console.log(names);
     try {
 
 
         return <div className="MarcadorGrande">
           <div className="MarcadorNombres">
-          <div>{props.final_score[0].player[0].substr(0, 14)}</div>  
-          <div>{props.final_score[0].player[1].substr(0, 14)}</div>  
+          <div>{names[props.final_score[0].player[0]].substr(0, 14)}</div>  
+          <div>{names[props.final_score[0].player[1]].substr(0, 14)}</div>  
           </div> 
           <div className="MarcadorNumeros">
 
@@ -37,8 +43,8 @@ export default function MatchesCard(props) {
           </div> 
 
           <div className="MarcadorNombres">
-          <div>{props.final_score[1].player[0].substr(0, 14)}</div>  
-          <div>{props.final_score[1].player[1].substr(0, 14)}</div>    
+          <div>{names[props.final_score[1].player[0]].substr(0, 14)}</div>  
+          <div>{names[props.final_score[1].player[1]].substr(0, 14)}</div>    
           </div> 
           
           
@@ -70,11 +76,11 @@ export default function MatchesCard(props) {
               </div>  
             </div>
             <div className="RayitaBlanca"></div>
-            <div className="marcador"> {Marcador(Match.matches.allScoreBoard[0],0)}</div>
+            <div className="marcador"> {Marcador(Match.matches.allScoreBoard[0],0,props.names)}</div>
             <div className="RayitaBlanca"></div>
-            <div className="marcador"> {Marcador(Match.matches.allScoreBoard[1],1)}</div>
+            <div className="marcador"> {Marcador(Match.matches.allScoreBoard[1],1,props.names)}</div>
             <div className="RayitaBlanca"></div>
-            <div className="marcador"> {Marcador(Match.matches.allScoreBoard[2],2)}</div>
+            <div className="marcador"> {Marcador(Match.matches.allScoreBoard[2],2,props.names)}</div>
             <div className="ButtonAccept">Accept</div>            
         </div>
   );

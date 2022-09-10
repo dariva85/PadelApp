@@ -14,6 +14,7 @@ routerUsuarios
   .route("/email/:email")
   .get(catchErrors(userControllers.findOneByEmail));
 
+routerUsuarios.route("/name/:id").get(catchErrors(userControllers.findTheName));
 //Este endpoint no es necesario. Usuario ya posee la lista de competiciones a la que pertenece.
 routerUsuarios
   .route("/:id/competiciones")
