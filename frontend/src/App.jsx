@@ -45,6 +45,9 @@ function App() {
           showUserImage={
             topBarInfo.showUserImage ? topBarInfo.showUserImage : false
           }
+          showHomeLogo={
+            topBarInfo.showHomeLogo ? topBarInfo.showHomeLogo : false
+          }
           logout={logout}
         />
       );

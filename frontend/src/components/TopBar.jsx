@@ -51,8 +51,25 @@ export default function TopBar(props) {
           </div>
         );
       }
-    } catch (e) {}
+    } catch (e) { }
   };
+
+  const AddHomeAvatar = () => {
+    try {
+      if(props.showHomeLogo) {
+        return (
+          <img
+              id="home-logo"
+              src="/src/assets/homeLogo.png"
+              alt="HOME"
+              onClick={() => {
+                navigate("/");
+              }}
+            />
+        );  
+      }
+    } catch (e) { }
+  }
 
   const AddUserAvatar = () => {
     try {
@@ -68,7 +85,7 @@ export default function TopBar(props) {
           />
         );
       }
-    } catch (e) {}
+    } catch (e) { }
   };
 
   return (
@@ -76,9 +93,9 @@ export default function TopBar(props) {
       <div id="main-div">
         <div id="yellow-div"></div>
         <img id="logo" src={PanteresLogo}></img>
-        <div id="grey-div">{AddUserAvatar()}</div>
-      </div>
-      {AddNavBar(props)}
+        <div id="grey-div">{AddUserAvatar()}<div class="home-div">{AddHomeAvatar()}</div></div>
     </div>
+      { AddNavBar(props) }
+    </div >
   );
 }
