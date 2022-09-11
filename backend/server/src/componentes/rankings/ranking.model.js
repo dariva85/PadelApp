@@ -14,6 +14,8 @@ const scoreboard = new Schema({
   pardisosPerdidos: Number,
   puntosAFavor: Number,
   puntosEnContra: Number,
+  efficiencia: Number,
+  efficienciaPuntos: Number,
 });
 
 const rankingSchema = mongoose.Schema(

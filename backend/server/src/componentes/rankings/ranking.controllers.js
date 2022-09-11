@@ -107,8 +107,8 @@ const findByCompetitionId = async (req, res) => {
       },
       {
         $sort: {
-          efficiencia: 1,
-          efficienciaPuntos: 1,
+          "clasificacion.efficiencia": -1,
+          "clasificacion.efficienciaPuntos": -1,
         },
       },
     ]);
