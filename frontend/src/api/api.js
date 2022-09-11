@@ -33,12 +33,14 @@ const authApiCall = (method, path, body) => {
     Authorization: `Bearer ${accessToken}`,
   });
 };
-export const getCompetitions = (id) =>
-  authApiCall("GET", `/competiciones/userId/${id}`);
 export const getUsuario = (email) =>
   authApiCall("GET", `/usuarios/email/${email}`);
 export const getCompetition = (id) =>
   authApiCall("GET", `/competiciones/${id}`);
+export const getCompetitions = (id) =>
+  authApiCall("GET", `/competiciones/userId/${id}`);
+export const getNonSubcribedCompetitions = (id) =>
+  authApiCall("GET", `/competiciones/nonsubscribed/${id}`);
 export const findAllOpenedInscriptions = (id) =>
   authApiCall("GET", `/inscription/opened/${id}`);
 export const signUpOnCompetition = ({ signupdata }) =>
@@ -50,3 +52,8 @@ export const signUpOnCompetition = ({ signupdata }) =>
 export const getMatches = (id) => authApiCall("GET", `/partidos/userId/${id}`);
 export const getRanking = (id) =>
   authApiCall("GET", `/rankings/competition/${id}`);
+export const subscribeOrUnsubscribeOnCompetition = (ids) =>
+  authApiCall(
+    "PUT",
+    `/competiciones/subscribeorunsubscrive/${ids.userId}/${ids.competitionId}`
+  );

@@ -8,6 +8,7 @@ import MarketScreen from "./screens/MarketScreen";
 import InscriptionScreen from "./screens/Competition/InscriptionScreen";
 import InformationScreen from "./screens/Competition/InformationScreen";
 import CompetitionMatchesScreen from "./screens/Competition/CompetitionMatchesScreen";
+import InformationCompetitionScreen from "./screens/InformationCompetitionScreen";
 import RankingScreen from "./screens/Competition/RankingScreen";
 import * as tk from "./api/token";
 import { useEffect } from "react";
@@ -64,6 +65,10 @@ function App() {
           <Route path="/" element={<CompetitionsScreen />} />
           <Route path="/me/matches" element={<MatchesScreen />} />
           <Route path="/me/market" element={<MarketScreen />} />
+          <Route
+            path="/competition/:competitionId"
+            element={<InformationCompetitionScreen />}
+          />
           <Route
             path="/me/competitions/:competitionId/Inscription"
             element={<InscriptionScreen />}

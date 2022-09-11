@@ -17,4 +17,10 @@ routerCompeticiones
 routerCompeticiones
   .route("/userId/:id")
   .get(catchErrors(competitionControllers.findAllofOneUser));
+routerCompeticiones
+  .route("/nonsubscribed/:id")
+  .get(catchErrors(competitionControllers.findAllNonSubribedOfOneUser));
+routerCompeticiones
+  .route("/subscribeorunsubscrive/:userId/:competitionId")
+  .put(catchErrors(competitionControllers.subscribeOrUnsubscribe));
 module.exports = routerCompeticiones;

@@ -6,6 +6,7 @@
   --Secondary_Color_BG_Ligth_Colored: #1e1e1e;
   --Secondary_Color_BG_Dark_Colored: #fefefe;
   --Accept: #3c9e7e;
+  --Decline: #ba5555;
   --Canceled_Option_Color: #c61e1e;
 }
 #root {
@@ -13,4 +14,5 @@
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: var(--Secondary_Color_BG_Dark_Colored);
 }

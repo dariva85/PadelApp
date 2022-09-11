@@ -3,7 +3,7 @@ import "./CompetitionBtn.css";
 import TestImage from "../assets/test_usr_image.jpeg";
 import { useNavigate } from "react-router-dom";
 
-export default function CompetitionBtn({ Competition }) {
+export default function CompetitionBtn({ Competition, href }) {
   const navigate = useNavigate();
 
   const AddDescription = (Competition) => {
@@ -32,7 +32,11 @@ export default function CompetitionBtn({ Competition }) {
   return (
     <div
       onClick={() => {
-        navigate(`/me/competitions/${Competition._id}/Inscription`);
+        if (href === undefined) {
+          navigate(`/me/competitions/${Competition._id}/Inscription`);
+        } else {
+          navigate(href);
+        }
       }}
       className="btn-container"
     >

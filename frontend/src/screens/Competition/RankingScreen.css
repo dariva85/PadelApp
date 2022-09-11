@@ -24,6 +24,7 @@
   padding: 1rem;
 }
 td {
+  color: var(--Primary_Color_BG_Ligth_Colored);
   border-bottom: 1px solid var(--Primary_Color_BG_Ligth_Colored);
 }
 

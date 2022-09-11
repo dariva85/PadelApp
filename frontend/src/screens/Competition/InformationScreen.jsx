@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import * as topBarCtxt from "../../components/TopBarCtxt";
+import InformationLayout from "../../components/InformationLayout";
 import "./InformationScreen.css";
 import * as api from "../../api/api.js";
 
@@ -31,5 +32,9 @@ export default function InformationScreen() {
     );
   }, []);
 
-  return <div className="main-screen"></div>;
+  return (
+    <div className="main-screen">
+      <InformationLayout competition={competition} />
+    </div>
+  );
 }

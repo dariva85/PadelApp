@@ -100,14 +100,71 @@ const findAllofOneUser = async (req, res) => {
   }
 };
 
-const findAllofOneMatch = async (req, res) => {
+const findAllNonSubribedOfOneUser = async (req, res) => {
   const { id } = req.params;
+  let doc = {};
+  console.log("findAllNonSubscribed");
+  try {
+    let currentDate = new Date().toISOString();
+    doc = await Competicion.find({
+      idUsuario: { $ne: id },
+      fechaInicioInscripcion: { $lte: currentDate },
+      fechaFinInscripcion: { $gte: currentDate },
+    })
+      .lean()
+      .exec();
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
+    } else {
+      res.status(200).json({ results: [doc] });
+    }
+  } catch (e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
+    } else {
+      errMalformed(res, "", "");
+    }
+  }
+};
+
+const subscribeOrUnsubscribe = async (req, res) => {
+  const { competitionId, userId } = req.params;
   let doc = {};
 
   try {
-    doc = await Partido.find({ competicion: id }).lean().exec();
+    doc = await Competicion.findOne({ _id: competitionId }).lean().exec();
     if (doc === null) {
-      errMalformed(res, `Match with id '${id}' not found`, "NotFound");
+      errMalformed(
+        res,
+        `Competition with id '${competitionId}' not found`,
+        "NotFound"
+      );
+    }
+    if (
+      doc.idUsuario.some(function (idUsuario) {
+        return idUsuario.equals(userId);
+      })
+    ) {
+      const toRemove = doc.idUsuario.find(function (idUsuario) {
+        return idUsuario.equals(userId);
+      });
+      const index = doc.idUsuario.indexOf(toRemove);
+      if (index > -1) {
+        doc.idUsuario.splice(index, 1);
+      }
+    } else {
+      doc.idUsuario.push(userId);
+    }
+    doc = await Competicion.updateOne(
+      { _id: competitionId },
+      { idUsuario: doc.idUsuario },
+      {
+        new: true,
+      }
+    );
+
+    if (doc === null) {
+      errMalformed(res, `Competition with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
@@ -126,5 +183,6 @@ module.exports = {
   findOne,
   deleteOne,
   findAllofOneUser,
-  findAllofOneMatch,
+  findAllNonSubribedOfOneUser,
+  subscribeOrUnsubscribe,
 };

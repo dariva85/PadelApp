@@ -1,0 +1,75 @@
+#title-information {
+  padding-top: 3rem;
+  margin: 2rem;
+}
+
+.txt-img-aligned {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-img {
+  margin: 1rem;
+}
+
+#title-information h1 {
+  padding: 0;
+  margin: 0;
+}
+
+#main-square {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  margin: 5rem;
+  border: 3px solid #2d5e72;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.competition-img-info {
+  margin-right: 2rem;
+}
+
+#text-information {
+  color: var(--Primary_Color_BG_Ligth_Colored);
+  margin: 2rem 8rem 2rem 8rem;
+}
+#inscribed-info {
+  display: flex;
+  justify-content: space-evenly;
+
+  flex-direction: row;
+  color: var(--Primary_Color_BG_Ligth_Colored);
+  margin: 2rem 8rem 2rem 8rem;
+  margin-top: 2rem;
+}
+
+#inscription-btn {
+  width: fit-content;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin: 5rem;
+  margin-top: 3rem;
+}
+
+#inscription-btn h2 {
+  padding: 0.8rem;
+  margin: 0rem;
+}
+
+.inscribe-btn {
+  background: var(--Accept);
+  color: var(--Secondary_Color_BG_Dark_Colored);
+}
+
+.uninscribe-btn {
+  background: var(--Decline);
+  color: var(--Secondary_Color_BG_Dark_Colored);
+}
+
+#inscription-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

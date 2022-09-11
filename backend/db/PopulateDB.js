@@ -126,7 +126,18 @@ async function main() {
       idPartido: [],
       nombre: "Padel Semanal",
       descripcion: "Competición de padel de repetición semanal",
-      informacion: [{ titulo: "Descripción del torneo", parrafo: "" }],
+      informacion: [
+        {
+          titulo: "Descripción del torneo",
+          parrafo:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+        {
+          titulo: "Reglas",
+          parrafo:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+      ],
       direccion: "Cualquier sitio",
       nInscritos: 4,
       maxInscritos: 200,
@@ -137,7 +148,6 @@ async function main() {
       ),
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 1)),
-      Inscripciones: [],
       tipo: "Liga",
       imagen: fs.readFileSync(`../db/UserImages/padelsemanal.jpeg`),
     },
@@ -147,7 +157,13 @@ async function main() {
       idPartido: [],
       nombre: "Americana UpClub",
       descripcion: "Competición de padel ",
-      informacion: [],
+      informacion: [
+        {
+          titulo: "Reglas",
+          parrafo:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+      ],
       direccion: "upclub",
       nInscritos: 2,
       maxInscritos: 200,
@@ -158,12 +174,11 @@ async function main() {
       ),
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 2)),
-      Inscripciones: [],
       tipo: "Americana",
       imagen: fs.readFileSync(`../db/UserImages/upclub.jpeg`),
     },
     {
-      idUsuario: [idMarti, idAlex],
+      idUsuario: [],
       idPartido: [],
       nombre: "Liga Interclub",
       descripcion: "Competición Interclub",
@@ -194,7 +209,6 @@ async function main() {
       ),
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
-      Inscripciones: [],
       tipo: "Liga",
       imagen: fs.readFileSync(`../db/UserImages/padelsemanal.jpeg`),
     },

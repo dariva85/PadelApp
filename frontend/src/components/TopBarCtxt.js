@@ -15,7 +15,7 @@ export const setTopBarInfo = (NewInfo, OldInfo, setInfo) => {
   }
 };
 
-export const menuByScreen = {
+export let menuByScreen = {
   LoginScreen: {
     title: "Mis Competiciones",
     linkedItems: [
@@ -45,6 +45,15 @@ export const menuByScreen = {
 
   MarketScreen: {
     title: "Market",
+    linkedItems: [
+      { name: "Mis competiciones", link: "/" },
+      { name: "Mis Partidos", link: "/me/matches" },
+    ],
+    showUserImage: true,
+  },
+
+  MarketInformationScreen: {
+    title: "",
     linkedItems: [
       { name: "Mis competiciones", link: "/" },
       { name: "Mis Partidos", link: "/me/matches" },
