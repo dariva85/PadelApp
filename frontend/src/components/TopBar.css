@@ -28,6 +28,19 @@
   background-color: var(--Dark_Colored_BG);
 }
 
+.home-div {
+  padding-right: 2rem;
+}
+
+#home-logo {
+  height: 2.5rem;
+  transition: all 100ms;
+}
+
+#home-logo:hover {
+  transform: scale(1.2);
+}
+
 #logo {
   position: absolute;
   left: -2rem;
@@ -41,6 +54,11 @@
   border: 2px solid #ffffff;
   border-radius: 100%;
   margin-right: 1rem;
+  transition: all 100ms;
+}
+
+#usr-image:hover {
+  transform: scale(1.05);
 }
 
 #nav-menu {

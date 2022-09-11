@@ -8,7 +8,6 @@ const Partido = require("../partidos/partido.model");
 const login = async (req, res) => {
   try {
     const loginData = req.body;
-    console.log(loginData);
     const token = await Auth.authenticateUser(loginData);
     res.status(200).json(token);
   } catch (e) {
@@ -191,6 +190,32 @@ const findAllofOneMatch = async (req, res) => {
   }
 };
 
+//Checked
+const findTheName = async (req, res) => {
+  const { id } = req.params;
+  let doc = {};
+  console.log(id);
+
+  try {
+    doc = await Usuario.findById(id).lean().exec();
+    console.log(doc);
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
+    } else {
+      res.status(200).json({ results: [doc.username] });
+    }
+  } catch (e) {
+    if (Object.keys(doc).length === 0) {
+      errMalformed(res, `'${id}' is not valid id`, "NotFound");
+    } else {
+      console.log(e);
+      errMalformed(res, e.message, e.name);
+    }
+  }
+};
+
+
+
 module.exports = {
   addRoutesTo,
   createOne,
@@ -200,4 +225,5 @@ module.exports = {
   findAllofOneCompetition,
   findAllofOneMatch,
   findOneByEmail,
+  findTheName,
 };

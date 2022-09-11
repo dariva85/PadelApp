@@ -8,26 +8,29 @@ import * as usr from "../User";
 export default function MatchesScreen() {
   const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
   const [macthes, setMacthes] = useState([]);
+  const [names, setNames] = useState([]);
+
+  let LinkedMenuItems = [
+    { name: "Mis Competiciones", link: "/me/competitions" },
+    { name: "Market", link: "/me/market" },
+  ];
 
   const LoadMatches = async () => {
-    console.log(usr.readUser());
     const {
       success,
-      result: dbCompetitions,
+      result: dbMatches,
       error,
     } = await api.getMatches(usr.readUser()._id);
-    //630fa119fcafb33cdbb10fd5  Este es el id de una persona
-    //62adf55dd1d8cd0272ddab91 este es de la competicion
-    //62adf55dd1d8cd0272ddab9e
+
     if (success) {
-      setMacthes(dbCompetitions.results[0]);
+      setMacthes(dbMatches.results[0]);
     } else {
       setMessage(error);
     }
   };
 
-  const AddMatchesCards = (competitionItems) => {
-    return competitionItems.map((item) => <MatchesCard matches={item} />);
+  const AddMatchesCards = (competitionItems, names) => {
+    return competitionItems.map((item) => <MatchesCard matches={item} S />);
   };
   useEffect(() => {
     LoadMatches();
@@ -40,7 +43,29 @@ export default function MatchesScreen() {
 
   return (
     <div className="main-screen">
-      <div className="matches-container">{AddMatchesCards(macthes)}</div>
+      <div className="matches-container">{AddMatchesCards(macthes, names)}</div>
     </div>
   );
 }
+
+/*
+1. Eliminar el marco del input cuando [Completado]
+  1.1 crear izquierdaclase y derecha clase para que salgan hacia fuera.
+2. Al Clikar, voy directamente a la coleccion partido y comparo el resultado con mi hook de ese partido.
+3. EL boton solo aparece si el estado del partido es pendiendte. [Completado]
+4. Si difiere borro lista de validadores y pongo mi score.
+5. Si igual añado el nombre a la lista de validadores y si soy el tercero, actualizo el estado.
+  5.1 Actualizar ranking.
+
+  NotStarted --> Este es por la fecha. Si el partido no se ha hecho pues se deduce su estado.
+  + Sin boton [Completado]
+  Pending --> Es igual que el otro pero la fecha determina si se ha jugado o no.
+  +Con boton [Completado]
+  Validated.
+  + Sin boton [Completado]
+  + Con reloj 
+  Closed.
+  + Sin boton. [Completado]
+  + Sin estado.
+
+*/

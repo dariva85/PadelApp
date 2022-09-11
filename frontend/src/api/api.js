@@ -57,3 +57,7 @@ export const subscribeOrUnsubscribeOnCompetition = (ids) =>
     "PUT",
     `/competiciones/subscribeorunsubscrive/${ids.userId}/${ids.competitionId}`
   );
+export const getNamesUser = (id) => authApiCall("GET", `/usuarios/name/${id}`);
+
+export const submitMatch = (id, match) =>
+  authApiCall("PUT", `/partidos/updatePartido/userId/${id}`, { match });

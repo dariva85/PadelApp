@@ -5,6 +5,7 @@ export const Ctxt = React.createContext({
     title: "",
     linkedItems: [],
     showUserImage: false,
+    showHomeLogo: false
   },
   setTopBarInfo: () => {},
 });
@@ -23,6 +24,7 @@ export let menuByScreen = {
       { name: "Market", link: "/me/market" },
     ],
     showUserImage: true,
+    showHomeLogo: true
   },
 
   CompetitionsScreen: {
@@ -32,6 +34,7 @@ export let menuByScreen = {
       { name: "Market", link: "/me/market" },
     ],
     showUserImage: true,
+    showHomeLogo: true
   },
 
   MatchesScreen: {
@@ -41,6 +44,7 @@ export let menuByScreen = {
       { name: "Market", link: "/me/market" },
     ],
     showUserImage: true,
+    showHomeLogo: true
   },
 
   MarketScreen: {
@@ -50,6 +54,7 @@ export let menuByScreen = {
       { name: "Mis Partidos", link: "/me/matches" },
     ],
     showUserImage: true,
+    showHomeLogo: true
   },
 
   MarketInformationScreen: {
@@ -80,6 +85,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
+      showHomeLogo: true
     },
 
     MatchesScreen: {
@@ -99,6 +105,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
+      showHomeLogo: true
     },
 
     RankingScreen: {
@@ -118,6 +125,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
+      showHomeLogo: true
     },
 
     InformationScreen: {
@@ -137,6 +145,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
+      showHomeLogo: true
     },
   };
 };
