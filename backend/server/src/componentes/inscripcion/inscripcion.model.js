@@ -49,10 +49,14 @@ const rankingSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
+    partidos: {
+      type: Array,
+      default: [],
+    },
   },
   { timestamps: false }
 );
 
-const Ranking = mongoose.model("inscripciones", rankingSchema);
+const Inscripciones = mongoose.model("inscripciones", rankingSchema);
 
-module.exports = Ranking;
+module.exports = Inscripciones;

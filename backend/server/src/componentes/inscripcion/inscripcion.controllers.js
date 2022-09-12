@@ -1,7 +1,8 @@
 const Inscripcion = require("./Inscripcion.model");
-const Usuario = require("../usuarios/usuario.model");
 const Partido = require("../partidos/partido.model");
 const { errMalformed } = require("../../errors");
+const { generateMatches } = require("../partidos/matchGenerator");
+const mongoose = require("mongoose");
 
 //Checked
 const createOne = async (req, res) => {
@@ -86,7 +87,7 @@ const findAllOpened = async (req, res) => {
 
   try {
     let currentDate = new Date().toISOString();
-    
+
     doc = await Inscripcion.find({
       idCompeticion: id,
       fechaInicio: { $lte: currentDate },
@@ -123,9 +124,26 @@ const SignUpOnCompetition = async (req, res) => {
       } else {
         doc[0].inscritos.push(userId);
       }
-      doc = await Inscripcion.findOneAndUpdate({ _id: inscriptionId }, doc[0], {
-        new: true,
-      })
+
+      doc[0].partidos.forEach(async (match) => {
+        result = await Partido.findOneAndDelete({
+          _id: mongoose.Types.ObjectId(match._id),
+        });
+      });
+
+      let { matches, inscription } = await generateMatches(doc[0]);
+
+      matches.forEach(async (match) => {
+        result = await Partido.create(match);
+      });
+
+      doc = await Inscripcion.findOneAndUpdate(
+        { _id: inscriptionId },
+        inscription,
+        {
+          new: true,
+        }
+      )
         .lean()
         .exec();
       res.status(200).json({ results: [doc] });

@@ -9,16 +9,6 @@ export default function InscriptionBtn({
   userId,
   signUpClickEvent,
 }) {
-  const navigate = useNavigate();
-
-  const AddDescription = (Inscription) => {
-    try {
-      if (Inscription.descripcion !== 0) {
-        return <p>{Inscription.descripcion}</p>;
-      }
-    } catch (e) {}
-  };
-
   const AddImage = (Inscribed) => {
     try {
       const img = isUserInscribed(Inscribed) ? SignedUp : InscriptionPending;

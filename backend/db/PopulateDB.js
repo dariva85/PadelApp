@@ -23,6 +23,14 @@ let idDavid = mongodb.ObjectId("63132b99a1f7b03b4ca2e03a");
 let idTomas = mongodb.ObjectId("62adf55dd1d8cd0272ddab9c");
 let idMarti = mongodb.ObjectId("62adf55dd1d8cd0272ddab9d");
 let idAlex = mongodb.ObjectId("62adf55dd1d8cd0272ddab9e");
+let idUsuario1 = new mongodb.ObjectId();
+let idUsuario2 = new mongodb.ObjectId();
+let idUsuario3 = new mongodb.ObjectId();
+let idUsuario4 = new mongodb.ObjectId();
+let idUsuario5 = new mongodb.ObjectId();
+let idUsuario6 = new mongodb.ObjectId();
+let idUsuario7 = new mongodb.ObjectId();
+let idUsuario8 = new mongodb.ObjectId();
 
 let idLiga1 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9a");
 let idLiga2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9f");
@@ -115,6 +123,126 @@ async function main() {
       imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
       password: await encryptPassword("fullstack"),
     },
+    {
+      _id: idUsuario1,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario1",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario1@gmail.com",
+      username: "Usuario1",
+      direccion: "casa Usuario1",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
+    {
+      _id: idUsuario2,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario2",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario2@gmail.com",
+      username: "Usuario2",
+      direccion: "casa Usuario2",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
+    {
+      _id: idUsuario3,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario3",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario3@gmail.com",
+      username: "Usuario3",
+      direccion: "casa Usuario3",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
+    {
+      _id: idUsuario4,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario4",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario4@gmail.com",
+      username: "Usuario4",
+      direccion: "casa Usuario4",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
+    {
+      _id: idUsuario5,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario5",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario5@gmail.com",
+      username: "Usuario5",
+      direccion: "casa Usuario5",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
+    {
+      _id: idUsuario6,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario6",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario6@gmail.com",
+      username: "Usuario6",
+      direccion: "casa Usuario6",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
+    {
+      _id: idUsuario7,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario7",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario7@gmail.com",
+      username: "Usuario7",
+      direccion: "casa Usuario7",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
+    {
+      _id: idUsuario8,
+      idCompeticion: [],
+      idPartido: [],
+      nombre: "Usuario8",
+      apellidos: "Apellido1 Apellido2 ",
+      email: "usuario8@gmail.com",
+      username: "Usuario8",
+      direccion: "casa Usuario8",
+      codigoPostal: 25200,
+      ciudad: "Ciudad",
+      provincia: "provincia",
+      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      password: await encryptPassword("fullstack"),
+    },
   ]);
 
   console.log("Inserting Competitions");
@@ -122,7 +250,20 @@ async function main() {
   const competitions = await db.collection("competiciones").insertMany([
     {
       _id: idLiga1,
-      idUsuario: [idDavid, idTomas, idMarti, idAlex],
+      idUsuario: [
+        idDavid,
+        idTomas,
+        idMarti,
+        idAlex,
+        idUsuario1,
+        idUsuario2,
+        idUsuario3,
+        idUsuario4,
+        idUsuario5,
+        idUsuario6,
+        idUsuario7,
+        idUsuario8,
+      ],
       idPartido: [],
       nombre: "Padel Semanal",
       descripcion: "Competición de padel de repetición semanal",
@@ -324,11 +465,11 @@ async function main() {
   let fridays = [];
 
   m.setDate(1);
-  m.setMonth(m.getMonth() - 1);
+  m.setMonth(m.getMonth());
   w.setDate(3);
-  w.setMonth(w.getMonth() - 1);
+  w.setMonth(w.getMonth());
   f.setDate(5);
-  f.setMonth(f.getMonth() - 1);
+  f.setMonth(f.getMonth());
   // Get the first Monday in the month
   while (m.getDay() !== 1) {
     m.setDate(m.getDate() + 1);
@@ -388,6 +529,7 @@ async function main() {
       FechaPartido: new Date(new Date().setDate(new Date().getDay() + 2)),
       MaxInscritos: 8,
       Estado: "Open",
+      partidos: [],
     },
   ]);
 
@@ -402,6 +544,7 @@ async function main() {
       fechaPartido: mondays[i + 1],
       maxInscritos: 8,
       estado: "Open",
+      partidos: [],
     });
     Inscripcions = await db.collection("inscripciones").insertOne({
       inscritos: [],
@@ -413,6 +556,7 @@ async function main() {
       fechaPartido: wednesdays[i + 1],
       maxInscritos: 8,
       estado: "Open",
+      partidos: [],
     });
     Inscripcions = await db.collection("inscripciones").insertOne({
       inscritos: [],
@@ -424,6 +568,7 @@ async function main() {
       fechaPartido: fridays[i + 1],
       maxInscritos: 8,
       estado: "Open",
+      partidos: [],
     });
   }
 
@@ -476,6 +621,118 @@ async function main() {
       idUsuario: idDavid,
       clasificacion: {
         efficiencia: -0.33,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario1,
+      clasificacion: {
+        efficiencia: -3.33,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario2,
+      clasificacion: {
+        efficiencia: 2,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario3,
+      clasificacion: {
+        efficiencia: 3.33,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario4,
+      clasificacion: {
+        efficiencia: 0.25,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario5,
+      clasificacion: {
+        efficiencia: -0.89,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario6,
+      clasificacion: {
+        efficiencia: -2,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario7,
+      clasificacion: {
+        efficiencia: -8,
+        efficienciaPuntos: -0.04,
+        tendencia: -1,
+        partidosJugados: 6,
+        partidosGanados: 2,
+        partidosPerdidos: 4,
+        puntosAFavor: 23,
+        puntosEnContra: 25,
+      },
+    },
+    {
+      idCompeticion: idLiga1,
+      idUsuario: idUsuario8,
+      clasificacion: {
+        efficiencia: -7.33,
         efficienciaPuntos: -0.04,
         tendencia: -1,
         partidosJugados: 6,
