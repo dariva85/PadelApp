@@ -12,6 +12,8 @@ const PartidoRouter = require("./componentes/partidos/partido.service.js");
 const CompeticionRouter = require("./componentes/competiciones/competicion.service.js");
 const RankingRouter = require("./componentes/rankings/ranking.service.js");
 const InscripcionRouter = require("./componentes/inscripcion/inscripcion.service.js");
+const { RunMatchTimeoutValidator } = require("./MatchTimeoutValidator");
+
 
 const app = express();
 
@@ -44,6 +46,7 @@ const start = async () => {
   app.listen(config.SERVER_PORT, () => {
     console.log(`Padel App Server listening on port: ${config.SERVER_PORT}`);
   });
+  RunMatchTimeoutValidator();
 };
 
 start();
