@@ -16,6 +16,8 @@ export default function TopBar(props) {
             id={item.link}
             className="nav-link"
             onClick={() => {
+              console.log(item);
+              if (item.function != undefined) item.function();
               navigate(item.link);
             }}
           >
@@ -51,25 +53,25 @@ export default function TopBar(props) {
           </div>
         );
       }
-    } catch (e) { }
+    } catch (e) {}
   };
 
   const AddHomeAvatar = () => {
     try {
-      if(props.showHomeLogo) {
+      if (props.showHomeLogo) {
         return (
           <img
-              id="home-logo"
-              src="/src/assets/homeLogo.png"
-              alt="HOME"
-              onClick={() => {
-                navigate("/");
-              }}
-            />
-        );  
+            id="home-logo"
+            src="/src/assets/homeLogo.png"
+            alt="HOME"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
+        );
       }
-    } catch (e) { }
-  }
+    } catch (e) {}
+  };
 
   const AddUserAvatar = () => {
     try {
@@ -79,13 +81,12 @@ export default function TopBar(props) {
             id="usr-image"
             src={`data:image/jpeg;base64, ${usr.readUser().imagenPerfil}`}
             onClick={() => {
-              props.logout();
-              navigate("/");
+              navigate("/userinfo");
             }}
           />
         );
       }
-    } catch (e) { }
+    } catch (e) {}
   };
 
   return (
@@ -93,9 +94,12 @@ export default function TopBar(props) {
       <div id="main-div">
         <div id="yellow-div"></div>
         <img id="logo" src={PanteresLogo}></img>
-        <div id="grey-div">{AddUserAvatar()}<div class="home-div">{AddHomeAvatar()}</div></div>
+        <div id="grey-div">
+          {AddUserAvatar()}
+          <div class="home-div">{AddHomeAvatar()}</div>
+        </div>
+      </div>
+      {AddNavBar(props)}
     </div>
-      { AddNavBar(props) }
-    </div >
   );
 }

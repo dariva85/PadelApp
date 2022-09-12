@@ -1,11 +1,13 @@
 import React from "react";
+import * as usr from "../User";
+import * as token from "../api/token";
 
 export const Ctxt = React.createContext({
   topBarInfo: {
     title: "",
     linkedItems: [],
     showUserImage: false,
-    showHomeLogo: false
+    showHomeLogo: false,
   },
   setTopBarInfo: () => {},
 });
@@ -24,7 +26,7 @@ export let menuByScreen = {
       { name: "Market", link: "/me/market" },
     ],
     showUserImage: true,
-    showHomeLogo: true
+    showHomeLogo: true,
   },
 
   CompetitionsScreen: {
@@ -34,7 +36,7 @@ export let menuByScreen = {
       { name: "Market", link: "/me/market" },
     ],
     showUserImage: true,
-    showHomeLogo: true
+    showHomeLogo: true,
   },
 
   MatchesScreen: {
@@ -44,7 +46,7 @@ export let menuByScreen = {
       { name: "Market", link: "/me/market" },
     ],
     showUserImage: true,
-    showHomeLogo: true
+    showHomeLogo: true,
   },
 
   MarketScreen: {
@@ -54,7 +56,7 @@ export let menuByScreen = {
       { name: "Mis Partidos", link: "/me/matches" },
     ],
     showUserImage: true,
-    showHomeLogo: true
+    showHomeLogo: true,
   },
 
   MarketInformationScreen: {
@@ -66,6 +68,46 @@ export let menuByScreen = {
     showUserImage: true,
   },
 };
+
+const logOutFunction = () => {
+  usr.deleteUser();
+  token.deleteToken();
+};
+
+export let menuByUserInfo = {
+  UserInfo: {
+    title: "Información personal",
+    linkedItems: [
+      { name: "Cambiar contraseña", link: "/passwordchange" },
+      {
+        name: "Cerrar sesión",
+        link: "/",
+        function: () => {
+          logOutFunction();
+        },
+      },
+    ],
+    showUserImage: true,
+    showHomeLogo: true,
+  },
+
+  PasswordChange: {
+    title: "Cambiar contraseña",
+    linkedItems: [
+      { name: "Información personal", link: "/userinfo" },
+      {
+        name: "Cerrar sesión",
+        link: "/",
+        function: () => {
+          logOutFunction();
+        },
+      },
+    ],
+    showUserImage: true,
+    showHomeLogo: true,
+  },
+};
+
 export const menuByCompetition = (competitionId) => {
   return {
     InscriptionScreen: {
@@ -85,7 +127,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
-      showHomeLogo: true
+      showHomeLogo: true,
     },
 
     MatchesScreen: {
@@ -105,7 +147,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
-      showHomeLogo: true
+      showHomeLogo: true,
     },
 
     RankingScreen: {
@@ -125,7 +167,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
-      showHomeLogo: true
+      showHomeLogo: true,
     },
 
     InformationScreen: {
@@ -145,7 +187,7 @@ export const menuByCompetition = (competitionId) => {
         },
       ],
       showUserImage: true,
-      showHomeLogo: true
+      showHomeLogo: true,
     },
   };
 };

@@ -10,10 +10,11 @@ import InformationScreen from "./screens/Competition/InformationScreen";
 import CompetitionMatchesScreen from "./screens/Competition/CompetitionMatchesScreen";
 import InformationCompetitionScreen from "./screens/InformationCompetitionScreen";
 import RankingScreen from "./screens/Competition/RankingScreen";
+import UserInfo from "./screens/Usuario/UserInfo";
+import PasswordChange from "./screens/Usuario/PasswordChange";
 import * as tk from "./api/token";
 import { useEffect } from "react";
 import TopBar from "./components/TopBar";
-import { useContext } from "react";
 import * as topBarCtxt from "./components/TopBarCtxt";
 
 function App() {
@@ -88,6 +89,8 @@ function App() {
             path="/me/competitions/:competitionId/Information"
             element={<InformationScreen />}
           />
+          <Route path="/userinfo" element={<UserInfo />} />
+          <Route path="/passwordchange" element={<PasswordChange />} />
         </Routes>
       </topBarCtxt.Ctxt.Provider>
     </div>
