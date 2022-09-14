@@ -69,6 +69,7 @@ function App() {
           <Route path="/" element={<CompetitionsScreen />} />
           <Route path="/me/matches" element={<MatchesScreen />} />
           <Route path="/me/market" element={<MarketScreen />} />
+          <Route path="/me/passwordchange" element={<PasswordChange />} />
           <Route
             path="/competition/:competitionId"
             element={<InformationCompetitionScreen />}
