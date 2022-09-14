@@ -203,26 +203,50 @@ const submitMatchesResult = async (req, res) => {
       let iguales = true;
       // Compruebo que los resultados sean los mismos.
       for (const index in doc.allScoreBoard) {
-        if (doc.allScoreBoard[index].final_score[0].scoreboard === match.allScoreBoard[index].final_score[0].scoreboard &&doc.allScoreBoard[index].final_score[1].scoreboard === match.allScoreBoard[index].final_score[1].scoreboard ){
-          console.log("Son iguales!")
-        }else{
-          console.log("Son diferentes")
-          iguales = false
+        if (
+          doc.allScoreBoard[index].final_score[0].scoreboard ===
+            match.allScoreBoard[index].final_score[0].scoreboard &&
+          doc.allScoreBoard[index].final_score[1].scoreboard ===
+            match.allScoreBoard[index].final_score[1].scoreboard
+        ) {
+          //console.log("Son iguales!");
+        } else {
+          //console.log("Son diferentes");
+          iguales = false;
         }
       }
       // Si no son los mismos borro todos los validadores y me añado a validadores.
-      if(!iguales){
-
-      }else{
-      // Si es el mismo y tras añadirme la lista de validadores es
-
+      if (!iguales) {
+        
+        doc = await Partido.findOneAndUpdate(
+          { _id: match._id },
+          {
+            allValidadores: [mongoose.Types.ObjectId(id)],
+            allScoreBoard: match.allScoreBoard,
+          }
+        );
+      } else {
+        console.log("Es el mismo!!!");
+        console.log(doc.allValidadores.length);
+        if(doc.allValidadores.length>=2){
+          
+          
+          doc = await Partido.findOneAndUpdate(
+            { _id: match._id },
+            {
+              allValidadores: [...doc.allValidadores,...[mongoose.Types.ObjectId(id)]],
+              estado: "Closed",
+            }
+          );
+          
+        }
+        // Si es el mismo y si tras añadirme la lista de validadores la longitud de esta lista es 3 o mayor, cambiar el estado del partido a "Closed".
       }
+
+      doc = await Partido.findOne({ _id: match._id });
     } else {
       console.log("va bien!");
     }
-
-   
-    
   } catch (e) {
     if (Object.keys(doc).length === 0) {
       errMalformed(res, `Something went wrong`, "NotFound");

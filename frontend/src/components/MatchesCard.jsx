@@ -8,8 +8,20 @@ export default function MatchesCard(props) {
   const [Match, setTheMatch] = useState(props);
   
   let NombreCompeti = props.matches.competicion[0].nombre
-  let Fecha = String(new Date(props.matches.fecha).getDate())+"/"+String(new Date(props.matches.fecha).getMonth()+ 1)+"/"+String(new Date(props.matches.fecha).getFullYear())
-  let Hora = String(new Date(props.matches.fecha).getHours())+":"+String(new Date(props.matches.fecha).getMinutes())
+  let Dia = String(new Date(props.matches.fecha).getDate())
+  let Month = String(new Date(props.matches.fecha).getMonth()+ 1);
+  let Year = String(new Date(props.matches.fecha).getFullYear());
+  console.log(Year.length)
+  if (Dia.length == 1){Dia = "0"+Dia;}
+  if (Month.length == 1){Month = "0"+Month;}
+  let Fecha = Dia +"/"+Month+"/"+ Year;
+  let Horas = String(new Date(props.matches.fecha).getHours());
+  let Minutos =String(new Date(props.matches.fecha).getMinutes());
+  if (Horas.length == 1){Horas = "0"+Horas;}
+  if (Minutos.length == 1){Minutos = "0"+Minutos;}
+
+  
+  let Hora = Horas+":"+Minutos;
   let Status = props.matches.estado
   let Names = {};
 
