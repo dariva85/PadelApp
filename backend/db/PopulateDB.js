@@ -72,12 +72,17 @@ async function main() {
       nombre: "David",
       apellidos: "Rigal Vall",
       email: "david.rigalvall@gmail.com",
+      telefono: "654987321",
+      movil: "654987321",
       username: "dariva",
       direccion: "Cervera es bien",
       codigoPostal: 25200,
       ciudad: "Cervera",
       provincia: "Lleida",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -87,12 +92,17 @@ async function main() {
       nombre: "Tomas",
       apellidos: "Navas",
       email: "tomas.navas@gmail.com",
+      telefono: "898513468",
+      movil: "654987321",
       username: "Zhomas",
       direccion: "Moncada zona chunga",
       codigoPostal: 25201,
       ciudad: "Moncada",
       provincia: "Bcn",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -102,12 +112,17 @@ async function main() {
       nombre: "Marti",
       apellidos: "Olle",
       email: "marti.olle@hotmail.com",
+      telefono: "698741236",
+      movil: "654987321",
       username: "martiollealavedra",
       direccion: "per allà Girona",
       codigoPostal: 25202,
       ciudad: "Vic?",
       provincia: "Girona",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -117,12 +132,17 @@ async function main() {
       nombre: "Alex",
       apellidos: "Lopez",
       email: "alex.lopez@yahoo.es",
+      telefono: "632589741",
+      movil: "654987321",
       username: "exal24",
       direccion: "per allà la sortida de la diagonal",
       codigoPostal: 25203,
       ciudad: "Esplugues",
       provincia: "Barcelona",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -132,12 +152,17 @@ async function main() {
       nombre: "Usuario1",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario1@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario1",
       direccion: "casa Usuario1",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -147,12 +172,17 @@ async function main() {
       nombre: "Usuario2",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario2@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario2",
       direccion: "casa Usuario2",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -162,12 +192,17 @@ async function main() {
       nombre: "Usuario3",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario3@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario3",
       direccion: "casa Usuario3",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -177,12 +212,17 @@ async function main() {
       nombre: "Usuario4",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario4@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario4",
       direccion: "casa Usuario4",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -192,12 +232,17 @@ async function main() {
       nombre: "Usuario5",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario5@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario5",
       direccion: "casa Usuario5",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -207,12 +252,17 @@ async function main() {
       nombre: "Usuario6",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario6@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario6",
       direccion: "casa Usuario6",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -222,12 +272,17 @@ async function main() {
       nombre: "Usuario7",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario7@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario7",
       direccion: "casa Usuario7",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
     {
@@ -237,12 +292,17 @@ async function main() {
       nombre: "Usuario8",
       apellidos: "Apellido1 Apellido2 ",
       email: "usuario8@gmail.com",
+      telefono: "666666666",
+      movil: "654987321",
       username: "Usuario8",
       direccion: "casa Usuario8",
       codigoPostal: 25200,
       ciudad: "Ciudad",
       provincia: "provincia",
-      imagenPerfil: fs.readFileSync(`../db/UserImages/DemoUser.jpg`),
+      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
+        `../db/UserImages/DemoUser.jpg`,
+        { encoding: "base64" }
+      )}`,
       password: await encryptPassword("fullstack"),
     },
   ]);

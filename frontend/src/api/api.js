@@ -35,6 +35,8 @@ const authApiCall = (method, path, body) => {
 };
 export const getUsuario = (email) =>
   authApiCall("GET", `/usuarios/email/${email}`);
+export const saveUsuario = ({ userInfo }) =>
+  authApiCall("PUT", `/usuarios/${userInfo._id}`, userInfo);
 export const getCompetition = (id) =>
   authApiCall("GET", `/competiciones/${id}`);
 export const getCompetitions = (id) =>
@@ -50,6 +52,11 @@ export const signUpOnCompetition = ({ signupdata }) =>
     signupdata
   );
 export const getMatches = (id) => authApiCall("GET", `/partidos/userId/${id}`);
+export const getMatchesOfOneCompetition = (ids) =>
+  authApiCall(
+    "GET",
+    `/competiciones/userId/${ids.userId}/${ids.competitionId}/Matches`
+  );
 export const getRanking = (id) =>
   authApiCall("GET", `/rankings/competition/${id}`);
 export const subscribeOrUnsubscribeOnCompetition = (ids) =>
@@ -58,6 +65,5 @@ export const subscribeOrUnsubscribeOnCompetition = (ids) =>
     `/competiciones/subscribeorunsubscrive/${ids.userId}/${ids.competitionId}`
   );
 export const getNamesUser = (id) => authApiCall("GET", `/usuarios/name/${id}`);
-
 export const submitMatch = (id, match) =>
   authApiCall("PUT", `/partidos/updatePartido/userId/${id}`, { match });

@@ -70,8 +70,8 @@ export let menuByScreen = {
 };
 
 const logOutFunction = () => {
-  usr.deleteUser();
   token.deleteToken();
+  usr.deleteUser();
 };
 
 export let menuByUserInfo = {
@@ -82,9 +82,7 @@ export let menuByUserInfo = {
       {
         name: "Cerrar sesión",
         link: "/",
-        function: () => {
-          logOutFunction();
-        },
+        isLogOut: true,
       },
     ],
     showUserImage: true,
@@ -98,9 +96,7 @@ export let menuByUserInfo = {
       {
         name: "Cerrar sesión",
         link: "/",
-        function: () => {
-          logOutFunction();
-        },
+        isLogOut: true,
       },
     ],
     showUserImage: true,
