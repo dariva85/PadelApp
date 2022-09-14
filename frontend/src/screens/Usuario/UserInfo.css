@@ -1,0 +1,79 @@
+#info-container {
+  height: fit-content;
+  margin: 3rem 4rem 4rem 6rem;
+  align-items: center;
+}
+
+#info-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  color: var(--Primary_Color_BG_Ligth_Colored);
+}
+.info-column h2 {
+  color: var(--Primary_Color_BG_Ligth_Colored);
+  margin-bottom: 0.5rem;
+}
+.info-column {
+  width: 90%;
+}
+.info-column label input {
+  margin-bottom: 1rem;
+}
+
+.user-input {
+  border: 3px solid #2d5e72;
+  border-radius: 5px;
+  width: 20rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+#info-colmn-three {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+#img-buttons {
+  margin-top: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+#upload-img {
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: var(--Primary_Color_BG_Ligth_Colored);
+  color: var(--Secondary_Color_BG_Dark_Colored);
+}
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: var(--Primary_Color_BG_Ligth_Colored);
+  color: var(--Secondary_Color_BG_Dark_Colored);
+  cursor: pointer;
+}
+#info-save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 2rem;
+}
+
+#info-save-button {
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  width: fit-content;
+  border-radius: 5px;
+  background-color: var(--Accept);
+  color: var(--Secondary_Color_BG_Dark_Colored);
+  cursor: pointer;
+}

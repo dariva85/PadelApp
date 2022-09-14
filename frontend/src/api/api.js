@@ -35,6 +35,8 @@ const authApiCall = (method, path, body) => {
 };
 export const getUsuario = (email) =>
   authApiCall("GET", `/usuarios/email/${email}`);
+export const saveUsuario = ({ userInfo }) =>
+  authApiCall("PUT", `/usuarios/${userInfo._id}`, userInfo);
 export const getCompetition = (id) =>
   authApiCall("GET", `/competiciones/${id}`);
 export const getCompetitions = (id) =>

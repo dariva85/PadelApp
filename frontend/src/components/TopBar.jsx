@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
 import { useNavigate } from "react-router-dom";
@@ -16,8 +16,7 @@ export default function TopBar(props) {
             id={item.link}
             className="nav-link"
             onClick={() => {
-              console.log(item);
-              if (item.function != undefined) item.function();
+              if (item.isLogOut != undefined && item.isLogOut) props.logout();
               navigate(item.link);
             }}
           >
@@ -79,7 +78,7 @@ export default function TopBar(props) {
         return (
           <img
             id="usr-image"
-            src={`data:image/jpeg;base64, ${usr.readUser().imagenPerfil}`}
+            src={usr.readUser().imagenPerfil}
             onClick={() => {
               navigate("/userinfo");
             }}

@@ -43,8 +43,8 @@ const userSchema = mongoose.Schema(
       maxlength: 40,
     },
     codigoPostal: {
-      type: Number,
-      max: 99999,
+      type: String,
+      maxlength: 10,
     },
     ciudad: {
       type: String,
@@ -55,13 +55,25 @@ const userSchema = mongoose.Schema(
       maxlength: 20,
     },
     imagenPerfil: {
-      data: Buffer,
+      data: String,
       contentType: String,
     },
     password: {
       type: String,
       required: true,
       select: false, // Hace que este Schema no retorne la contrasenya.
+    },
+    telefono: {
+      type: Number,
+      required: false,
+    },
+    telefono: {
+      type: String,
+      required: false,
+    },
+    movil: {
+      type: String,
+      required: false,
     },
   },
   { timestamps: false }

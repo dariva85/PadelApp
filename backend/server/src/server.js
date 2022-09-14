@@ -14,12 +14,11 @@ const RankingRouter = require("./componentes/rankings/ranking.service.js");
 const InscripcionRouter = require("./componentes/inscripcion/inscripcion.service.js");
 const { RunMatchTimeoutValidator } = require("./MatchTimeoutValidator");
 
-
 const app = express();
 
 app.use(cors());
 app.use(morgan("dev"));
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 
 //Hay que habilitar todos los endpoints que se vayan a utilizar
 app.use("/usuarios/", needsAuthToken, UserRouter);

@@ -5,17 +5,15 @@ import "./LoginScreen.css";
 import * as api from "../api/api.js";
 import * as tk from "../api/token";
 import * as usr from "../User";
+import * as topBarCtxt from "../components/TopBarCtxt";
 
 export default function LoginScreen(onLogin) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState("login");
   const [message, setMessage] = useState(null);
-  const [token, setToken] = useState(tk.readToken);
 
   const SaveToken = (token) => {
-    setToken(token);
     tk.saveToken(token);
   };
 
