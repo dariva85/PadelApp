@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs";
+import { BiErrorAlt } from "react-icons/bi";
 import "./PasswordChange.css";
 import * as topBarCtxt from "../../components/TopBarCtxt";
 
 export default function PasswordChange() {
   const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
+  const [passwordWarning, setPasswordWarning] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [currentPasswordType, setCurrentPasswordType] = useState("password");
   const [newPasswordType, setNewPasswordType] = useState("password");
@@ -61,8 +63,14 @@ export default function PasswordChange() {
     );
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(newPassword);
+    console.log(repeatPassword);
+    if(newPassword != repeatPassword) {
+      setPasswordWarning("La nueva contraseña no coincide");
+      return;
+    }
   }
 
   const reset = () => {
@@ -72,10 +80,17 @@ export default function PasswordChange() {
     setNewPasswordType("password");
     setCurrentPasswordType("password");
     setRepeatPasswordType("password");
+    setPasswordWarning("");
   }
 
   return (
     <div id="passwordChange-screen">
+      <div id="warning" hidden={passwordWarning === "" ? true : false}>
+        <div id="error-icon">
+          < BiErrorAlt />
+        </div>
+      {passwordWarning}
+      </div>
       <form id="password-form" onSubmit={handleSubmit}>
         <label className ="label-form">
           Contraseña actual
