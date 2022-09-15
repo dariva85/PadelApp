@@ -37,9 +37,7 @@ export default function MatchesCard(props) {
     setTheMatch(Match);
   }
 
-  useEffect( () => {
-    console.log("ha cambiado")
-  },[Match])
+  
   const sendResults = async () =>{
 
     //Hay que crear un endpoint donde yo le digo quien soy y que resultados les doy.
@@ -57,6 +55,7 @@ export default function MatchesCard(props) {
       Match.matches.allValidadores = result.result.results.allValidadores;
       setTheMatch(Match);
       console.log(Match)
+      window.location.reload(false);
     }
   };
   const AddButton = (Status,match) => {
