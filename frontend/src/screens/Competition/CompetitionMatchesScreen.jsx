@@ -1,13 +1,13 @@
-import React, { Component, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import * as topBarCtxt from "../../components/TopBarCtxt";
 import MatchesCard from "../../components/MatchesCard";
 import "./CompetitionMatchesScreen.css";
 import * as api from "../../api/api.js";
+import * as usr from "../../User";
 
 export default function CompetitionMatchesScreen() {
   const { competitionId } = useParams();
-  const [competition, setCompetition] = useState([]);
   const [names, setNames] = useState([]);
   const [matches, setMatches] = useState([]);
   const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
