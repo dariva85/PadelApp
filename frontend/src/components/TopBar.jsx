@@ -3,10 +3,11 @@ import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
-import Textransition, { presets } from "react-text-transition";
 
 export default function TopBar(props) {
   const navigate = useNavigate();
+  const [fade, setFade] = useState("fade-in");
+  const [fadeCount, setFadeCount] = useState(0);
 
   const AddNavBarLinkedItems = (LinkedItems) => {
     if (LinkedItems != undefined) {
@@ -20,11 +21,9 @@ export default function TopBar(props) {
               navigate(item.link);
             }}
           >
-            <Textransition springConfig={presets.molasses}>
-              <div className="text-transition-div">
-                {AddNavBarItemName(item)}
-              </div>
-            </Textransition>
+            <div className={`text-transition-div, ${fade}`}>
+              {AddNavBarItemName(item)}
+            </div>
           </div>
         );
       });
@@ -44,9 +43,9 @@ export default function TopBar(props) {
         return (
           <div id="nav-menu">
             <div id="grey-nav">
-              <Textransition pringConfig={presets.molasses}>
-                <div className="text-transition-div">{props.title}</div>
-              </Textransition>
+                <div className={`text-transition-div, ${fade}`}>
+                  {props.title}
+                </div>
             </div>
             <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
           </div>
@@ -87,6 +86,20 @@ export default function TopBar(props) {
       }
     } catch (e) {}
   };
+
+  const manageFade = () => {
+    setFade("");
+  };
+
+  useEffect(() => {
+    const timeout = setInterval(() => {
+      manageFade();
+    }, 2000);
+  }, [fade]);
+
+  useEffect(() => {
+    setFade("fade-in");
+  }, [props]);
 
   return (
     <div id="top-bar-main-div">

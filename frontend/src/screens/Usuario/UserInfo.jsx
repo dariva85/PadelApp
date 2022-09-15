@@ -208,7 +208,7 @@ export default function UserInfo() {
               }
             }}
           >
-            Save
+            Guardar
           </h2>
         </div>
       </div>
