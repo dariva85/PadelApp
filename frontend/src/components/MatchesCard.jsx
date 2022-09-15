@@ -8,8 +8,20 @@ export default function MatchesCard(props) {
   const [Match, setTheMatch] = useState(props);
   
   let NombreCompeti = props.matches.competicion[0].nombre
-  let Fecha = String(new Date(props.matches.fecha).getDate())+"/"+String(new Date(props.matches.fecha).getMonth()+ 1)+"/"+String(new Date(props.matches.fecha).getFullYear())
-  let Hora = String(new Date(props.matches.fecha).getHours())+":"+String(new Date(props.matches.fecha).getMinutes())
+  let Dia = String(new Date(props.matches.fecha).getDate())
+  let Month = String(new Date(props.matches.fecha).getMonth()+ 1);
+  let Year = String(new Date(props.matches.fecha).getFullYear());
+  console.log(Year.length)
+  if (Dia.length == 1){Dia = "0"+Dia;}
+  if (Month.length == 1){Month = "0"+Month;}
+  let Fecha = Dia +"/"+Month+"/"+ Year;
+  let Horas = String(new Date(props.matches.fecha).getHours());
+  let Minutos =String(new Date(props.matches.fecha).getMinutes());
+  if (Horas.length == 1){Horas = "0"+Horas;}
+  if (Minutos.length == 1){Minutos = "0"+Minutos;}
+
+  
+  let Hora = Horas+":"+Minutos;
   let Status = props.matches.estado
   let Names = {};
 
@@ -25,14 +37,26 @@ export default function MatchesCard(props) {
     setTheMatch(Match);
   }
 
-  function sendResults (){
+  
+  const sendResults = async () =>{
 
     //Hay que crear un endpoint donde yo le digo quien soy y que resultados les doy.
     console.log(Match.matches._id)
-    api.submitMatch(usr.readUser()._id,{
+    let result = await api.submitMatch(usr.readUser()._id,{
       _id:Match.matches._id,
       allScoreBoard:Match.matches.allScoreBoard});
+        
+    //Si una de esas dos cambia debo sobreescribir ese valor y el marcador de macth
+    console.log(Match)
+    if (result.result.results.estado !== Match.matches.estado || result.result.results.allValidadores.length !== Match.matches.allValidadores.length){
 
+      Match.matches.allScoreBoard = result.result.results.allScoreBoard;
+      Match.matches.estado = result.result.results.estado;
+      Match.matches.allValidadores = result.result.results.allValidadores;
+      setTheMatch(Match);
+      console.log(Match)
+      window.location.reload(false);
+    }
   };
   const AddButton = (Status,match) => {
     

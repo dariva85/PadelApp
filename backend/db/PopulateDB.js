@@ -37,6 +37,8 @@ let idLiga2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab9f");
 
 let idPartido1 = mongodb.ObjectId("62adf55dd1d8cd0272ddab91");
 let idPartido2 = mongodb.ObjectId("62adf55dd1d8cd0272ddab92");
+let idPartido3 = mongodb.ObjectId("62adf55dd1d8cd0272ddab93");
+let idPartido4 = mongodb.ObjectId("62adf55dd1d8cd0272ddab94");
 
 envVarNames.forEach((varName) => {
   if (process.env[varName] === undefined) {
@@ -471,7 +473,7 @@ async function main() {
       idCompeticion: idLiga2,
       estado: "Pending",
       fecha: new Date(new Date().setDate(new Date().getDay() + 10)),
-      fechaValidacion: new Date(new Date().setDate(new Date().getDay() + 10)),
+      fechaValidacion: new Date(new Date().setDate(new Date().getDay() + 10000)),
       direccion: "Gerona",
       allScoreBoard: [
         {
@@ -512,6 +514,102 @@ async function main() {
         },
       ],
       allValidadores: [idDavid, idTomas, idMarti, idAlex],
+    },
+    {
+      _id: idPartido3,
+      idUsuario: [idDavid, idTomas, idMarti, idAlex],
+      idCompeticion: idLiga2,
+      estado: "Pending",
+      fecha: new Date(new Date().setDate(new Date().getDay() + 10)),
+      fechaValidacion: new Date(new Date().setDate(new Date().getDay() + 110)),
+      direccion: "Gerona",
+      allScoreBoard: [
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 0,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 6,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idMarti, idAlex],
+              scoreboard: 4,
+            },
+            {
+              player: [idTomas, idDavid],
+              scoreboard: 6,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idAlex, idTomas],
+              scoreboard: 7,
+            },
+            {
+              player: [idMarti, idDavid],
+              scoreboard: 5,
+            },
+          ],
+        },
+      ],
+      allValidadores: [idMarti, idAlex],
+    },
+    {
+      _id: idPartido4,
+      idUsuario: [idDavid, idTomas, idMarti, idAlex],
+      idCompeticion: idLiga2,
+      estado: "Pending",
+      fecha: new Date(new Date().setDate(new Date().getDay() + 10)),
+      fechaValidacion: new Date(new Date().setDate(new Date().getDay() + 10)),
+      direccion: "Gerona",
+      allScoreBoard: [
+        {
+          final_score: [
+            {
+              player: [idMarti, idTomas],
+              scoreboard: 0,
+            },
+            {
+              player: [idAlex, idDavid],
+              scoreboard: 6,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idMarti, idAlex],
+              scoreboard: 4,
+            },
+            {
+              player: [idTomas, idDavid],
+              scoreboard: 6,
+            },
+          ],
+        },
+        {
+          final_score: [
+            {
+              player: [idAlex, idTomas],
+              scoreboard: 7,
+            },
+            {
+              player: [idMarti, idDavid],
+              scoreboard: 5,
+            },
+          ],
+        },
+      ],
+      allValidadores: [idMarti, idAlex],
     },
   ]);
 
@@ -652,7 +750,7 @@ async function main() {
       idCompeticion: idLiga1,
       idUsuario: idTomas,
       clasificacion: {
-        efficiencia: 0.33,
+        efficiencia: 1.33,
         efficienciaPuntos: 0.03,
         tendencia: 1,
         partidosJugados: 6,
