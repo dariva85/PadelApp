@@ -217,7 +217,6 @@ const submitMatchesResult = async (req, res) => {
       }
       // Si no son los mismos borro todos los validadores y me añado a validadores.
       if (!iguales) {
-        
         doc = await Partido.findOneAndUpdate(
           { _id: match._id },
           {
@@ -228,17 +227,27 @@ const submitMatchesResult = async (req, res) => {
       } else {
         console.log("Es el mismo!!!");
         console.log(doc.allValidadores.length);
-        if(doc.allValidadores.length>=2){
-          
-          
+        if (doc.allValidadores.length >= 2) {
           doc = await Partido.findOneAndUpdate(
             { _id: match._id },
             {
-              allValidadores: [...doc.allValidadores,...[mongoose.Types.ObjectId(id)]],
+              allValidadores: [
+                ...doc.allValidadores,
+                ...[mongoose.Types.ObjectId(id)],
+              ],
               estado: "Closed",
             }
           );
-          
+        } else {
+          doc = await Partido.findOneAndUpdate(
+            { _id: match._id },
+            {
+              allValidadores: [
+                ...doc.allValidadores,
+                ...[mongoose.Types.ObjectId(id)],
+              ],
+            }
+          );
         }
         // Si es el mismo y si tras añadirme la lista de validadores la longitud de esta lista es 3 o mayor, cambiar el estado del partido a "Closed".
       }
@@ -255,7 +264,8 @@ const submitMatchesResult = async (req, res) => {
     }
   }
   //let doc = {};
-  res.status(200).json({ results: ["Done"] });
+  res.status(200).json({ results: doc });
+  
 };
 
 module.exports = {

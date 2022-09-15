@@ -37,14 +37,27 @@ export default function MatchesCard(props) {
     setTheMatch(Match);
   }
 
-  function sendResults (){
+  useEffect( () => {
+    console.log("ha cambiado")
+  },[Match])
+  const sendResults = async () =>{
 
     //Hay que crear un endpoint donde yo le digo quien soy y que resultados les doy.
     console.log(Match.matches._id)
-    api.submitMatch(usr.readUser()._id,{
+    let result = await api.submitMatch(usr.readUser()._id,{
       _id:Match.matches._id,
       allScoreBoard:Match.matches.allScoreBoard});
+        
+    //Si una de esas dos cambia debo sobreescribir ese valor y el marcador de macth
+    console.log(Match)
+    if (result.result.results.estado !== Match.matches.estado || result.result.results.allValidadores.length !== Match.matches.allValidadores.length){
 
+      Match.matches.allScoreBoard = result.result.results.allScoreBoard;
+      Match.matches.estado = result.result.results.estado;
+      Match.matches.allValidadores = result.result.results.allValidadores;
+      setTheMatch(Match);
+      console.log(Match)
+    }
   };
   const AddButton = (Status,match) => {
     
