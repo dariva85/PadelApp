@@ -68,9 +68,9 @@ export default function RankingScreen() {
           </td>
           <td className="name-column">{`${item.nombre} ${item.apellidos}`}</td>
           <td className="percentage-column">{`${item.clasificacion.efficiencia} %`}</td>
+          <td className="num-column">{item.clasificacion.partidosJugados}</td>
           <td className="num-column">{item.clasificacion.partidosGanados}</td>
           <td className="num-column">{item.clasificacion.partidosPerdidos}</td>
-          <td className="num-column">{item.clasificacion.partidosJugados}</td>
           <td className="num-column">{item.clasificacion.puntosAFavor}</td>
           <td className="num-column">{item.clasificacion.puntosEnContra}</td>
         </tr>
@@ -104,14 +104,14 @@ export default function RankingScreen() {
               <th id="EFF" className="percentage-column">
                 EFF
               </th>
+              <th id="PJ" className="num-column">
+                PJ
+              </th>
               <th id="PG" className="num-column">
                 PG
               </th>
               <th id="PP" className="num-column">
                 PP
-              </th>
-              <th id="PJ" className="num-column">
-                PJ
               </th>
               <th id="PF" className="num-column">
                 PF
