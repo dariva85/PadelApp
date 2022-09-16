@@ -1,18 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import { BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs";
 import { BiErrorAlt } from "react-icons/bi";
+import * as usr from "../../User";
 import "./PasswordChange.css";
+import * as api from "../../api/api";
 import * as topBarCtxt from "../../components/TopBarCtxt";
 
 export default function PasswordChange() {
   const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
   const [passwordWarning, setPasswordWarning] = useState("");
+  const [warningType, setWarningType] = useState("error");
   const [newPassword, setNewPassword] = useState("");
   const [currentPasswordType, setCurrentPasswordType] = useState("password");
   const [newPasswordType, setNewPasswordType] = useState("password");
   const [repeatPasswordType, setRepeatPasswordType] = useState("password");
   const [currentPassword, setCurrentPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [userInfo, setUserInfo] = useState(usr.readUser());
 
   const togglePassword = ()=>{
     if(passwordType==="password")
@@ -26,7 +30,7 @@ export default function PasswordChange() {
   const startVisibilityIcon = (passwordType, passwordId) => {
     if(passwordType == 'text') {
       return (
-        <button className="icon" onClick={() => {
+        <button type="button" className="icon" onClick={() => {
           if(passwordId === 'new') {
             setNewPasswordType('password');
           } else if(passwordId === 'current') {
@@ -40,7 +44,7 @@ export default function PasswordChange() {
         </button> );
     } else {
         return (
-            <button className="icon" onClick={() => {
+            <button type="button" className="icon" onClick={() => {
               if(passwordId === 'new') {
                 setNewPasswordType('text');
               } else if(passwordId === 'current') {
@@ -65,12 +69,28 @@ export default function PasswordChange() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(newPassword);
-    console.log(repeatPassword);
     if(newPassword != repeatPassword) {
+      setWarningType('error');
       setPasswordWarning("La nueva contraseña no coincide");
       return;
     }
+    const { success, result: token, error } = await api.login({email: userInfo.email, password: currentPassword});
+    if(success === false) {
+      setWarningType('error');
+      setPasswordWarning("La contraseña actual no es correcta");
+      return;
+    }
+    setUserInfo({
+      ...userInfo,
+      password: newPassword,
+    });
+    const results = await api.updatePassword(userInfo);
+    if(results.success) {
+      setPasswordWarning("La contraseña se ha cambiado correctamente");
+      setWarningType('success');
+    }
+    
+
   }
 
   const reset = () => {
@@ -84,14 +104,16 @@ export default function PasswordChange() {
   }
 
   return (
-    <div id="passwordChange-screen">
-      <div id="warning" hidden={passwordWarning === "" ? true : false}>
-        <div id="error-icon">
-          < BiErrorAlt />
+    <div id="passwordChange-screen" className="main-screen">
+      <div hidden={passwordWarning === "" ? true : false} >
+        <div id={warningType} >
+          <div id={warningType + '-icon'} >
+            < BiErrorAlt />
+          </div>
+        {passwordWarning}
         </div>
-      {passwordWarning}
       </div>
-      <form id="password-form" onSubmit={handleSubmit}>
+      <form id="password-form">
         <label className ="label-form">
           Contraseña actual
           <div class="show-password">

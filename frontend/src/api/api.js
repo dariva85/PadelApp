@@ -33,6 +33,8 @@ const authApiCall = (method, path, body) => {
     Authorization: `Bearer ${accessToken}`,
   });
 };
+export const updatePassword = (userInfo) =>
+  authApiCall("PUT", `/usuarios/${userInfo._id}/updatePassword`, userInfo);
 export const getUsuario = (email) =>
   authApiCall("GET", `/usuarios/email/${email}`);
 export const saveUsuario = ({ userInfo }) =>
