@@ -80,17 +80,15 @@ export default function PasswordChange() {
       setPasswordWarning("La contraseña actual no es correcta");
       return;
     }
-    setUserInfo({
-      ...userInfo,
-      password: newPassword,
-    });
-    const results = await api.updatePassword(userInfo);
+    const data = {_id: userInfo._id, password: newPassword}
+    const results = await api.updatePassword(data);
     if(results.success) {
-      setPasswordWarning("La contraseña se ha cambiado correctamente");
       setWarningType('success');
+      setPasswordWarning("La contraseña se ha cambiado correctamente");
     }
-    
-
+    setCurrentPassword("");
+    setNewPassword("");
+    setRepeatPassword("");
   }
 
   const reset = () => {
@@ -117,27 +115,37 @@ export default function PasswordChange() {
         <label className ="label-form">
           Contraseña actual
           <div class="show-password">
-            <input className="box-form" type={currentPasswordType} onChange={e => setCurrentPassword(e.target.value)} value={currentPassword} name="Contraseña actual" />
+            <input className="box-form" type={currentPasswordType} 
+            onChange={e => setCurrentPassword(e.target.value)} 
+            value={currentPassword} name="Contraseña actual" />
             {startVisibilityIcon(currentPasswordType, 'current')}
         </div>
         </label>
         <label className ="label-form">
           Contraseña nueva
           <div class="show-password">
-            <input className="box-form" type={newPasswordType} onChange={e => setNewPassword(e.target.value)} value={newPassword} name="Contraseña nueva" />
+            <input className="box-form" type={newPasswordType} 
+            onChange={e => setNewPassword(e.target.value)} 
+            value={newPassword} name="Contraseña nueva" />
             {startVisibilityIcon(newPasswordType, 'new')}
         </div>
         </label>
         <label className ="label-form">
           Repite contraseña
           <div class="show-password">
-            <input className="box-form" type={repeatPasswordType} onChange={e => setRepeatPassword(e.target.value)} value={repeatPassword} name="Repite contraseña" />
+            <input className="box-form" type={repeatPasswordType} 
+            onChange={e => setRepeatPassword(e.target.value)} 
+            value={repeatPassword} name="Repite contraseña" />
             {startVisibilityIcon(repeatPasswordType, 'repeat')}
         </div>
         </label>
         <div id="buttons-form">
-          <button type="submit" style={{color:"green"}} onClick={handleSubmit} className="submit-button">Aceptar</button>
-          <button type="submit" style={{color:"red"}} onClick={reset} className="submit-button">Cancelar</button>
+          <button type="submit" style={{color:"green"}} 
+          onClick={handleSubmit} 
+          className="submit-button">Aceptar</button>
+          <button type="submit" style={{color:"red"}} 
+          onClick={reset} 
+          className="submit-button">Cancelar</button>
         </div>
       </form>
     </div>
