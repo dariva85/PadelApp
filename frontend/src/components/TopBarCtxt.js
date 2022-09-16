@@ -126,7 +126,7 @@ export const menuByCompetition = (competitionId) => {
       showHomeLogo: true,
     },
 
-    MatchesScreen: {
+    CompetitionMatchesScreen: {
       title: "Partidos",
       linkedItems: [
         {
