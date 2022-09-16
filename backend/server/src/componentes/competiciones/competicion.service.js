@@ -23,4 +23,7 @@ routerCompeticiones
 routerCompeticiones
   .route("/subscribeorunsubscrive/:userId/:competitionId")
   .put(catchErrors(competitionControllers.subscribeOrUnsubscribe));
+routerCompeticiones
+  .route("/userId/:userId/:competitionId/partidos")
+  .get(catchErrors(competitionControllers.getMatchesOfOneCompetition));
 module.exports = routerCompeticiones;

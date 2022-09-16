@@ -57,7 +57,7 @@ export const getMatches = (id) => authApiCall("GET", `/partidos/userId/${id}`);
 export const getMatchesOfOneCompetition = (ids) =>
   authApiCall(
     "GET",
-    `/competiciones/userId/${ids.userId}/${ids.competitionId}/Matches`
+    `/competiciones/userId/${ids.userId}/${ids.competitionId}/partidos`
   );
 export const getRanking = (id) =>
   authApiCall("GET", `/rankings/competition/${id}`);

@@ -17,7 +17,10 @@ export default function CompetitionMatchesScreen() {
       success,
       result: Matches,
       error,
-    } = await api.getMatchesOfOneCompetition(competitionId);
+    } = await api.getMatchesOfOneCompetition({
+      competitionId: competitionId._id,
+      userId: usr.readUser()._id,
+    });
     if (success) {
       setMatches(Matches.results[0]);
     } else {
@@ -28,7 +31,7 @@ export default function CompetitionMatchesScreen() {
   useEffect(() => {
     LoadMatches();
     topBarCtxt.setTopBarInfo(
-      topBarCtxt.menuByCompetition(competitionId).MatchesScreen,
+      topBarCtxt.menuByCompetition(competitionId).CompetitionMatchesScreen,
       topBarInfo,
       setTopBarInfo
     );
