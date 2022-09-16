@@ -80,6 +80,26 @@ const updateOne = async (req, res) => {
   }
 };
 
+const updatePassword = async (req, res) => {
+  const { id } = req.params;
+  let doc = {};
+  try {
+    const encryptedPassword = await Auth.encryptPassword(req.body.password);
+    doc = await Usuario.findOneAndUpdate({ _id: id }, {password: encryptedPassword}, {
+      new: true,
+    });
+
+    if (doc === null) {
+      errMalformed(res, `User with id '${id}' not found`, "NotFound");
+    } else {
+      res.status(200).json({ results: [doc] });
+    }
+  } catch(e) {
+    console.log(e);
+  }
+    
+};
+
 //Checked
 const findOne = async (req, res) => {
   const { id } = req.params;
@@ -226,4 +246,5 @@ module.exports = {
   findAllofOneMatch,
   findOneByEmail,
   findTheName,
+  updatePassword,
 };

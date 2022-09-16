@@ -11,6 +11,9 @@ routerUsuarios
   .get(catchErrors(userControllers.findOne))
   .delete(catchErrors(userControllers.deleteOne));
 routerUsuarios
+  .route("/:id/updatePassword")
+  .put(catchErrors(userControllers.updatePassword));
+routerUsuarios
   .route("/email/:email")
   .get(catchErrors(userControllers.findOneByEmail));
 

@@ -45,7 +45,6 @@ export default function LoginScreen(onLogin) {
         return false;
       }
     } catch (e) {
-      console.log(e);
       return false;
     }
   };
