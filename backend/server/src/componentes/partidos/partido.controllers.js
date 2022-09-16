@@ -3,6 +3,7 @@ const Competicion = require("../competiciones/competicion.model");
 const Usuario = require("../usuarios/usuario.model");
 const { errMalformed } = require("../../errors");
 const mongoose = require("mongoose");
+const rankingUpdate = require("../rankings/rankingUpdate");
 
 //Checked
 const createOne = async (req, res) => {
@@ -228,6 +229,7 @@ const submitMatchesResult = async (req, res) => {
         console.log("Es el mismo!!!");
         console.log(doc.allValidadores.length);
         if (doc.allValidadores.length >= 2) {
+          await rankingUpdate.UpdateRankingWithMatchResults(doc);
           doc = await Partido.findOneAndUpdate(
             { _id: match._id },
             {
@@ -265,7 +267,6 @@ const submitMatchesResult = async (req, res) => {
   }
   //let doc = {};
   res.status(200).json({ results: doc });
-  
 };
 
 module.exports = {

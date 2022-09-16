@@ -11,7 +11,7 @@ const scoreboard = new Schema({
   tendencia: Number,
   partidosJugados: Number,
   partidosGanados: Number,
-  pardisosPerdidos: Number,
+  partidosPerdidos: Number,
   puntosAFavor: Number,
   puntosEnContra: Number,
   efficiencia: Number,
@@ -24,7 +24,11 @@ const rankingSchema = mongoose.Schema(
       type: Schema.ObjectId,
       ref: "competiciones",
     },
-    clasificacion: [scoreboard],
+    idUsuario: {
+      type: Schema.ObjectId,
+      ref: "usuarios",
+    },
+    clasificacion: scoreboard,
   },
   { timestamps: false }
 );
