@@ -9,6 +9,7 @@ const envVarNames = [
   "DB_HOST",
   "DB_PORT",
   "DB_DATABASE",
+  "FRONT_DIR",
 ];
 
 let envVars = {};

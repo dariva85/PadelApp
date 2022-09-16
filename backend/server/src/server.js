@@ -30,9 +30,7 @@ app.use("/inscription/", needsAuthToken, InscripcionRouter);
 //Este endpoint está en usuario pero no está atado al path "/usuarios"
 require("./componentes/usuarios/usuario.controllers").addRoutesTo(app);
 
-app.get("/", async (req, res) => {
-  res.status(200).json({ ok: true });
-});
+app.use("/", express.static(config.FRONT_DIR));
 
 app.all("/*", async (req, res, next) => {
   next(new ApiError(404, `Not Found`));
