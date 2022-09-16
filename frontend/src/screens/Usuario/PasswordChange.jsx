@@ -104,7 +104,7 @@ export default function PasswordChange() {
   }
 
   return (
-    <div id="passwordChange-screen" className="main-screen">
+    <div id="passwordChange-screen" className="main-screen" onSubmit={handleSubmit}>
       <div hidden={passwordWarning === "" ? true : false} >
         <div id={warningType} >
           <div id={warningType + '-icon'} >
@@ -136,8 +136,8 @@ export default function PasswordChange() {
         </div>
         </label>
         <div id="buttons-form">
-          <button style={{color:"green"}} onClick={handleSubmit} className="submit-button">Aceptar</button>
-          <button style={{color:"red"}} onClick={reset} className="submit-button">Cancelar</button>
+          <button type="submit" style={{color:"green"}} onClick={handleSubmit} className="submit-button">Aceptar</button>
+          <button type="submit" style={{color:"red"}} onClick={reset} className="submit-button">Cancelar</button>
         </div>
       </form>
     </div>
