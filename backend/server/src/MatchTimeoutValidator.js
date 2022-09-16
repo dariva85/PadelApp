@@ -1,10 +1,11 @@
 const { default: mongoose } = require("mongoose");
 const Partido = require("./componentes/partidos/partido.model");
+const rankingUpdate = require("./componentes/rankings/rankingUpdate");
 
 const RunMatchTimeoutValidator = async () => {
   setInterval(() => {
     ValidateTimedOutMatches();
-  }, 60000);
+  }, 3600000);
 };
 
 const ValidateTimedOutMatches = async () => {
@@ -16,7 +17,7 @@ const ValidateTimedOutMatches = async () => {
     })
       .lean()
       .exec();
-      
+
     TimedOutMatches.map(async (match) => {
       match.estado = "Closed";
 
@@ -27,6 +28,7 @@ const ValidateTimedOutMatches = async () => {
           new: true,
         }
       );
+      await rankingUpdate.UpdateRankingWithMatchResults(match);
     });
   } catch (e) {
     console.log(e);
