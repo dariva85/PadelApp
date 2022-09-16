@@ -10,11 +10,6 @@ export default function MatchesScreen() {
   const [macthes, setMacthes] = useState([]);
   const [names, setNames] = useState([]);
 
-  let LinkedMenuItems = [
-    { name: "Mis Competiciones", link: "/me/competitions" },
-    { name: "Market", link: "/me/market" },
-  ];
-
   const LoadMatches = async () => {
     const {
       success,

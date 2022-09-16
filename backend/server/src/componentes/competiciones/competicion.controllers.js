@@ -2,6 +2,7 @@ const Competicion = require("./competicion.model");
 const Usuario = require("../usuarios/usuario.model");
 const Partido = require("../partidos/partido.model");
 const { errMalformed } = require("../../errors");
+const mongoose = require("mongoose");
 
 //Checked
 const createOne = async (req, res) => {
@@ -177,14 +178,15 @@ const subscribeOrUnsubscribe = async (req, res) => {
   }
 };
 const getMatchesOfOneCompetition = async (req, res) => {
-  const { id } = req.params;
+  const { competitionId, userId } = req.params;
 
   try {
     const doc = await Partido.aggregate([
       [
         {
           $match: {
-            idUsuario: mongoose.Types.ObjectId(id),
+            idUsuario: mongoose.Types.ObjectId(userId),
+            idCompeticion: mongoose.Types.ObjectId(competitionId),
           },
         },
         {

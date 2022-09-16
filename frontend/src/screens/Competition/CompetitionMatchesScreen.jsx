@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import "./CompetitionMatchesScreen.css";
 import * as topBarCtxt from "../../components/TopBarCtxt";
 import MatchesCard from "../../components/MatchesCard";
-import "./CompetitionMatchesScreen.css";
 import * as api from "../../api/api.js";
 import * as usr from "../../User";
 
@@ -18,7 +18,7 @@ export default function CompetitionMatchesScreen() {
       result: Matches,
       error,
     } = await api.getMatchesOfOneCompetition({
-      competitionId: competitionId._id,
+      competitionId: competitionId,
       userId: usr.readUser()._id,
     });
     if (success) {
