@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - data:/data/db
+  server:
+    image: padelapp/server
+    restart: always
+    environment:
+      DB_HOST: mongo
+      SERVER_PORT: 8888
+    ports:
+      - 127.0.0.1:8888:8888
+
+volumes:
+  data:
