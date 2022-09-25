@@ -1,5 +1,5 @@
 //Auth Service
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../../../config");
 const User = require("../usuario.model");
@@ -10,6 +10,7 @@ const encryptPassword = async (password) => {
 };
 
 const comparePasswords = async (password, dbPassword) => {
+  console.log("holaaaa");
   return bcrypt.compare(password, dbPassword);
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
+import homeLogo from "../assets/homeLogo.png";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
 
@@ -43,9 +44,9 @@ export default function TopBar(props) {
         return (
           <div id="nav-menu">
             <div id="grey-nav">
-                <div className={`text-transition-div, ${fade}`}>
-                  {props.title}
-                </div>
+              <div className={`text-transition-div, ${fade}`}>
+                {props.title}
+              </div>
             </div>
             <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
           </div>
@@ -60,7 +61,7 @@ export default function TopBar(props) {
         return (
           <img
             id="home-logo"
-            src="/src/assets/homeLogo.png"
+            src={homeLogo}
             alt="HOME"
             onClick={() => {
               navigate("/");

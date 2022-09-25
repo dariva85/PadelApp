@@ -1,4 +1,4 @@
-const Inscripcion = require("./Inscripcion.model");
+const Inscripcion = require("./inscripcion.model");
 const Partido = require("../partidos/partido.model");
 const { errMalformed } = require("../../errors");
 const { generateMatches } = require("../partidos/matchGenerator");
