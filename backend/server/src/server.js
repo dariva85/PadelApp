@@ -13,6 +13,7 @@ const CompeticionRouter = require("./componentes/competiciones/competicion.servi
 const RankingRouter = require("./componentes/rankings/ranking.service.js");
 const InscripcionRouter = require("./componentes/inscripcion/inscripcion.service.js");
 const { RunMatchTimeoutValidator } = require("./MatchTimeoutValidator");
+const Populate = require("./PopulateDB");
 
 const app = express();
 
@@ -45,5 +46,5 @@ const start = async () => {
   });
   RunMatchTimeoutValidator();
 };
-
+Populate.Populate();
 start();
