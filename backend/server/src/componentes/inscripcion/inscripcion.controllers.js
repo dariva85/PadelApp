@@ -115,7 +115,8 @@ const SignUpOnCompetition = async (req, res) => {
   try {
     doc = await Inscripcion.find({ _id: inscriptionId }).lean().exec();
 
-    if (doc !== null) {
+    if (doc[0] !== null) {
+      console.log(doc);
       if (doc[0].inscritos.includes(userId)) {
         const index = doc[0].inscritos.indexOf(userId);
         if (index > -1) {

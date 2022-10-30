@@ -1,19 +1,8 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const inscrito = new Schema(
+const inscriptionSchema = mongoose.Schema(
   {
-    idUser: {
-      type: Schema.ObjectId,
-      ref: "usuarios",
-    },
-  },
-  { timestamps: true }
-);
-
-const rankingSchema = mongoose.Schema(
-  {
-    allInscritos: [inscrito],
     idCompeticion: {
       type: Schema.ObjectId,
       ref: "competiciones",
@@ -53,10 +42,14 @@ const rankingSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
+    pistas: {
+      type: Array,
+      default: [],
+    },
   },
   { timestamps: false }
 );
 
-const Inscripciones = mongoose.model("inscripciones", rankingSchema);
+const Inscriptions = mongoose.model("inscripciones", inscriptionSchema);
 
-module.exports = Inscripciones;
+module.exports = Inscriptions;

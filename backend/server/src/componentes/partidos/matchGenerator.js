@@ -7,14 +7,19 @@ const generateMatches = async (inscription) => {
   let matches = [];
   let allowedToPlay = [];
   let match;
-  let sortedAllowedToPlay = []
+  let sortedAllowedToPlay = [];
 
   inscription.partidos = [];
+
+  const numMatches = Math.min(
+    inscription.pistas.length,
+    Math.floor(inscription.inscritos.length / 4)
+  );
+
   if (inscription.inscritos.length >= 4) {
-    for (let i = 0; i / 4 < Math.floor(inscription.inscritos.length / 4); i++) {
-      allowedToPlay.push(inscription.inscritos[i]);
-    }
-    allowedToPlay = allowedToPlay.map((item) => mongoose.Types.ObjectId(item));
+    allowedToPlay = inscription.inscritos
+      .slice(0, numMatches * 4)
+      .map((item) => mongoose.Types.ObjectId(item));
 
     sortedAllowedToPlay = await getSortedUsers(
       allowedToPlay,
