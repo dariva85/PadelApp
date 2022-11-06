@@ -2,20 +2,17 @@ import React, { Component } from "react";
 import "./InscriptionBtn.css";
 import InscriptionPending from "../assets/InscriptionAvailable.png";
 import SignedUp from "../assets/SignedUp.png";
-import { useNavigate } from "react-router-dom";
 
-export default function InscriptionBtn({
-  Inscription,
-  userId,
-  signUpClickEvent,
-}) {
+export default function InscriptionBtn({ Inscription, userId, ClickEvent }) {
   const AddImage = (Inscribed) => {
     try {
       const img = isUserInscribed(Inscribed) ? SignedUp : InscriptionPending;
       return (
         <div
-          className={`btnInscription-img-container${
-            isUserInscribed(Inscription.inscritos) ? "-signedup" : ""
+          className={`${
+            isUserInscribed(Inscription.inscritos)
+              ? "inscribed-img-container"
+              : "not-inscribed-img-container"
           }`}
         >
           <img id="btnInscription-img" src={img}></img>
@@ -44,7 +41,7 @@ export default function InscriptionBtn({
   };
 
   const isUserInscribed = (Inscribed) => {
-    if (Inscribed.includes(userId)) {
+    if (Inscribed.includes(userId) && true) {
       return true;
     }
     return false;
@@ -52,29 +49,21 @@ export default function InscriptionBtn({
 
   return (
     <div
-      onClick={() => signUpClickEvent(Inscription._id, userId)}
-      className={`btnInscription-container${
-        isUserInscribed(Inscription.inscritos) ? "-signedup" : ""
+      onClick={() => ClickEvent(Inscription._id, userId)}
+      className={`btnInscription-container ${
+        isUserInscribed(Inscription.inscritos) ? "inscribed" : "notInscribed"
       }`}
     >
       <div
-        className={`btnInscription-info-container${
-          isUserInscribed(Inscription.inscritos) ? "-signedup" : ""
+        className={`btnInscription-info-container ${
+          isUserInscribed(Inscription.inscritos) ? "inscribed" : "notInscribed"
         }`}
       >
-        <div
-          className={`btnInscription-text-container${
-            isUserInscribed(Inscription.inscritos) ? "-signedup" : ""
-          }`}
-        >
+        <div className="btnInscription-text-container">
           <h1>{Inscription.nombre}</h1>
           <p>{formatDate(Inscription.fechaPartido)}</p>
         </div>
-        <div
-          className={`btnInscription-text-container${
-            isUserInscribed(Inscription.inscritos) ? "-signedup" : ""
-          }`}
-        >
+        <div className="btnInscription-text-container">
           {AddImage(Inscription.inscritos)}
           <strong>
             {isUserInscribed(Inscription.inscritos) ? "Inscrito" : ""}

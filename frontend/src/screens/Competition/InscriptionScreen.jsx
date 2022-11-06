@@ -38,7 +38,7 @@ export default function InscriptionScreen() {
     }
   };
 
-  const signUpToInscription = async (inscriptionId, userId) => {
+  const signUpOrDownOfInscription = async (inscriptionId, userId) => {
     const signupdata = {
       userId: userId,
       inscriptionId: inscriptionId,
@@ -60,7 +60,7 @@ export default function InscriptionScreen() {
           className="inscription"
           Inscription={item}
           userId={usr.readUser()._id}
-          signUpClickEvent={signUpToInscription}
+          ClickEvent={signUpOrDownOfInscription}
         />
       </div>
     ));
