@@ -109,7 +109,7 @@ export default function TopBar(props) {
         <img id="logo" src={PanteresLogo}></img>
         <div id="grey-div">
           {AddUserAvatar()}
-          <div class="home-div">{AddHomeAvatar()}</div>
+          <div className="home-div">{AddHomeAvatar()}</div>
         </div>
       </div>
       {AddNavBar(props)}
