@@ -1,12 +1,13 @@
 .btnInscription-container {
   box-sizing: border-box;
   width: 24rem;
-  height: 8rem;
+  height: 11rem;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 13px;
   display: flex;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .btnInscription-container.notInscribed {
@@ -21,7 +22,7 @@
 
 .btnInscription-container.pending {
   background: var(--Secondary_Color_BG_Dark_Colored);
-  border: 4px solid var(--Primary_Color_BG_Ligth_Colored);
+  border: 4px solid var(--Pending_Option_Color);
 }
 
 .btnInscription-container.notInscribed:hover {
@@ -29,7 +30,7 @@
   transition: background 0.5s ease-in-out;
 }
 
-.btnInscription-info-container {
+.btnInscription-info-block {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -37,28 +38,27 @@
   align-items: center;
 }
 
-.btnInscription-info-container h1 {
+.btnInscription-info-block h1 {
   margin: 0;
 }
 
-.btnInscription-info-container.inscribed h1 {
+p {
+  margin: 0.2rem;
+}
+
+.inscribed {
   color: var(--Secondary_Color_BG_Dark_Colored);
+  fill: var(--Secondary_Color_BG_Dark_Colored);
 }
 
-.btnInscription-info-container.notInscribed h1 {
+.pending {
+  color: var(--Pending_Option_Color);
+  fill: var(--Primary_Color_BG_Ligth_Colored);
+}
+
+.notInscribed {
   color: var(--Primary_Color_BG_Ligth_Colored);
-}
-
-.btnInscription-info-container p {
-  margin: 0;
-}
-
-.btnInscription-info-container.inscribed p {
-  color: var(--Secondary_Color_BG_Dark_Colored);
-}
-
-.btnInscription-info-container.notInscribed p {
-  color: var(--Primary_Color_BG_Ligth_Colored);
+  fill: var(--Primary_Color_BG_Ligth_Colored);
 }
 
 .not-inscribed-img-container {
@@ -79,4 +79,14 @@
 
 .btnInscription-text-container {
   margin-left: 1.5rem;
+}
+
+#btnInscription-img.pending {
+  filter: invert(53%) sepia(85%) saturate(1224%) hue-rotate(2deg)
+    brightness(105%) contrast(85%);
+}
+
+#btnInscription-img.inscribed {
+  filter: invert(100%) sepia(4%) saturate(7500%) hue-rotate(295deg)
+    brightness(129%) contrast(122%);
 }

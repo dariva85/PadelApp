@@ -1,6 +1,6 @@
 import React from "react";
 import "./InformationLayout.css";
-import PersonHeart from "../assets/Person Heart.png";
+import PersonHeart from "../assets/PersonHeart.svg";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
 import * as api from "../api/api";
