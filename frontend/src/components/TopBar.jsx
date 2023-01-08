@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
 import homeLogo from "../assets/homeLogo.png";
+import LogOutImg from "../assets/logout.png";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
 
@@ -22,9 +23,7 @@ export default function TopBar(props) {
               navigate(item.link);
             }}
           >
-            <div className={`text-transition-div, ${fade}`}>
-              {AddNavBarItemName(item)}
-            </div>
+            <div className={`${fade}`}>{AddNavBarItemName(item)}</div>
           </div>
         );
       });
@@ -44,9 +43,7 @@ export default function TopBar(props) {
         return (
           <div id="nav-menu">
             <div id="grey-nav">
-              <div className={`text-transition-div, ${fade}`}>
-                {props.title}
-              </div>
+              <p className={`text-transition-div ${fade}`}>{props.title}</p>
             </div>
             <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
           </div>
@@ -55,15 +52,34 @@ export default function TopBar(props) {
     } catch (e) {}
   };
 
-  const AddHomeAvatar = () => {
+  const AddHomeBtn = () => {
     try {
       if (props.showHomeLogo) {
         return (
           <img
-            id="home-logo"
+            id="home-img"
+            className="top-img"
             src={homeLogo}
             alt="HOME"
             onClick={() => {
+              navigate("/");
+            }}
+          />
+        );
+      }
+    } catch (e) {}
+  };
+
+  const AddLogOutBtn = () => {
+    try {
+      if (props.showHomeLogo) {
+        return (
+          <img
+            className="top-img"
+            src={LogOutImg}
+            alt="Log Out"
+            onClick={() => {
+              props.logout();
               navigate("/");
             }}
           />
@@ -78,6 +94,7 @@ export default function TopBar(props) {
         return (
           <img
             id="usr-image"
+            className="top-img"
             src={usr.readUser().imagenPerfil}
             onClick={() => {
               navigate("/userinfo");
@@ -105,11 +122,13 @@ export default function TopBar(props) {
   return (
     <div id="top-bar-main-div">
       <div id="main-div">
-        <div id="yellow-div"></div>
-        <img id="logo" src={PanteresLogo}></img>
+        <div id="yellow-div-logo">
+          <img id="logo" src={PanteresLogo}></img>
+        </div>
         <div id="grey-div">
+          {AddLogOutBtn()}
           {AddUserAvatar()}
-          <div class="home-div">{AddHomeAvatar()}</div>
+          {AddHomeBtn()}
         </div>
       </div>
       {AddNavBar(props)}
