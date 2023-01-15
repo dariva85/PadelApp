@@ -8,6 +8,7 @@
   --Accept: #3c9e7e;
   --Decline: #ba5555;
   --Canceled_Option_Color: #c61e1e;
+  --Pending_Option_Color: #ea9413;
 }
 #root {
   height: 100%;
