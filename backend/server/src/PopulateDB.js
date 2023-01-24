@@ -308,7 +308,7 @@ async function InsertingInscripciones(db) {
   f.setSeconds(0);
   f.setHours(19);
   // Get all the other Mondays in the month
-  while (m.getMonth() !== 11) {
+  while (m.getMonth() !== 1) {
     var pushDate = new Date(m.getTime());
     mondays.push(pushDate);
     m.setDate(m.getDate() + 7);
@@ -319,7 +319,7 @@ async function InsertingInscripciones(db) {
     fridays.push(pushDate);
     f.setDate(f.getDate() + 7);
   }
-
+  
   for (var i = 0; i < mondays.length - 1; i++) {
     let Inscripcions = await db.collection("inscripciones").insertOne({
       inscritos: [],
