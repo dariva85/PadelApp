@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../../../config");
 const User = require("../usuario.model");
+const { OAuth2Client } = require("google-auth-library");
 
 const encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt();
@@ -10,7 +11,6 @@ const encryptPassword = async (password) => {
 };
 
 const comparePasswords = async (password, dbPassword) => {
-  console.log("holaaaa");
   return bcrypt.compare(password, dbPassword);
 };
 
@@ -47,6 +47,21 @@ const decodeToken = (token) => {
   }
 };
 
+const decodeGoogleToken = async (token) => {
+  try {
+    const client = new OAuth2Client(config.CLIENT_ID_GOOGLE);
+
+    const decodedToken = await client.verifyIdToken({
+      idToken: token,
+      audience: config.GOOGLE_CLIENT_ID,
+    });
+
+    return decodedToken;
+  } catch (e) {
+    throw e;
+  }
+};
+
 const createUser = async ({
   username,
   nombre,
@@ -77,7 +92,59 @@ const authenticateUser = async ({ email, password }) => {
     throw "InvalidData";
   }
   const token = createToken(email);
-  return token;
+  return { token, user };
+};
+
+const authenticateUserWithGoogle = async ({ credential }) => {
+  try {
+    let token = null;
+
+    const decodedToken = await decodeGoogleToken(credential);
+
+    if (!decodedToken.payload) {
+      throw "InvalidData";
+    }
+
+    let user = await User.findOne({ googleId: decodedToken.payload.sub })
+      .lean()
+      .exec();
+
+    if (!user) {
+      user = await CreateNewGoogleUser(decodedToken);
+    }
+    token = createToken(user.email);
+
+    return { token, user };
+  } catch (e) {
+    console.log(`authenticatewithgoogle: ${e}`);
+    throw e;
+  }
+};
+
+const CreateNewGoogleUser = async (decodedToken) => {
+  try {
+    const newUser = await User.create({
+      idCompeticion: [],
+      idPartido: [],
+      nombre: decodedToken.payload.name,
+      apellidos: "",
+      email: decodedToken.payload.email,
+      telefono: "",
+      movil: "",
+      username: decodedToken.payload.name,
+      direccion: "",
+      codigoPostal: 0,
+      ciudad: "",
+      provincia: "",
+      imagenPerfil: {},
+      password: "",
+      googleId: decodedToken.payload.sub,
+    });
+
+    return newUser;
+  } catch (e) {
+    throw "Este usuario ya existe";
+  }
 };
 
 module.exports = {
@@ -87,4 +154,5 @@ module.exports = {
   decodeToken,
   createUser,
   authenticateUser,
+  authenticateUserWithGoogle,
 };

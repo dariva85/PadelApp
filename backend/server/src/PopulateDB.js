@@ -728,7 +728,7 @@ async function InsertUsers(db) {
       idPartido: [],
       nombre: "David",
       apellidos: "Rigal Vall",
-      email: "david.rigalvall@gmail.com",
+      email: "david@gmail.com",
       telefono: "934987321",
       movil: "654987321",
       username: "dariva",
@@ -741,6 +741,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idTomas,
@@ -761,6 +762,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idMarti,
@@ -781,6 +783,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idAlex,
@@ -801,6 +804,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario1,
@@ -821,6 +825,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario2,
@@ -841,6 +846,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario3,
@@ -861,6 +867,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario4,
@@ -881,6 +888,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario5,
@@ -901,6 +909,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario6,
@@ -921,6 +930,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario7,
@@ -941,6 +951,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario8,
@@ -961,6 +972,7 @@ async function InsertUsers(db) {
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
   ]);
 }

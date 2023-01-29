@@ -1,4 +1,4 @@
-const config = require('./config');
+const config = require("./config");
 
 class ApiError extends Error {
   constructor(code, message) {
@@ -9,7 +9,9 @@ class ApiError extends Error {
   }
 }
 
-const catchErrors = (routeHandler) => async (req, res, next, ...args) => {
+const catchErrors =
+  (routeHandler) =>
+  async (req, res, next, ...args) => {
     try {
       await routeHandler(req, res, next, ...args);
     } catch (err) {
@@ -28,14 +30,17 @@ const errorHandler = (err, req, res, next) => {
 };
 
 const errMalformed = (res, message, errorType) => {
-  if(errorType === 'ValidationError' || errorType === 'NotFound') {
-      res.status(400).send({error: message});
-  } else if( errorType === 'CastError') {
-    res.status(400).send({error: `The specified id or a field don't have a valid value`});
-  } else if ('DuplicateValue') {
-    res.status(400).send({error: `Duplicate Key Error Collection`});
+  console.log(`Malformed: ${message}`);
+  if (errorType === "ValidationError" || errorType === "NotFound") {
+    res.status(400).send({ error: message });
+  } else if (errorType === "CastError") {
+    res
+      .status(400)
+      .send({ error: `The specified id or a field don't have a valid value` });
+  } else if (errorType === "DuplicateValue") {
+    res.status(400).send({ error: `Duplicate Key Error Collection` });
   } else {
-    res.status(400).send({error: `Can't process the request`});
+    res.status(400).send({ error: `Can't process the request` });
   }
 };
 
@@ -44,7 +49,7 @@ const errUnauthorized = (message) => {
 };
 
 module.exports = {
-    ApiError,
+  ApiError,
   catchErrors,
   errorHandler,
   errMalformed,

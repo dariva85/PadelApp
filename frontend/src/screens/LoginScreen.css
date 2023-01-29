@@ -6,10 +6,17 @@
   min-width: 100vh;
 }
 
-
 #login-container {
   position: flex;
   text-align: center;
+}
+
+#google-login {
+  position: flex;
+  justify-content: space-between;
+  margin: 10vh;
+  margin-top: 5vh;
+  margin-bottom: 0vh;
 }
 
 .login {

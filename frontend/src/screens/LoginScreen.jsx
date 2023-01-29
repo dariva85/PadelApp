@@ -5,7 +5,7 @@ import "./LoginScreen.css";
 import * as api from "../api/api.js";
 import * as tk from "../api/token";
 import * as usr from "../User";
-import * as topBarCtxt from "../components/TopBarCtxt";
+import { GoogleLogin } from "@react-oauth/google";
 
 export default function LoginScreen(onLogin) {
   const navigate = useNavigate();
@@ -18,10 +18,15 @@ export default function LoginScreen(onLogin) {
   };
 
   const login = async (userData) => {
-    const { success, result: token, error } = await api.login(userData);
+    const {
+      success,
+      result: { token, user },
+      error,
+    } = await api.login(userData);
 
     if (success) {
       SaveToken(token);
+      usr.saveUser(user);
       return true;
     } else {
       if (error == "InvalidData") {
@@ -33,18 +38,23 @@ export default function LoginScreen(onLogin) {
     }
   };
 
-  const GetAndStoreUserData = async (email) => {
-    try {
-      const { success, result: user, error } = await api.getUsuario(email);
+  const loginWithGoogle = async (userData) => {
+    const {
+      success,
+      result: { token, user },
+      error,
+    } = await api.loginWithGoogle(userData);
 
-      if (success) {
-        usr.saveUser(user.results[0]);
-        return true;
+    if (success) {
+      SaveToken(token);
+      usr.saveUser(user);
+      return true;
+    } else {
+      if (error == "InvalidData") {
+        setMessage("Los datos introducidos son incorrectos.");
       } else {
-        setMessage("Error cargando los datos de usuario.");
-        return false;
+        setMessage(error);
       }
-    } catch (e) {
       return false;
     }
   };
@@ -52,8 +62,14 @@ export default function LoginScreen(onLogin) {
   const submit = async (e) => {
     e.preventDefault();
     const succesLogin = await login({ email, password });
-    const successRetriveData = await GetAndStoreUserData(email);
-    if (succesLogin && successRetriveData) {
+    if (succesLogin) {
+      navigate("/");
+    }
+  };
+
+  const submitByGoogle = async (credentials) => {
+    const succesLogin = await loginWithGoogle(credentials);
+    if (succesLogin) {
       navigate("/");
     }
   };
@@ -83,6 +99,16 @@ export default function LoginScreen(onLogin) {
               />
             </label>
             <input className="submit" type="submit" />
+            <div id="google-login">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  submitByGoogle(credentialResponse);
+                }}
+                onError={() => {
+                  setMessage("Login with google failed. Try it later.");
+                }}
+              />
+            </div>
           </form>
         </div>
       </div>

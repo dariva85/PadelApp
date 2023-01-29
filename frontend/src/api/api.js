@@ -25,6 +25,8 @@ const apiCall = async (method, path, body, headers) => {
 
 const apiPost = (path, body) => apiCall("POST", path, body);
 export const login = (userData) => apiPost("/login", userData);
+export const loginWithGoogle = (userData) =>
+  apiPost("/loginWithGoogle", userData);
 export const register = (userData) => apiPost("/register", userData);
 
 const authApiCall = (method, path, body) => {
@@ -35,8 +37,6 @@ const authApiCall = (method, path, body) => {
 };
 export const updatePassword = (userInfo) =>
   authApiCall("PUT", `/usuarios/${userInfo._id}/updatePassword`, userInfo);
-export const getUsuario = (email) =>
-  authApiCall("GET", `/usuarios/email/${email}`);
 export const saveUsuario = ({ userInfo }) =>
   authApiCall("PUT", `/usuarios/${userInfo._id}`, userInfo);
 export const getCompetition = (id) =>

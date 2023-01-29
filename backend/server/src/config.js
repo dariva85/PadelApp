@@ -10,6 +10,7 @@ const envVarNames = [
   "DB_PORT",
   "DB_DATABASE",
   "FRONT_DIR",
+  "GOOGLE_CLIENT_ID",
 ];
 
 let envVars = {};
