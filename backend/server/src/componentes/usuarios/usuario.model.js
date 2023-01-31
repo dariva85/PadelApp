@@ -55,8 +55,7 @@ const userSchema = mongoose.Schema(
       maxlength: 20,
     },
     imagenPerfil: {
-      data: String,
-      contentType: String,
+      type: String,
     },
     password: {
       type: String,

@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const config = require("../../../config");
 const User = require("../usuario.model");
 const { OAuth2Client } = require("google-auth-library");
+const fs = require("fs");
+const utils = require("../../../common/utils");
 
 const encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt();
@@ -123,21 +125,17 @@ const authenticateUserWithGoogle = async ({ credential }) => {
 
 const CreateNewGoogleUser = async (decodedToken) => {
   try {
+    let username = GetAvailableUserName(decodedToken.payload.name);
+
     const newUser = await User.create({
-      idCompeticion: [],
-      idPartido: [],
-      nombre: decodedToken.payload.name,
-      apellidos: "",
+      nombre: decodedToken.payload.given_name,
+      apellidos: decodedToken.payload.family_name,
       email: decodedToken.payload.email,
-      telefono: "",
-      movil: "",
-      username: decodedToken.payload.name,
-      direccion: "",
-      codigoPostal: 0,
-      ciudad: "",
-      provincia: "",
-      imagenPerfil: {},
-      password: "",
+      username: username,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
+        { encoding: "base64" }
+      )}`,
       googleId: decodedToken.payload.sub,
     });
 
@@ -145,6 +143,24 @@ const CreateNewGoogleUser = async (decodedToken) => {
   } catch (e) {
     throw "Este usuario ya existe";
   }
+};
+
+const GetAvailableUserName = async (username) => {
+  while (await DoesTheUserNameExist(username)) {
+    username =
+      decodedToken.payload.name + "_" + utils.pad(utils.getRandomInt(99999), 5);
+  }
+
+  return username;
+};
+
+const DoesTheUserNameExist = async (username) => {
+  let user = await User.findOne({ username: username }).lean().exec();
+
+  if (!user) {
+    return false;
+  }
+  return true;
 };
 
 module.exports = {
