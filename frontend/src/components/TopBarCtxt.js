@@ -69,36 +69,26 @@ export let menuByScreen = {
   },
 };
 
-const logOutFunction = () => {
-  token.deleteToken();
-  usr.deleteUser();
-};
-
 export let menuByUserInfo = {
   UserInfo: {
     title: "Información personal",
-    linkedItems: [
-      { name: "Cambiar contraseña", link: "/passwordchange" },
-      {
-        name: "Cerrar sesión",
-        link: "/",
-        isLogOut: true,
-      },
-    ],
+    linkedItems: [{ name: "Cambiar contraseña", link: "/passwordchange" }],
     showUserImage: true,
     showHomeLogo: true,
   },
 
   PasswordChange: {
     title: "Cambiar contraseña",
-    linkedItems: [
-      { name: "Información personal", link: "/userinfo" },
-      {
-        name: "Cerrar sesión",
-        link: "/",
-        isLogOut: true,
-      },
-    ],
+    linkedItems: [{ name: "Información personal", link: "/userinfo" }],
+    showUserImage: true,
+    showHomeLogo: true,
+  },
+};
+
+export let menuByGoogleUserInfo = {
+  UserInfo: {
+    title: "Información personal",
+    linkedItems: [],
     showUserImage: true,
     showHomeLogo: true,
   },
