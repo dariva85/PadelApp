@@ -16,6 +16,7 @@ import * as tk from "./api/token";
 import { useEffect } from "react";
 import TopBar from "./components/TopBar";
 import * as topBarCtxt from "./components/TopBarCtxt";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const [token, setToken] = useState(tk.isTokenValid());
@@ -59,7 +60,13 @@ function App() {
   };
 
   if (!token) {
-    return <LoginScreen onLogin={login} />;
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    console.log(clientId);
+    return (
+      <GoogleOAuthProvider clientId={clientId}>
+        <LoginScreen onLogin={login} />
+      </GoogleOAuthProvider>
+    );
   }
   return (
     <div id="app-div">

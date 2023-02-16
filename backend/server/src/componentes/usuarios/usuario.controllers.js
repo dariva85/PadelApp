@@ -19,6 +19,20 @@ const login = async (req, res) => {
   }
 };
 
+const loginWithGoogle = async (req, res) => {
+  try {
+    const loginData = req.body;
+    const token = await Auth.authenticateUserWithGoogle(loginData);
+    res.status(200).json(token);
+  } catch (e) {
+    if (e == "InvalidData") {
+      errMalformed(res, e, "ValidationError");
+    } else {
+      errMalformed(res, e, "");
+    }
+  }
+};
+
 const register = async (req, res) => {
   const userData = req.body;
   try {
@@ -35,6 +49,7 @@ const register = async (req, res) => {
 const addRoutesTo = (app) => {
   app.post("/register", register);
   app.post("/login", login);
+  app.post("/loginWithGoogle", loginWithGoogle);
 };
 
 //Checked
@@ -85,19 +100,22 @@ const updatePassword = async (req, res) => {
   let doc = {};
   try {
     const encryptedPassword = await Auth.encryptPassword(req.body.password);
-    doc = await Usuario.findOneAndUpdate({ _id: id }, {password: encryptedPassword}, {
-      new: true,
-    });
+    doc = await Usuario.findOneAndUpdate(
+      { _id: id },
+      { password: encryptedPassword },
+      {
+        new: true,
+      }
+    );
 
     if (doc === null) {
       errMalformed(res, `User with id '${id}' not found`, "NotFound");
     } else {
       res.status(200).json({ results: [doc] });
     }
-  } catch(e) {
+  } catch (e) {
     console.log(e);
   }
-    
 };
 
 //Checked
@@ -123,26 +141,6 @@ const findOne = async (req, res) => {
   }
 };
 
-//Checked
-const findOneByEmail = async (req, res) => {
-  const { email } = req.params;
-  let doc = {};
-
-  try {
-    doc = await Usuario.findOne({ email: email }).lean().exec();
-    if (doc === null) {
-      errMalformed(res, `User with email '${email}' not found`, "NotFound");
-    } else {
-      res.status(200).json({ results: [doc] });
-    }
-  } catch (e) {
-    if (Object.keys(doc).length === 0) {
-      errMalformed(res, `'${email}' is not valid id`, "NotFound");
-    } else {
-      errMalformed(res, e.message, e.name);
-    }
-  }
-};
 
 //Checked
 const deleteOne = async (req, res) => {
@@ -234,8 +232,6 @@ const findTheName = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
   addRoutesTo,
   createOne,
@@ -244,7 +240,6 @@ module.exports = {
   deleteOne,
   findAllofOneCompetition,
   findAllofOneMatch,
-  findOneByEmail,
   findTheName,
   updatePassword,
 };

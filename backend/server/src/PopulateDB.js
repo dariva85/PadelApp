@@ -1,5 +1,5 @@
 const mongodb = require("mongodb");
-const fs = require("fs"); //Auth Service
+const fs = require("fs");
 const bcrypt = require("bcryptjs");
 
 const encryptPassword = async (password) => {
@@ -654,7 +654,7 @@ async function InsertCompetitions(db) {
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 1)),
       tipo: "Liga",
-      imagen: fs.readFileSync(`../db/UserImages/padelsemanal.jpeg`),
+      imagen: fs.readFileSync(`./src/assets/padelsemanal.jpeg`),
     },
     {
       _id: idLiga2,
@@ -680,7 +680,7 @@ async function InsertCompetitions(db) {
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 2)),
       tipo: "Americana",
-      imagen: fs.readFileSync(`../db/UserImages/upclub.jpeg`),
+      imagen: fs.readFileSync(`./src/assets/upclub.jpeg`),
     },
     {
       idUsuario: [],
@@ -715,7 +715,7 @@ async function InsertCompetitions(db) {
       fechaInicio: new Date(),
       fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
       tipo: "Liga",
-      imagen: fs.readFileSync(`../db/UserImages/padelsemanal.jpeg`),
+      imagen: fs.readFileSync(`./src/assets/padelsemanal.jpeg`),
     },
   ]);
 }
@@ -728,7 +728,7 @@ async function InsertUsers(db) {
       idPartido: [],
       nombre: "David",
       apellidos: "Rigal Vall",
-      email: "david.rigalvall@gmail.com",
+      email: "david@gmail.com",
       telefono: "934987321",
       movil: "654987321",
       username: "dariva",
@@ -736,11 +736,12 @@ async function InsertUsers(db) {
       codigoPostal: 25200,
       ciudad: "Cervera",
       provincia: "Lleida",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idTomas,
@@ -756,11 +757,12 @@ async function InsertUsers(db) {
       codigoPostal: 76401,
       ciudad: "Moncada",
       provincia: "Barcelona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idMarti,
@@ -776,11 +778,12 @@ async function InsertUsers(db) {
       codigoPostal: 26502,
       ciudad: "Vic",
       provincia: "Girona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idAlex,
@@ -796,11 +799,12 @@ async function InsertUsers(db) {
       codigoPostal: 17405,
       ciudad: "Esplugues",
       provincia: "Barcelona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario1,
@@ -816,11 +820,12 @@ async function InsertUsers(db) {
       codigoPostal: 34776,
       ciudad: "Reus",
       provincia: "Tarragona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario2,
@@ -836,11 +841,12 @@ async function InsertUsers(db) {
       codigoPostal: 17495,
       ciudad: "Figueres",
       provincia: "Girona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario3,
@@ -856,11 +862,12 @@ async function InsertUsers(db) {
       codigoPostal: 25670,
       ciudad: "Roses",
       provincia: "Girona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario4,
@@ -876,11 +883,12 @@ async function InsertUsers(db) {
       codigoPostal: 17500,
       ciudad: "Tarrega",
       provincia: "Lleida",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario5,
@@ -896,11 +904,12 @@ async function InsertUsers(db) {
       codigoPostal: 25440,
       ciudad: "Manresa",
       provincia: "Barcelona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario6,
@@ -916,11 +925,12 @@ async function InsertUsers(db) {
       codigoPostal: 18600,
       ciudad: "Banyoles",
       provincia: "Girona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario7,
@@ -936,11 +946,12 @@ async function InsertUsers(db) {
       codigoPostal: 28200,
       ciudad: "Igualada",
       provincia: "Lleida",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
     {
       _id: idUsuario8,
@@ -956,11 +967,12 @@ async function InsertUsers(db) {
       codigoPostal: 12000,
       ciudad: "Girona",
       provincia: "Girona",
-      imagenPerfil: `data:image/jpeg;base64, ${fs.readFileSync(
-        `../db/UserImages/DemoUser.jpg`,
+      imagenPerfil: `data:image/png;base64, ${fs.readFileSync(
+        `./src/assets/NoImageAccount.png`,
         { encoding: "base64" }
       )}`,
       password: await encryptPassword("fullstack"),
+      googleId: "",
     },
   ]);
 }

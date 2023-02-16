@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema(
     },
     apellidos: {
       type: String,
-      required: true,
+      required: false,
       maxlength: 40,
     },
     email: {
@@ -55,13 +55,14 @@ const userSchema = mongoose.Schema(
       maxlength: 20,
     },
     imagenPerfil: {
-      data: String,
-      contentType: String,
+      type: String,
     },
     password: {
       type: String,
-      required: true,
-      select: false, // Hace que este Schema no retorne la contrasenya.
+      select: false,
+      required: function () {
+        return this.googleId === "";
+      }, // Hace que este Schema no retorne la contrasenya.
     },
     telefono: {
       type: Number,
@@ -75,8 +76,14 @@ const userSchema = mongoose.Schema(
       type: String,
       required: false,
     },
+    googleId: {
+      type: String,
+      required: function () {
+        return this.password === "";
+      },
+    },
   },
-  { timestamps: false }
+  { timestamps: false, strict: false }
 );
 
 const Usuario = mongoose.model("usuarios", userSchema);
