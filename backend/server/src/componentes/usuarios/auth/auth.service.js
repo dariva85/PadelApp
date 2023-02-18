@@ -125,7 +125,7 @@ const authenticateUserWithGoogle = async ({ credential }) => {
 
 const CreateNewGoogleUser = async (decodedToken) => {
   try {
-    let username = GetAvailableUserName(decodedToken.payload.name);
+    let username = await GetAvailableUserName(decodedToken.payload.name);
 
     const newUser = await User.create({
       nombre: decodedToken.payload.given_name,
