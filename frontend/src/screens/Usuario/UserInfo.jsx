@@ -25,11 +25,19 @@ export default function UserInfo() {
   };
 
   useEffect(() => {
-    topBarCtxt.setTopBarInfo(
-      topBarCtxt.menuByUserInfo.UserInfo,
-      topBarInfo,
-      setTopBarInfo
-    );
+    if (userInfo.googleId != undefined && userInfo.googleId != "") {
+      topBarCtxt.setTopBarInfo(
+        topBarCtxt.menuByGoogleUserInfo.UserInfo,
+        topBarInfo,
+        setTopBarInfo
+      );
+    } else {
+      topBarCtxt.setTopBarInfo(
+        topBarCtxt.menuByUserInfo.UserInfo,
+        topBarInfo,
+        setTopBarInfo
+      );
+    }
   }, []);
 
   return (

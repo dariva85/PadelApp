@@ -9,7 +9,6 @@ import * as usr from "../User";
 export default function TopBar(props) {
   const navigate = useNavigate();
   const [fade, setFade] = useState("fade-in");
-  const [fadeCount, setFadeCount] = useState(0);
 
   const AddNavBarLinkedItems = (LinkedItems) => {
     if (LinkedItems != undefined) {
@@ -19,7 +18,6 @@ export default function TopBar(props) {
             id={item.link}
             className="nav-link"
             onClick={() => {
-              if (item.isLogOut != undefined && item.isLogOut) props.logout();
               navigate(item.link);
             }}
           >
