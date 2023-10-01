@@ -77,40 +77,38 @@ export default function LoginScreen(onLogin) {
   return (
     <div className="login-screen">
       <TopBar />
-      <div>
-        <div id="login-container">
-          <form className="login" onSubmit={submit}>
-            <h1>Login</h1>
-            <p className="error-message">{message}</p>
-            <label>
-              <div>Email</div>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <label>
-              <div>Password</div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <input className="submit" type="submit" />
-            <div id="google-login">
-              <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  submitByGoogle(credentialResponse);
-                }}
-                onError={() => {
-                  setMessage("Login with google failed. Try it later.");
-                }}
-              />
-            </div>
-          </form>
-        </div>
+      <div id="login-container">
+        <form className="login" onSubmit={submit}>
+          <h1>Login</h1>
+          <p className="error-message">{message}</p>
+          <label>
+            <div>Email</div>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <div>Password</div>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <input className="submit" type="submit" />
+          <div id="google-login">
+            <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                submitByGoogle(credentialResponse);
+              }}
+              onError={() => {
+                setMessage("Login with google failed. Try it later.");
+              }}
+            />
+          </div>
+        </form>
       </div>
     </div>
   );

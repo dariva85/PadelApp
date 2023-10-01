@@ -27,8 +27,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  min-width: 100vh;
-  min-height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 h1 {
