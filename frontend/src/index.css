@@ -36,6 +36,15 @@ h1 {
   line-height: 1.1;
 }
 
+h3 {
+  font-family: Titillium Web;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--Tertiary_Color_BG_Ligth_Colored);
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
