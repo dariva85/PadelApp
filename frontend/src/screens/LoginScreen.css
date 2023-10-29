@@ -67,6 +67,10 @@
   color: var(--Secondary_Color_BG_Ligth_Colored);
 }
 
+.align-left {
+  text-align: left;
+}
+
 h1 {
   color: var(--Primary_Color_BG_Ligth_Colored);
 }

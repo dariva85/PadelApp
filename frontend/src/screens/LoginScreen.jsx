@@ -82,7 +82,7 @@ export default function LoginScreen(onLogin) {
           <h1>Login</h1>
           <p className="error-message">{message}</p>
           <label>
-            <div>Email</div>
+            <h3 className="align-left">Email</h3>
             <input
               type="text"
               value={email}
@@ -90,7 +90,7 @@ export default function LoginScreen(onLogin) {
             />
           </label>
           <label>
-            <div>Password</div>
+            <h3 className="align-left">Password</h3>
             <input
               type="password"
               value={password}
