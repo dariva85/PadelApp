@@ -73,6 +73,7 @@ export default function TopBar(props) {
       if (props.showHomeLogo) {
         return (
           <img
+            id="log-out-img"
             className="top-img"
             src={LogOutImg}
             alt="Log Out"
@@ -91,7 +92,7 @@ export default function TopBar(props) {
       if (usr.readUser().imagenPerfil !== undefined && props.showUserImage) {
         return (
           <img
-            id="usr-image"
+            id="usr-img"
             className="top-img"
             src={usr.readUser().imagenPerfil}
             onClick={() => {
