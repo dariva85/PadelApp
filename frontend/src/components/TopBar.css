@@ -48,6 +48,26 @@
     transform: skew(30deg, 0deg);
   }
 
+  .top-bar-btn-container {
+    display: flex;
+    align-items: center;
+    height: 60%;
+    aspect-ratio: 1/1;
+    margin-right: 2rem;
+  }
+
+  .top-bar-btn-img {
+    height: 100%;
+    transition: all 100ms;
+    margin: auto;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(308deg)
+      brightness(104%) contrast(116%);
+  }
+
+  #top-bar-more-btn {
+    display: none;
+  }
+
   #usr-img {
     border: 2px solid #ffffff;
     border-radius: 100%;
@@ -123,13 +143,13 @@
     -ms-transform: skew(-30deg, 0deg);
     -webkit-transform: skew(-30deg, 0deg);
     transform: skew(-30deg, 0deg);
-    display: inline-block;
+    display: flex;
   }
 
   #grey-div {
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
+    align-items: right;
 
     width: 100%;
     height: 100%;
@@ -143,17 +163,21 @@
   #log-out-img {
     display: none;
   }
-
-  #home-img {
-    height: 50%;
-    margin-right: 2rem;
-    padding: 0.4rem;
-    transition: all 100ms;
-    fill: var(--Pending_Option_Color);
-    color: var(--Pending_Option_Color);
+  .top-bar-btn-container {
+    display: flex;
+    align-items: center;
+    aspect-ratio: 1/1;
     background-color: var(--Ligth_Colored_BG);
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 13px;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+  }
+  .top-bar-btn-img {
+    width: 70%;
+    transition: all 100ms;
+    margin: auto;
+    filter: invert(27%) sepia(6%) saturate(4353%) hue-rotate(152deg)
+      brightness(104%) contrast(80%);
   }
 
   .top-img:hover {
@@ -161,7 +185,8 @@
   }
 
   #logo {
-    height: 100%;
+    height: 80%;
+    margin: auto;
     transform-origin: bottom left;
     -ms-transform: skew(30deg, 0deg);
     -webkit-transform: skew(30deg, 0deg);

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./TopBar.css";
 import PanteresLogo from "../assets/panteres.png";
-import homeLogo from "../assets/homeLogo.png";
+import homeLogo from "../assets/HomeLogo.svg";
+import moreLogo from "../assets/more.svg";
 import LogOutImg from "../assets/logout.png";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
@@ -54,15 +55,37 @@ export default function TopBar(props) {
     try {
       if (props.showHomeLogo) {
         return (
-          <img
-            id="home-img"
-            className="top-img"
-            src={homeLogo}
-            alt="HOME"
-            onClick={() => {
-              navigate("/");
-            }}
-          />
+          <div className="top-bar-btn-container">
+            <img
+              id="home-img"
+              className="top-bar-btn-img"
+              src={homeLogo}
+              alt="HOME"
+              onClick={() => {
+                navigate("/");
+              }}
+            />
+          </div>
+        );
+      }
+    } catch (e) {}
+  };
+
+  const AddMoreBtn = () => {
+    try {
+      if (props.showHomeLogo) {
+        return (
+          <div id="top-bar-more-btn" className="top-bar-btn-container">
+            <img
+              id="home-img"
+              className="top-bar-btn-img"
+              src={moreLogo}
+              alt="HOME"
+              onClick={() => {
+                navigate("/");
+              }}
+            />
+          </div>
         );
       }
     } catch (e) {}
@@ -125,6 +148,7 @@ export default function TopBar(props) {
           <img id="logo" src={PanteresLogo}></img>
         </div>
         <div id="grey-div">
+          {AddMoreBtn()}
           {AddLogOutBtn()}
           {AddUserAvatar()}
           {AddHomeBtn()}
