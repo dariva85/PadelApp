@@ -83,8 +83,15 @@ async function Populate() {
     console.log("Inserting partidos");
     const partido = await InsertPartidos(db);
   }
-
-  if ((await db.collection("inscripciones").countDocuments()) !== 0) {
+  let currentDate = new Date().toISOString();
+  if (
+    (await db
+      .collection("inscripciones")
+      .find({
+        fechaPartido: { $gte: currentDate },
+      })
+      .countDocuments()) < 3
+  ) {
     console.log("DB Already populate with inscripciones!");
   } else {
     console.log("Inserting inscripciones");
@@ -319,7 +326,7 @@ async function InsertingInscripciones(db) {
     fridays.push(pushDate);
     f.setDate(f.getDate() + 7);
   }
-  
+
   for (var i = 0; i < mondays.length - 1; i++) {
     let Inscripcions = await db.collection("inscripciones").insertOne({
       inscritos: [],
