@@ -13,19 +13,23 @@ export default function TopBar(props) {
 
   const AddNavBarLinkedItems = (LinkedItems) => {
     if (LinkedItems != undefined) {
-      return LinkedItems.map((item) => {
-        return (
-          <div
-            id={item.link}
-            className="nav-link"
-            onClick={() => {
-              navigate(item.link);
-            }}
-          >
-            <div className={`${fade}`}>{AddNavBarItemName(item)}</div>
-          </div>
-        );
-      });
+      return (
+        <div className="nav-link-container">
+          {LinkedItems.map((item) => {
+            return (
+              <div
+                id={item.link}
+                className="nav-link"
+                onClick={() => {
+                  navigate(item.link);
+                }}
+              >
+                <div className={`${fade}`}>{AddNavBarItemName(item)}</div>
+              </div>
+            );
+          })}
+        </div>
+      );
     }
   };
 
