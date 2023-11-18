@@ -83,7 +83,7 @@ async function Populate() {
     console.log("Inserting partidos");
     const partido = await InsertPartidos(db);
   }
-  let currentDate = new Date().toISOString();
+  let currentDate = new Date();
   if (
     (await db.collection("inscripciones").countDocuments({
       fechaPartido: { $gt: currentDate },
