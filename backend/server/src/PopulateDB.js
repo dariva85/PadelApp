@@ -83,14 +83,11 @@ async function Populate() {
     console.log("Inserting partidos");
     const partido = await InsertPartidos(db);
   }
-  let currentDate = new Date().toISOString();
+  let currentDate = new Date();
   if (
-    (await db
-      .collection("inscripciones")
-      .find({
-        fechaPartido: { $gte: currentDate },
-      })
-      .countDocuments()) < 3
+    (await db.collection("inscripciones").countDocuments({
+      fechaPartido: { $gt: currentDate },
+    })) > 3
   ) {
     console.log("DB Already populate with inscripciones!");
   } else {
