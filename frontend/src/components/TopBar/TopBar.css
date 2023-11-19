@@ -86,13 +86,9 @@
 
   #yellow-nav {
     display: flex;
-    color: var(--Primary_Color_BG_Ligth_Colored);
-  }
-
-  .nav-link-container {
-    display: flex;
     align-items: center;
     flex-direction: row;
+    color: var(--Primary_Color_BG_Ligth_Colored);
   }
 
   .nav-link {
@@ -130,7 +126,7 @@
   #top-bar-main-div {
     position: fixed;
     top: 0;
-    height: 6.3rem;
+    height: fit-content;
     width: 100%;
     z-index: 10;
   }
@@ -202,30 +198,43 @@
 
   #nav-menu {
     width: 100%;
-    height: 2.3rem;
+    height: fit-content;
     display: flex;
-    background-color: var(--Dark_Colored_BG);
-  }
-
-  #yellow-nav {
-    visibility: hidden;
-  }
-
-  .nav-link {
-    margin: 0.5rem 0rem 0.5rem 4rem;
-    padding: 0.5rem;
+    flex-direction: column;
   }
 
   #grey-nav {
     padding: 0rem 2rem 0rem 1rem;
     align-items: center;
     display: flex;
-    width: fit-content;
+    width: 100%;
     background-color: var(--Dark_Colored_BG);
     font-family: "Titillium Web", "Roboto Condensed", sans-serif;
     font-style: normal;
     font-size: 1.5rem;
     color: var(--Secondary_Color_BG_Dark_Colored);
     white-space: nowrap;
+  }
+
+  #yellow-nav {
+    visibility: visible;
+    background-color: var(--Dark_Colored_BG);
+    height: fit-content;
+    width: 100%;
+    padding: 0.5rem 0 0.5rem 0;
+  }
+
+  #yellow-nav-hidden {
+    visibility: hidden;
+  }
+
+  .nav-link {
+    width: 90%;
+    margin: auto;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    border-radius: 13px;
+    background-color: var(--Ligth_Colored_BG);
+    text-align: center;
   }
 }

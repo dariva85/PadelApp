@@ -14,7 +14,7 @@ import UserInfo from "./screens/Usuario/UserInfo";
 import PasswordChange from "./screens/Usuario/PasswordChange";
 import * as tk from "./api/token";
 import { useEffect } from "react";
-import TopBar from "./components/TopBar";
+import TopBar from "./components/TopBar/TopBar";
 import * as topBarCtxt from "./components/TopBarCtxt";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 

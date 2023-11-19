@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/TopBar/TopBar";
 import "./LoginScreen.css";
 import * as api from "../api/api.js";
 import * as tk from "../api/token";

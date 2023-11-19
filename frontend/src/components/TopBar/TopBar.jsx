@@ -1,59 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./TopBar.css";
-import PanteresLogo from "../assets/panteres.png";
-import homeLogo from "../assets/HomeLogo.svg";
-import moreLogo from "../assets/more.svg";
-import LogOutImg from "../assets/logout.png";
+import PanteresLogo from "../../assets/panteres.png";
+import homeLogo from "../../assets/HomeLogo.svg";
+import moreLogo from "../../assets/more.svg";
+import LogOutImg from "../../assets/logout.png";
 import { useNavigate } from "react-router-dom";
-import * as usr from "../User";
+import * as usr from "../../User";
+import NavBar from "./NavBar";
 
 export default function TopBar(props) {
   const navigate = useNavigate();
   const [fade, setFade] = useState("fade-in");
-
-  const AddNavBarLinkedItems = (LinkedItems) => {
-    if (LinkedItems != undefined) {
-      return (
-        <div className="nav-link-container">
-          {LinkedItems.map((item) => {
-            return (
-              <div
-                id={item.link}
-                className="nav-link"
-                onClick={() => {
-                  navigate(item.link);
-                }}
-              >
-                <div className={`${fade}`}>{AddNavBarItemName(item)}</div>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-  };
-
-  const AddNavBarItemName = (item) => {
-    if (item.highlight !== undefined) {
-      return <strong>{item.name}</strong>;
-    } else {
-      return item.name;
-    }
-  };
-  const AddNavBar = (props) => {
-    try {
-      if (props.title.length !== 0) {
-        return (
-          <div id="nav-menu">
-            <div id="grey-nav">
-              <p className={`text-transition-div ${fade}`}>{props.title}</p>
-            </div>
-            <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
-          </div>
-        );
-      }
-    } catch (e) {}
-  };
+  const [linkedMenuExpanded, setLinkedMenuExpanded] = useState("false");
 
   const AddHomeBtn = () => {
     try {
@@ -158,7 +116,11 @@ export default function TopBar(props) {
           {AddHomeBtn()}
         </div>
       </div>
-      {AddNavBar(props)}
+      <NavBar
+        title={props.title}
+        linkedItems={props.linkedItems}
+        fade={fade}
+      ></NavBar>
     </div>
   );
 }
