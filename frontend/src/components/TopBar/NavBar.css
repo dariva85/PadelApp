@@ -29,4 +29,8 @@
     background-color: var(--Ligth_Colored_BG);
     text-align: center;
   }
+
+  .MobileLinkedMenuHidden {
+    display: none;
+  }
 }

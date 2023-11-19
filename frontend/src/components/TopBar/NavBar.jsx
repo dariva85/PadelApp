@@ -7,16 +7,19 @@ export default function NavBar(props) {
 
   const AddNavBarItemName = (item) => {
     if (item.highlight !== undefined) {
-      return <strong>{item.name}</strong>;
+      return <strong id={strong + item.name}>{item.name}</strong>;
     } else {
       return item.name;
     }
   };
 
   const AddNavBarLinkedItems = (LinkedItems) => {
-    if (LinkedItems != undefined && props.linkedMenuExpanded) {
+    if (LinkedItems != undefined) {
       return (
-        <div id="yellow-nav">
+        <div
+          id="yellow-nav"
+          className={!props.linkedMenuExpanded ? "MobileLinkedMenuHidden" : ""}
+        >
           {LinkedItems.map((item) => {
             return (
               <div
@@ -26,10 +29,35 @@ export default function NavBar(props) {
                   navigate(item.link);
                 }}
               >
-                <div className={`${props.fade}`}>{AddNavBarItemName(item)}</div>
+                <div id={"text-" + item.link} className={`${props.fade}`}>
+                  {AddNavBarItemName(item)}
+                </div>
               </div>
             );
           })}
+          <div
+            id="/userinfo-mobile"
+            className="nav-link only-mobile-devices"
+            onClick={() => {
+              navigate("/userinfo");
+            }}
+          >
+            <div id="MiCuenta" className={`${props.fade}`}>
+              Mi cuenta
+            </div>
+          </div>
+          <div
+            id="/logout-mobile"
+            className="nav-link only-mobile-devices"
+            onClick={() => {
+              props.logOut();
+              navigate("/");
+            }}
+          >
+            <div id="Salir" className={`${props.fade}`}>
+              Salir
+            </div>
+          </div>
         </div>
       );
     }
@@ -41,7 +69,10 @@ export default function NavBar(props) {
         return (
           <div id="nav-menu">
             <div id="grey-nav">
-              <p className={`text-transition-div ${props.fade}`}>
+              <p
+                id="navbar-text-title"
+                className={`text-transition-div ${props.fade}`}
+              >
                 {props.title}
               </p>
             </div>
@@ -51,5 +82,5 @@ export default function NavBar(props) {
       }
     } catch (e) {}
   };
-  return <div>{AddNavBar(props)}</div>;
+  return AddNavBar(props);
 }

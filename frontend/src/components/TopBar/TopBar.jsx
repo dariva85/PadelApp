@@ -11,7 +11,7 @@ import NavBar from "./NavBar";
 export default function TopBar(props) {
   const navigate = useNavigate();
   const [fade, setFade] = useState("fade-in");
-  const [linkedMenuExpanded, setLinkedMenuExpanded] = useState("false");
+  const [linkedMenuExpanded, setLinkedMenuExpanded] = useState(false);
 
   const AddHomeBtn = () => {
     try {
@@ -37,9 +37,20 @@ export default function TopBar(props) {
     try {
       if (props.showHomeLogo) {
         return (
-          <div id="top-bar-more-btn" className="top-bar-btn-container">
+          <div
+            id="top-bar-more-btn"
+            className={
+              linkedMenuExpanded
+                ? "top-bar-btn-container-clicked"
+                : "top-bar-btn-container"
+            }
+          >
             <img
-              className="top-bar-btn-img"
+              className={
+                linkedMenuExpanded
+                  ? "top-bar-btn-img-clicked"
+                  : "top-bar-btn-img"
+              }
               src={moreLogo}
               alt="Menú"
               onClick={() => {
@@ -120,6 +131,7 @@ export default function TopBar(props) {
         linkedItems={props.linkedItems}
         fade={fade}
         linkedMenuExpanded={linkedMenuExpanded}
+        logOut={props.logout}
       ></NavBar>
     </div>
   );

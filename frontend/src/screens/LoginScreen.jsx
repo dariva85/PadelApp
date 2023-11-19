@@ -77,6 +77,7 @@ export default function LoginScreen(onLogin) {
   return (
     <div className="login-screen">
       <TopBar />
+      <div id="top-bar-padding"></div>
       <div id="login-container">
         <form className="login" onSubmit={submit}>
           <h1>Login</h1>

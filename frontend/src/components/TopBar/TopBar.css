@@ -84,7 +84,6 @@
     background-color: var(--Ligth_Colored_BG);
   }
 
-
   #grey-nav {
     padding: 0rem 2rem 0rem 1rem;
     align-items: center;
@@ -162,6 +161,16 @@
     border-radius: 13px;
     margin: 0.5rem 0.5rem 0.5rem 0rem;
   }
+  .top-bar-btn-container-clicked {
+    display: flex;
+    align-items: center;
+    aspect-ratio: 1/1;
+    background-color: var(--Dark_Colored_BG);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 2px solid var(--Ligth_Colored_BG);
+    border-radius: 13px;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+  }
   .top-bar-btn-img {
     width: 70%;
     transition: all 100ms;
@@ -170,6 +179,12 @@
       brightness(104%) contrast(80%);
   }
 
+  .top-bar-btn-img-clicked {
+    width: 70%;
+    transition: all 100ms;
+    margin: auto;
+    filter: invert(91%) sepia(57%) saturate(4299%) hue-rotate(340deg) brightness(100%) contrast(95%);
+  }
   .top-img:hover {
     transform: scale(1.2);
   }

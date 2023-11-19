@@ -57,3 +57,9 @@
     opacity: 1;
   }
 }
+
+@media only screen and (min-width: 500px) {
+  .only-mobile-devices {
+    display: none;
+  }
+}
