@@ -9,7 +9,7 @@ export default function CompetitionBtn({ Competition, href }) {
   const AddDescription = (Competition) => {
     try {
       if (Competition.descripcion !== 0) {
-        return <p id="competition-description">{Competition.descripcion}</p>;
+        return <p>{Competition.descripcion}</p>;
       }
     } catch (e) {}
   };

@@ -14,7 +14,7 @@ import UserInfo from "./screens/Usuario/UserInfo";
 import PasswordChange from "./screens/Usuario/PasswordChange";
 import * as tk from "./api/token";
 import { useEffect } from "react";
-import TopBar from "./components/TopBar/TopBar";
+import TopBar from "./components/TopBar";
 import * as topBarCtxt from "./components/TopBarCtxt";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -72,7 +72,6 @@ function App() {
     <div id="app-div">
       <topBarCtxt.Ctxt.Provider id="top-bar-ctxt" value={TopBarCtxtValue}>
         {AddTopBar()}
-        <div id="top-bar-padding"></div>
         <Routes>
           <Route path="/" element={<CompetitionsScreen />} />
           <Route path="/me/matches" element={<MatchesScreen />} />

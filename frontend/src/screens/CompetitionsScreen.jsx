@@ -40,8 +40,8 @@ export default function CompetitionsScreen() {
   }, []);
 
   return (
-    <div id="competitions-main">
-      <div id="competitions-container">
+    <div id="competitions-main" className="main-screen">
+      <div id="competitions-container" className="competitions-container">
         {AddCompetitionButtons(competitions)}
       </div>
     </div>
