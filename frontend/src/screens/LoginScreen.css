@@ -2,35 +2,32 @@
   background-color: #ffffff;
   font-family: sans-serif;
   color: var(--Secondary_Color_BG_Ligth_Colored);
-  height: 100%;
-  width: 100%;
+  min-height: 100vh;
+  min-width: 100vh;
 }
 
 #login-container {
   position: flex;
   text-align: center;
-  width: 100%;
-  height: 100%;
-}
-
-.login {
-  margin-top: 2%;
-  display: inline-block;
-  background-color: var(--Ligth_Colored_BG);
-  border-radius: 20px;
-  padding: 5%;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-  width: 80%;
-  max-width: 25rem;
-  height: 80%;
 }
 
 #google-login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 3%;
+  position: flex;
+  justify-content: space-between;
+  margin: 10vh;
   margin-top: 5vh;
+  margin-bottom: 0vh;
+}
+
+.login {
+  margin-top: 4rem;
+  display: inline-block;
+  background-color: var(--Ligth_Colored_BG);
+  width: fit-content;
+  height: fit-content;
+  border-radius: 20px;
+  padding: 4rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 .login input {
@@ -61,16 +58,13 @@
   font-size: 1rem;
   font-weight: 500;
   padding: 1rem;
-  margin-top: 2.5rem;
+  margin-top: 4rem;
   border-width: 1px;
   background-color: var(--Accept);
   color: var(--Secondary_Color_BG_Ligth_Colored);
 }
 
-.align-left {
-  text-align: left;
-}
-
 h1 {
+  margin-top: 0rem;
   color: var(--Primary_Color_BG_Ligth_Colored);
 }

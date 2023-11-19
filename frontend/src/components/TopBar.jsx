@@ -1,63 +1,68 @@
 import React, { useState, useEffect } from "react";
 import "./TopBar.css";
-import PanteresLogo from "../../assets/panteres.png";
-import homeLogo from "../../assets/HomeLogo.svg";
-import moreLogo from "../../assets/more.svg";
-import LogOutImg from "../../assets/logout.png";
+import PanteresLogo from "../assets/panteres.png";
+import homeLogo from "../assets/homeLogo.png";
+import LogOutImg from "../assets/logout.png";
 import { useNavigate } from "react-router-dom";
-import * as usr from "../../User";
-import NavBar from "./NavBar";
+import * as usr from "../User";
 
 export default function TopBar(props) {
   const navigate = useNavigate();
   const [fade, setFade] = useState("fade-in");
-  const [linkedMenuExpanded, setLinkedMenuExpanded] = useState(false);
 
-  const AddHomeBtn = () => {
-    try {
-      if (props.showHomeLogo) {
+  const AddNavBarLinkedItems = (LinkedItems) => {
+    if (LinkedItems != undefined) {
+      return LinkedItems.map((item) => {
         return (
-          <div className="top-bar-btn-container">
-            <img
-              id="home-img"
-              className="top-bar-btn-img"
-              src={homeLogo}
-              alt="HOME"
-              onClick={() => {
-                navigate("/");
-              }}
-            />
+          <div
+            id={item.link}
+            className="nav-link"
+            onClick={() => {
+              navigate(item.link);
+            }}
+          >
+            <div className={`${fade}`}>{AddNavBarItemName(item)}</div>
+          </div>
+        );
+      });
+    }
+  };
+
+  const AddNavBarItemName = (item) => {
+    if (item.highlight !== undefined) {
+      return <strong>{item.name}</strong>;
+    } else {
+      return item.name;
+    }
+  };
+  const AddNavBar = (props) => {
+    try {
+      if (props.title.length !== 0) {
+        return (
+          <div id="nav-menu">
+            <div id="grey-nav">
+              <p className={`text-transition-div ${fade}`}>{props.title}</p>
+            </div>
+            <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
           </div>
         );
       }
     } catch (e) {}
   };
 
-  const AddMoreBtn = () => {
+  const AddHomeBtn = () => {
     try {
       if (props.showHomeLogo) {
         return (
-          <div
-            id="top-bar-more-btn"
-            className={
-              linkedMenuExpanded
-                ? "top-bar-btn-container-clicked"
-                : "top-bar-btn-container"
-            }
-          >
-            <img
-              className={
-                linkedMenuExpanded
-                  ? "top-bar-btn-img-clicked"
-                  : "top-bar-btn-img"
-              }
-              src={moreLogo}
-              alt="Menú"
-              onClick={() => {
-                setLinkedMenuExpanded(!linkedMenuExpanded);
-              }}
-            />
-          </div>
+          <img
+            id="home-img"
+            className="top-img"
+            src={homeLogo}
+            alt="HOME"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
         );
       }
     } catch (e) {}
@@ -68,7 +73,6 @@ export default function TopBar(props) {
       if (props.showHomeLogo) {
         return (
           <img
-            id="log-out-img"
             className="top-img"
             src={LogOutImg}
             alt="Log Out"
@@ -87,7 +91,7 @@ export default function TopBar(props) {
       if (usr.readUser().imagenPerfil !== undefined && props.showUserImage) {
         return (
           <img
-            id="usr-img"
+            id="usr-image"
             className="top-img"
             src={usr.readUser().imagenPerfil}
             onClick={() => {
@@ -120,19 +124,12 @@ export default function TopBar(props) {
           <img id="logo" src={PanteresLogo}></img>
         </div>
         <div id="grey-div">
-          {AddMoreBtn()}
           {AddLogOutBtn()}
           {AddUserAvatar()}
           {AddHomeBtn()}
         </div>
       </div>
-      <NavBar
-        title={props.title}
-        linkedItems={props.linkedItems}
-        fade={fade}
-        linkedMenuExpanded={linkedMenuExpanded}
-        logOut={props.logout}
-      ></NavBar>
+      {AddNavBar(props)}
     </div>
   );
 }
