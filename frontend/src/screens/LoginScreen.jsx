@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/TopBar/TopBar";
 import "./LoginScreen.css";
 import * as api from "../api/api.js";
 import * as tk from "../api/token";
@@ -77,40 +77,39 @@ export default function LoginScreen(onLogin) {
   return (
     <div className="login-screen">
       <TopBar />
-      <div>
-        <div id="login-container">
-          <form className="login" onSubmit={submit}>
-            <h1>Login</h1>
-            <p className="error-message">{message}</p>
-            <label>
-              <div>Email</div>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <label>
-              <div>Password</div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <input className="submit" type="submit" />
-            <div id="google-login">
-              <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  submitByGoogle(credentialResponse);
-                }}
-                onError={() => {
-                  setMessage("Login with google failed. Try it later.");
-                }}
-              />
-            </div>
-          </form>
-        </div>
+      <div id="top-bar-padding"></div>
+      <div id="login-container">
+        <form className="login" onSubmit={submit}>
+          <h1>Login</h1>
+          <p className="error-message">{message}</p>
+          <label>
+            <h3 className="align-left">Email</h3>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <h3 className="align-left">Password</h3>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <input className="submit" type="submit" />
+          <div id="google-login">
+            <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                submitByGoogle(credentialResponse);
+              }}
+              onError={() => {
+                setMessage("Login with google failed. Try it later.");
+              }}
+            />
+          </div>
+        </form>
       </div>
     </div>
   );

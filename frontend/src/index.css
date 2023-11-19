@@ -27,13 +27,22 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  min-width: 100vh;
-  min-height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h3 {
+  font-family: Titillium Web;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--Tertiary_Color_BG_Ligth_Colored);
 }
 
 button {

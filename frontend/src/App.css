@@ -5,6 +5,7 @@
   --Primary_Color_BG_Dark_Colored: #f8d417;
   --Secondary_Color_BG_Ligth_Colored: #1e1e1e;
   --Secondary_Color_BG_Dark_Colored: #fefefe;
+  --Tertiary_Color_BG_Ligth_Colored: #4d4d4d;
   --Accept: #3c9e7e;
   --Decline: #ba5555;
   --Canceled_Option_Color: #c61e1e;
@@ -16,6 +17,10 @@
   margin: 0;
   padding: 0;
   background-color: var(--Secondary_Color_BG_Dark_Colored);
+}
+
+#top-bar-padding {
+  height: 6.3rem;
 }
 
 .main-screen {
@@ -50,5 +55,11 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .only-mobile-devices {
+    display: none;
   }
 }
