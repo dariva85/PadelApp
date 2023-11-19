@@ -44,8 +44,8 @@ export default function MarketScreen() {
   }, []);
 
   return (
-    <div id="market-main" className="main-screen">
-      <div id="market-container" className="competitions-container">
+    <div id="market-main">
+      <div id="market-container">
         {AddCompetitionButtons(competitions)}
       </div>
     </div>

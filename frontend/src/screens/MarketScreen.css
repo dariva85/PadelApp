@@ -1,0 +1,37 @@
+@media only screen and (max-width: 500px) {
+  #market-main {
+    font-family: sans-serif;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #market-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
+  .competition {
+    padding-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  #market-main {
+    font-family: sans-serif;
+    height: 100%;
+    width: 100%;
+  }
+  #market-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    place-items: center;
+  }
+  .competition {
+    padding-top: 5rem;
+  }
+}
