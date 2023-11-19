@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./NavBar.css";
 
 export default function NavBar(props) {
   const navigate = useNavigate();
-  const [fade, setFade] = useState("fade-in");
 
   const AddNavBarItemName = (item) => {
     if (item.highlight !== undefined) {
@@ -14,20 +14,24 @@ export default function NavBar(props) {
   };
 
   const AddNavBarLinkedItems = (LinkedItems) => {
-    if (LinkedItems != undefined) {
-      return LinkedItems.map((item) => {
-        return (
-          <div
-            id={item.link}
-            className="nav-link"
-            onClick={() => {
-              navigate(item.link);
-            }}
-          >
-            <div className={`${props.fade}`}>{AddNavBarItemName(item)}</div>
-          </div>
-        );
-      });
+    if (LinkedItems != undefined && props.linkedMenuExpanded) {
+      return (
+        <div id="yellow-nav">
+          {LinkedItems.map((item) => {
+            return (
+              <div
+                id={item.link}
+                className="nav-link"
+                onClick={() => {
+                  navigate(item.link);
+                }}
+              >
+                <div className={`${props.fade}`}>{AddNavBarItemName(item)}</div>
+              </div>
+            );
+          })}
+        </div>
+      );
     }
   };
 
@@ -37,9 +41,11 @@ export default function NavBar(props) {
         return (
           <div id="nav-menu">
             <div id="grey-nav">
-              <p className={`text-transition-div ${fade}`}>{props.title}</p>
+              <p className={`text-transition-div ${props.fade}`}>
+                {props.title}
+              </p>
             </div>
-            <div id="yellow-nav">{AddNavBarLinkedItems(props.linkedItems)}</div>
+            {AddNavBarLinkedItems(props.linkedItems)}
           </div>
         );
       }

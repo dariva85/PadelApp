@@ -1,0 +1,32 @@
+@media only screen and (min-width: 500px) {
+  #yellow-nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color: var(--Primary_Color_BG_Ligth_Colored);
+  }
+
+  .nav-link {
+    font-family: "Titillium Web", "Roboto Condensed", sans-serif;
+    font-size: 1.4rem;
+    margin: 0.5rem 0rem 0.5rem 4rem;
+    padding: 0.5rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  #yellow-nav {
+    background-color: var(--Dark_Colored_BG);
+    width: 100%;
+    padding: 0.5rem 0 0.5rem 0;
+  }
+
+  .nav-link {
+    width: 90%;
+    margin: auto;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    border-radius: 13px;
+    background-color: var(--Ligth_Colored_BG);
+    text-align: center;
+  }
+}

@@ -39,12 +39,11 @@ export default function TopBar(props) {
         return (
           <div id="top-bar-more-btn" className="top-bar-btn-container">
             <img
-              id="home-img"
               className="top-bar-btn-img"
               src={moreLogo}
-              alt="HOME"
+              alt="Menú"
               onClick={() => {
-                navigate("/");
+                setLinkedMenuExpanded(!linkedMenuExpanded);
               }}
             />
           </div>
@@ -120,6 +119,7 @@ export default function TopBar(props) {
         title={props.title}
         linkedItems={props.linkedItems}
         fade={fade}
+        linkedMenuExpanded={linkedMenuExpanded}
       ></NavBar>
     </div>
   );

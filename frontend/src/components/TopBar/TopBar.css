@@ -84,19 +84,6 @@
     background-color: var(--Ligth_Colored_BG);
   }
 
-  #yellow-nav {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    color: var(--Primary_Color_BG_Ligth_Colored);
-  }
-
-  .nav-link {
-    font-family: "Titillium Web", "Roboto Condensed", sans-serif;
-    font-size: 1.4rem;
-    margin: 0.5rem 0rem 0.5rem 4rem;
-    padding: 0.5rem;
-  }
 
   #grey-nav {
     padding: 0rem 2rem 0rem 1rem;
@@ -214,27 +201,5 @@
     font-size: 1.5rem;
     color: var(--Secondary_Color_BG_Dark_Colored);
     white-space: nowrap;
-  }
-
-  #yellow-nav {
-    visibility: visible;
-    background-color: var(--Dark_Colored_BG);
-    height: fit-content;
-    width: 100%;
-    padding: 0.5rem 0 0.5rem 0;
-  }
-
-  #yellow-nav-hidden {
-    visibility: hidden;
-  }
-
-  .nav-link {
-    width: 90%;
-    margin: auto;
-    padding: 0.3rem;
-    margin-bottom: 0.5rem;
-    border-radius: 13px;
-    background-color: var(--Ligth_Colored_BG);
-    text-align: center;
   }
 }
