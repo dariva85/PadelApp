@@ -23,6 +23,10 @@
   height: 6.3rem;
 }
 
+#app-div {
+  height: 100vh;
+}
+
 .main-screen {
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 2s; /* Firefox < 16 */

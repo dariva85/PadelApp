@@ -721,6 +721,146 @@ async function InsertCompetitions(db) {
       tipo: "Liga",
       imagen: fs.readFileSync(`./src/assets/padelsemanal.jpeg`),
     },
+    {
+      idUsuario: [],
+      idPartido: [],
+      nombre: "Liga Interclub 2",
+      descripcion: "Competición Interclub Barcelona",
+      informacion: [
+        {
+          titulo: "Descripción del torneo",
+          parrafo:
+            "La competición se celebrara durante los proximos 5 meses y los participantes pueden escoger los días que desean jugar. El torneo es abierto a todo el mundo y no es necesaria experiencia previa.",
+        },
+        {
+          titulo: "Fechas de los partidos",
+          parrafo:
+            "Los partidos seran convocados por los organizadores pero serean los propios jugadores que se podran apuntar a los días que quieran. Si hay suficientes jugadores apuntados se presentara el partido como cerrado con la fecha y hora acordadas entre jugadores.",
+        },
+        {
+          titulo: "Reglas",
+          parrafo:
+            "Las reglas del torneo son las básicas del padel con la excepción de que en caso de empate en un juego se hará un punto de oro. El ganador de ese punto se lleva el juego. En caso de no terminar dentro de tiempo se decidirá el ganador con un super Tie Break a 11.",
+        },
+      ],
+      direccion: "Dónde va a ser? en el Interclub Barcelona",
+      nInscritos: 2,
+      maxInscritos: 200,
+      reglas: "Que no te lo cuenten!!",
+      fechaInicioInscripcion: new Date(),
+      fechaFinInscripcion: new Date(
+        new Date().setMonth(new Date().getMonth() + 1)
+      ),
+      fechaInicio: new Date(),
+      fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
+      tipo: "Liga",
+      imagen: fs.readFileSync(`./src/assets/padelsemanal.jpeg`),
+    },
+    {
+      idUsuario: [],
+      idPartido: [],
+      nombre: "Liga Interclub 3",
+      descripcion: "Competición Interclub Barcelona",
+      informacion: [
+        {
+          titulo: "Descripción del torneo",
+          parrafo:
+            "La competición se celebrara durante los proximos 5 meses y los participantes pueden escoger los días que desean jugar. El torneo es abierto a todo el mundo y no es necesaria experiencia previa.",
+        },
+        {
+          titulo: "Fechas de los partidos",
+          parrafo:
+            "Los partidos seran convocados por los organizadores pero serean los propios jugadores que se podran apuntar a los días que quieran. Si hay suficientes jugadores apuntados se presentara el partido como cerrado con la fecha y hora acordadas entre jugadores.",
+        },
+        {
+          titulo: "Reglas",
+          parrafo:
+            "Las reglas del torneo son las básicas del padel con la excepción de que en caso de empate en un juego se hará un punto de oro. El ganador de ese punto se lleva el juego. En caso de no terminar dentro de tiempo se decidirá el ganador con un super Tie Break a 11.",
+        },
+      ],
+      direccion: "Dónde va a ser? en el Interclub Barcelona",
+      nInscritos: 2,
+      maxInscritos: 200,
+      reglas: "Que no te lo cuenten!!",
+      fechaInicioInscripcion: new Date(),
+      fechaFinInscripcion: new Date(
+        new Date().setMonth(new Date().getMonth() + 1)
+      ),
+      fechaInicio: new Date(),
+      fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
+      tipo: "Liga",
+      imagen: fs.readFileSync(`./src/assets/padelsemanal.jpeg`),
+    },
+    {
+      idUsuario: [],
+      idPartido: [],
+      nombre: "Liga Interclub4",
+      descripcion: "Competición Interclub Barcelona",
+      informacion: [
+        {
+          titulo: "Descripción del torneo",
+          parrafo:
+            "La competición se celebrara durante los proximos 5 meses y los participantes pueden escoger los días que desean jugar. El torneo es abierto a todo el mundo y no es necesaria experiencia previa.",
+        },
+        {
+          titulo: "Fechas de los partidos",
+          parrafo:
+            "Los partidos seran convocados por los organizadores pero serean los propios jugadores que se podran apuntar a los días que quieran. Si hay suficientes jugadores apuntados se presentara el partido como cerrado con la fecha y hora acordadas entre jugadores.",
+        },
+        {
+          titulo: "Reglas",
+          parrafo:
+            "Las reglas del torneo son las básicas del padel con la excepción de que en caso de empate en un juego se hará un punto de oro. El ganador de ese punto se lleva el juego. En caso de no terminar dentro de tiempo se decidirá el ganador con un super Tie Break a 11.",
+        },
+      ],
+      direccion: "Dónde va a ser? en el Interclub Barcelona",
+      nInscritos: 2,
+      maxInscritos: 200,
+      reglas: "Que no te lo cuenten!!",
+      fechaInicioInscripcion: new Date(),
+      fechaFinInscripcion: new Date(
+        new Date().setMonth(new Date().getMonth() + 1)
+      ),
+      fechaInicio: new Date(),
+      fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
+      tipo: "Liga",
+      imagen: fs.readFileSync(`./src/assets/padelsemanal.jpeg`),
+    },
+    {
+      idUsuario: [],
+      idPartido: [],
+      nombre: "Liga Interclub 5",
+      descripcion: "Competición Interclub Barcelona",
+      informacion: [
+        {
+          titulo: "Descripción del torneo",
+          parrafo:
+            "La competición se celebrara durante los proximos 5 meses y los participantes pueden escoger los días que desean jugar. El torneo es abierto a todo el mundo y no es necesaria experiencia previa.",
+        },
+        {
+          titulo: "Fechas de los partidos",
+          parrafo:
+            "Los partidos seran convocados por los organizadores pero serean los propios jugadores que se podran apuntar a los días que quieran. Si hay suficientes jugadores apuntados se presentara el partido como cerrado con la fecha y hora acordadas entre jugadores.",
+        },
+        {
+          titulo: "Reglas",
+          parrafo:
+            "Las reglas del torneo son las básicas del padel con la excepción de que en caso de empate en un juego se hará un punto de oro. El ganador de ese punto se lleva el juego. En caso de no terminar dentro de tiempo se decidirá el ganador con un super Tie Break a 11.",
+        },
+      ],
+      direccion: "Dónde va a ser? en el Interclub Barcelona",
+      nInscritos: 2,
+      maxInscritos: 200,
+      reglas: "Que no te lo cuenten!!",
+      fechaInicioInscripcion: new Date(),
+      fechaFinInscripcion: new Date(
+        new Date().setMonth(new Date().getMonth() + 1)
+      ),
+      fechaInicio: new Date(),
+      fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 3)),
+      tipo: "Liga",
+      imagen: fs.readFileSync(`./src/assets/padelsemanal.jpeg`),
+    },
   ]);
 }
 

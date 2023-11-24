@@ -1,49 +1,35 @@
-
-
 @media only screen and (max-width: 500px) {
-#competitions-main {
-  font-family: sans-serif;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  #competitions-main {
+    font-family: sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   #competitions-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 80%;
+    margin-bottom: 3rem;
   }
 }
 
 @media only screen and (min-width: 500px) {
   #competitions-main {
     font-family: sans-serif;
-    height: 100%;
     width: 100%;
   }
   #competitions-container {
     display: grid;
     grid-template-columns: 50% 50%;
     place-items: center;
+    padding-bottom: 3rem;
   }
 }
 
 .competition {
-  padding-top: 5rem;
-}
-
-@media only screen and (max-width: 500px) {
-  .competition {
-    padding-top: 3rem;
-  }
-}
-
-#top-bar {
-  position: relative;
-  top: 0;
-  left: 0;
+  padding-top: 3rem;
 }
