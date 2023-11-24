@@ -1,7 +1,6 @@
 @media only screen and (max-width: 500px) {
   #market-main {
     font-family: sans-serif;
-    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -14,9 +13,7 @@
     align-items: center;
     justify-content: center;
     width: 80%;
-  }
-  .competition {
-    padding-top: 3rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -30,8 +27,10 @@
     display: grid;
     grid-template-columns: 50% 50%;
     place-items: center;
+    padding-bottom: 3rem;
   }
-  .competition {
-    padding-top: 5rem;
-  }
+}
+
+.competition {
+  padding-top: 3rem;
 }
