@@ -37,8 +37,8 @@ export default function MatchesScreen() {
   }, []);
 
   return (
-    <div className="main-screen">
-      <div className="matches-container">{AddMatchesCards(macthes, names)}</div>
+    <div id="matches-main">
+      <div id="matches-container">{AddMatchesCards(macthes, names)}</div>
     </div>
   );
 }
