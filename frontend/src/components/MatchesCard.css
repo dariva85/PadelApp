@@ -1,163 +1,191 @@
 #mainCard {
   background-color: var(--Ligth_Colored_BG);
-  width: 466px;
-  height: 473px;
+  width: 90%;
   border-radius: 13px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2px;
   margin: 0% 2%;
-  margin-bottom: 5%;
-  
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
-#tittlematch {
-  width: 464px;
-  height: 10%;
+.ParteSuperiorCartaPartido {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  justify-content: space-around;
+  margin: 2% 0%;
+  margin-top: 5%;
+}
+
+@media only screen and (min-width: 500px) {
+  #mainCard {
+    width: 466px;
+  }
+  .ParteSuperiorCartaPartido {
+    width: 80%;
+  }
+  .MarcadorGrande {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0% 10% 0% 10%;
+    margin: 1% 0%;
+  }
+
+  .RayitaBlanca {
+    height: 2px;
+    margin: 3% 0%;
+    width: 80%;
+    background-color: aliceblue;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #mainCard {
+    width: 90%;
+  }
+  .ParteSuperiorCartaPartido {
+    width: 90%;
+  }
+  .MarcadorGrande {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0% 3% 0% 3%;
+    margin: 1% 0%;
+  }
+
+  .RayitaBlanca {
+    height: 2px;
+    margin: 3% 0%;
+    width: 90%;
+    background-color: aliceblue;
+  }
+
+  .PlayerName {
+    text-align: center;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fecha {
+    color: #4d4d4d;
+    font-size: larger;
+    flex: 7;
+  }
+}
+#TitleMatch {
+  width: 100%;
+  height: 3rem;
   font-size: 36px;
   font-weight: bold;
   margin: 0;
   padding-top: 1%;
   font-size: 30px;
-  background-color:rgb(255, 255, 255);
-  color: #4D4D4D;
+  background-color: rgb(255, 255, 255);
+  color: #4d4d4d;
   text-align: center;
-  border-radius: 13px 13px 0px 0px;  
+  border-radius: 13px 13px 0px 0px;
 }
 
-#tittlematch p{
+#TitleMatch p {
   margin: 0px;
   margin-top: 2%;
 }
 
 .black {
-  background-color:black;
+  background-color: black;
   width: 46px;
   height: 47px;
   margin: 5px;
 }
 
 .marcador {
-width: 100%;
-}
-.MarcadorGrande {
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-around;
-padding: 0% 10% 0% 10%;
-margin: 1% 0%;
-
+  width: 100%;
 }
 
-.MarcadorNombres{
-
-display: flex;
-align-items: center;
-flex-direction: column;
-color: #2D5E72;
-flex: 1;
-
-
+.MarcadorNombres {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #2d5e72;
+  flex: 1;
 }
 
+.MarcadorNumeros {
+  display: flex;
+  height: 35px;
+  width: 63px;
 
-.MarcadorNumeros{
-
-display: flex;
-height: 35px;
-width: 63px;
-
-text-align: center;
-flex-direction: row;
-align-items: center;
-justify-content: space-around;
-color: #4D4D4D;
-border-radius: 15px;
-background-color: aliceblue;
-padding: 0% 2%;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: #4d4d4d;
+  border-radius: 15px;
+  background-color: aliceblue;
+  padding: 0% 2%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.Rayita{
-height: 35px;
-width: 0.5px;
-margin: 3px 3px;
-background-color: rgb(77, 77, 77,0.75);
+.Rayita {
+  height: 35px;
+  width: 0.5px;
+  margin: 3px 3px;
+  background-color: rgb(77, 77, 77, 0.75);
+}
+#calendario {
+  filter: invert(30%) sepia(6%) saturate(4373%) hue-rotate(152deg)
+    brightness(95%) contrast(81%);
 
+  width: 73px;
+  height: 45px;
+  border-radius: 4px;
 }
 
-.RayitaBlanca{
-
-height: 2px;
-margin: 3% 0%;
-width: 80%;
-background-color: aliceblue;
-
-}
-#calendario{
-color: #4D4D4D;
-
-width: 53px ;
-height: 35px;
-flex: 1.5;
-border-radius: 4px;
+.fecha {
+  color: #4d4d4d;
+  font-size: larger;
+  flex: 7;
+  padding: 0% 5%;
 }
 
-.ParteSuperiorCartaPartido{
-width: 80%;
-display: flex;
-flex-direction: row;
-align-items: center;
-
-justify-content: space-around;
-margin: 2% 0%;
-margin-top: 5%;
+.BotonEstado {
+  background-color: aliceblue;
+  color: #ea9413;
+  height: 25px;
+  width: 110px;
+  padding: 1.5% 5%;
+  flex: 1;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.fecha{
-color: #4D4D4D;
-font-size:larger;
-flex: 7;
-padding: 0% 10%;
+.ButtonAccept {
+  width: 112px;
+  height: 43px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: 1.5rem;
+  color: rgba(10, 10, 10);
+  background-color: #3c9e7e;
 }
 
-.BotonEstado{
-background-color: aliceblue;
-color: #EA9413;
-height: 25px;
-width: 110px;
-padding: 1.5% 5% ;
-flex: 1;
-border-radius: 5px;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+.MarcadorNumeros input {
+  background-color: none;
+  background-color: transparent;
+  color: #4d4d4d;
+  outline: none;
+  width: 50%;
+  text-align: center;
+  border: none;
 }
-
-.ButtonAccept{
-
-width: 112px;
-height: 43px;
-display: flex;
-justify-content: space-around;
-align-items: center;
-text-align: center;
-border-radius: 6px;
-margin-top: 5%;
-color:rgba(10, 10, 10);
-background-color: #3C9E7E;
-
-}
-
-.MarcadorNumeros input{
-
-background-color: none;
-background-color: transparent;
-color: #4D4D4D;
-outline: none;
-width: 50%;
-text-align: center; 
-border: none;
-}
-
