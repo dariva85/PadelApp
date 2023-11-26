@@ -3,7 +3,7 @@ import "./MatchesCard.css";
 import { useNavigate } from "react-router-dom";
 import * as usr from "../User";
 import * as api from "../api/api.js";
-import calendar from "../assets/Calendar.svg";
+import calendar from "../assets/calendar.svg";
 
 export default function MatchesCard(props) {
   const [Match, setTheMatch] = useState(props);
