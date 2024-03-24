@@ -132,8 +132,12 @@ export default function MatchesCard(props) {
           </div>
 
           <div className="MarcadorNombres">
-            <div className="PlayerName">{names[props.final_score[1].player[0]].substr(0, 14)}</div>
-            <div className="PlayerName">{names[props.final_score[1].player[1]].substr(0, 14)}</div>
+            <div className="PlayerName">
+              {names[props.final_score[1].player[0]].substr(0, 14)}
+            </div>
+            <div className="PlayerName">
+              {names[props.final_score[1].player[1]].substr(0, 14)}
+            </div>
           </div>
         </div>
       );
@@ -142,8 +146,6 @@ export default function MatchesCard(props) {
 
   return (
     <div id="mainCard">
-      <link href="https://css.gg/calendar.css" rel="stylesheet"></link>
-
       <div id="TitleMatch">
         <p>{NombreCompeti}</p>
       </div>

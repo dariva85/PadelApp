@@ -10,6 +10,19 @@
   flex-direction: column;
 }
 
+@media only screen and (max-width: 500px) {
+  .btnInscription-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
 .btnInscription-container.notInscribed {
   background: var(--Secondary_Color_BG_Dark_Colored);
   border: 4px solid var(--Primary_Color_BG_Ligth_Colored);

@@ -77,7 +77,7 @@ export default function InscriptionScreen() {
   }, []);
 
   return (
-    <div className="main-screen">
+    <div className="inscriptions-main">
       <div className="inscriptions-container">
         {AddInscriptiontionButtons(inscriptions)}
       </div>
