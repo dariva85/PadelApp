@@ -102,7 +102,7 @@ export default function InscriptionBtn({ Inscription, userId, ClickEvent }) {
           <p>{Inscription.inscritos.length} Inscritos</p>
           <p>{Inscription.pistas.length} Pistas confirmadas</p>
         </div>
-        <div className="btnInscription-text-container">
+        <div className="btnInscription-img-container">
           {AddImage(Inscription.inscritos)}
           <strong>{getUserInscriptionStatusLabel(Inscription)}</strong>
         </div>
