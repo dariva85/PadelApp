@@ -132,6 +132,9 @@ export default function TopBar(props) {
         fade={fade}
         linkedMenuExpanded={linkedMenuExpanded}
         logOut={props.logout}
+        itemClicked={() => {
+          setLinkedMenuExpanded(!linkedMenuExpanded);
+        }}
       ></NavBar>
     </div>
   );

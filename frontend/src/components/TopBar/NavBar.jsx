@@ -26,6 +26,7 @@ export default function NavBar(props) {
                 id={item.link}
                 className="nav-link"
                 onClick={() => {
+                  props.itemClicked();
                   navigate(item.link);
                 }}
               >

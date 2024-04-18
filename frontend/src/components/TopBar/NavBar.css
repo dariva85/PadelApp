@@ -27,6 +27,7 @@
     margin-bottom: 0.5rem;
     border-radius: 13px;
     background-color: var(--Ligth_Colored_BG);
+    color: var(--Primary_Color_BG_Ligth_Colored);
     text-align: center;
   }
 
