@@ -44,6 +44,9 @@ export default function TopBar(props) {
                 ? "top-bar-btn-container-clicked"
                 : "top-bar-btn-container"
             }
+            onClick={() => {
+              setLinkedMenuExpanded(!linkedMenuExpanded);
+            }}
           >
             <img
               className={
@@ -53,9 +56,6 @@ export default function TopBar(props) {
               }
               src={moreLogo}
               alt="Menú"
-              onClick={() => {
-                setLinkedMenuExpanded(!linkedMenuExpanded);
-              }}
             />
           </div>
         );
