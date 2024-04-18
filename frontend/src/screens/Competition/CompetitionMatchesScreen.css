@@ -1,12 +1,1 @@
-.matches-container{
-    padding-top: 5rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-.main-screen{
-
-    padding: 0% 5%;
-}
+/*refer to MatchesScreen.css*/

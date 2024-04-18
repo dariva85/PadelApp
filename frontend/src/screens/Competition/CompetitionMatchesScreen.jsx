@@ -42,7 +42,7 @@ export default function CompetitionMatchesScreen() {
   };
 
   return (
-    <div className="main-screen">
+    <div className="competition-matches-main">
       <div className="matches-container">{AddMatchesCards(matches, names)}</div>
     </div>
   );
