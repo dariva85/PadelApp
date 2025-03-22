@@ -87,12 +87,29 @@ export default function RankingScreen() {
               <td colSpan="4">
                 <div className="expanded-content">
                   {/* Aquí puedes añadir los datos adicionales que quieras mostrar */}
-                  <p>Nombre: {item.nombre} {item.apellidos}</p>
-                  <p>Partidos Jugados: {item.clasificacion.partidosJugados}</p>
-                  <p>Partidos Ganados: {item.clasificacion.partidosGanados}</p>
-                  <p>Partidos Perdidos: {item.clasificacion.partidosPerdidos}</p>
-                  <p>Puntos a Favor: {item.clasificacion.puntosAFavor}</p>
-                  <p>Puntos en Contra: {item.clasificacion.puntosEnContra}</p>
+                  <p>
+                    <strong>Nombre:</strong> {item.nombre} {item.apellidos}
+                  </p>
+                  <p>
+                    <strong>Partidos Jugados:</strong>{" "}
+                    {item.clasificacion.partidosJugados}
+                  </p>
+                  <p>
+                    <strong>Partidos Ganados:</strong>{" "}
+                    {item.clasificacion.partidosGanados}
+                  </p>
+                  <p>
+                    <strong>Partidos Perdidos:</strong>{" "}
+                    {item.clasificacion.partidosPerdidos}
+                  </p>
+                  <p>
+                    <strong>Puntos a Favor:</strong>{" "}
+                    {item.clasificacion.puntosAFavor}
+                  </p>
+                  <p>
+                    <strong>Puntos en Contra:</strong>{" "}
+                    {item.clasificacion.puntosEnContra}
+                  </p>
                 </div>
               </td>
             </tr>
