@@ -12,6 +12,17 @@ export default function RankingScreen() {
   const [ranking, setRanking] = useState([]);
   const [competition, setCompetition] = useState([]);
   const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
+  const [expandedRow, setExpandedRow] = useState(null);
+
+  const handleRowClick = (index) => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    if (vw <= 500) {
+      setExpandedRow(expandedRow === index ? null : index);
+    }
+  };
 
   const LoadRankingItems = async () => {
     const {
@@ -56,26 +67,86 @@ export default function RankingScreen() {
   };
 
   const AddTableRows = (rows) => {
-    console.log(rows);
     return rows.map((item, index) => {
+      const isExpanded = expandedRow === index;
       return (
-        <tr>
-          <td className="position-column">
-            <div>
-              {getArrowImage(item.clasificacion.tendencia)}
-              {index + 1}
-            </div>
-          </td>
-          <td className="name-column">{`${item.nombre} ${item.apellidos}`}</td>
-          <td className="percentage-column">{`${item.clasificacion.efficiencia} %`}</td>
-          <td className="num-column">{item.clasificacion.partidosJugados}</td>
-          <td className="num-column">{item.clasificacion.partidosGanados}</td>
-          <td className="num-column">{item.clasificacion.partidosPerdidos}</td>
-          <td className="num-column">{item.clasificacion.puntosAFavor}</td>
-          <td className="num-column">{item.clasificacion.puntosEnContra}</td>
-        </tr>
+        <React.Fragment key={index}>
+          <tr onClick={() => handleRowClick(index)}>
+            <td className="position-column">
+              <div>
+                {getArrowImage(item.clasificacion.tendencia)}
+                {index + 1}
+              </div>
+            </td>
+            <td className="name-column">{`${item.nombre} ${item.apellidos}`}</td>
+            <td className="percentage-column">{`${item.clasificacion.efficiencia} %`}</td>
+            {AddExtraCloumnsData(item)}
+          </tr>
+          {isExpanded && (
+            <tr className="expanded-row">
+              <td colSpan="4">
+                <div className="expanded-content">
+                  {/* Aquí puedes añadir los datos adicionales que quieras mostrar */}
+                  <p>
+                    <strong>Nombre:</strong> {item.nombre} {item.apellidos}
+                  </p>
+                  <p>
+                    <strong>Partidos Jugados:</strong>{" "}
+                    {item.clasificacion.partidosJugados}
+                  </p>
+                  <p>
+                    <strong>Partidos Ganados:</strong>{" "}
+                    {item.clasificacion.partidosGanados}
+                  </p>
+                  <p>
+                    <strong>Partidos Perdidos:</strong>{" "}
+                    {item.clasificacion.partidosPerdidos}
+                  </p>
+                  <p>
+                    <strong>Puntos a Favor:</strong>{" "}
+                    {item.clasificacion.puntosAFavor}
+                  </p>
+                  <p>
+                    <strong>Puntos en Contra:</strong>{" "}
+                    {item.clasificacion.puntosEnContra}
+                  </p>
+                </div>
+              </td>
+            </tr>
+          )}
+        </React.Fragment>
       );
     });
+  };
+
+  const AddExtraCloumnsData = (item) => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    console.log(`vw: ${vw}`);
+    if (vw > 500) {
+      return (
+        <>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.partidosJugados}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.partidosGanados}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.partidosPerdidos}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.puntosAFavor}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.puntosEnContra}
+          </td>
+        </>
+      );
+    }
+    return "";
   };
 
   useEffect(() => {
@@ -88,15 +159,57 @@ export default function RankingScreen() {
     );
   }, []);
 
+  const AddPositionTitle = () => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    if (vw > 500) {
+      return "Posición";
+    }
+    return "";
+  };
+
+  const AddExtraCloumnsTitles = () => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    if (vw > 500) {
+      return (
+        <>
+          <th id="PJ" className="num-column not-on-mobile">
+            PJ
+          </th>
+          <th id="PG" className="num-column not-on-mobile">
+            PG
+          </th>
+          <th id="PP" className="num-column not-on-mobile">
+            PP
+          </th>
+          <th id="PF" className="num-column not-on-mobile">
+            PF
+          </th>
+          <th id="PC" className="num-column not-on-mobile">
+            PC
+          </th>
+        </>
+      );
+    }
+    return "";
+  };
+
   return (
-    <div id="main-screen">
+    <div id="ranking-main">
       <div id="ranking-container">
         <div id="ranking-info">
-          <h1>Ranking {competition.nombre}</h1>
+          <div className="not-on-mobile">
+            <h1>Ranking {competition.nombre}</h1>
+          </div>
           <table id="ranking-table">
             <tr id="titles">
-              <th id="position-titile" className="position-column">
-                Posición
+              <th id="position-title" className="position-column">
+                {AddPositionTitle()}
               </th>
               <th id="name-title" className="name-column">
                 Nombre
@@ -104,24 +217,10 @@ export default function RankingScreen() {
               <th id="EFF" className="percentage-column">
                 EFF
               </th>
-              <th id="PJ" className="num-column">
-                PJ
-              </th>
-              <th id="PG" className="num-column">
-                PG
-              </th>
-              <th id="PP" className="num-column">
-                PP
-              </th>
-              <th id="PF" className="num-column">
-                PF
-              </th>
-              <th id="PC" className="num-column">
-                PC
-              </th>
+              {AddExtraCloumnsTitles()}
             </tr>
+            {AddTableRows(ranking)}
           </table>
-          <table id="ranking-table">{AddTableRows(ranking)}</table>
         </div>
       </div>
     </div>
