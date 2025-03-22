@@ -12,6 +12,17 @@ export default function RankingScreen() {
   const [ranking, setRanking] = useState([]);
   const [competition, setCompetition] = useState([]);
   const { topBarInfo, setTopBarInfo } = useContext(topBarCtxt.Ctxt);
+  const [expandedRow, setExpandedRow] = useState(null);
+
+  const handleRowClick = (index) => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    if (vw <= 500) {
+      setExpandedRow(expandedRow === index ? null : index);
+    }
+  };
 
   const LoadRankingItems = async () => {
     const {
@@ -56,20 +67,37 @@ export default function RankingScreen() {
   };
 
   const AddTableRows = (rows) => {
-    console.log(rows);
     return rows.map((item, index) => {
+      const isExpanded = expandedRow === index;
       return (
-        <tr>
-          <td className="position-column">
-            <div>
-              {getArrowImage(item.clasificacion.tendencia)}
-              {index + 1}
-            </div>
-          </td>
-          <td className="name-column">{`${item.nombre} ${item.apellidos}`}</td>
-          <td className="percentage-column">{`${item.clasificacion.efficiencia} %`}</td>
-          {AddExtraCloumnsData(item)}
-        </tr>
+        <React.Fragment key={index}>
+          <tr onClick={() => handleRowClick(index)}>
+            <td className="position-column">
+              <div>
+                {getArrowImage(item.clasificacion.tendencia)}
+                {index + 1}
+              </div>
+            </td>
+            <td className="name-column">{`${item.nombre} ${item.apellidos}`}</td>
+            <td className="percentage-column">{`${item.clasificacion.efficiencia} %`}</td>
+            {AddExtraCloumnsData(item)}
+          </tr>
+          {isExpanded && (
+            <tr className="expanded-row">
+              <td colSpan="4">
+                <div className="expanded-content">
+                  {/* Aquí puedes añadir los datos adicionales que quieras mostrar */}
+                  <p>Nombre: {item.nombre} {item.apellidos}</p>
+                  <p>Partidos Jugados: {item.clasificacion.partidosJugados}</p>
+                  <p>Partidos Ganados: {item.clasificacion.partidosGanados}</p>
+                  <p>Partidos Perdidos: {item.clasificacion.partidosPerdidos}</p>
+                  <p>Puntos a Favor: {item.clasificacion.puntosAFavor}</p>
+                  <p>Puntos en Contra: {item.clasificacion.puntosEnContra}</p>
+                </div>
+              </td>
+            </tr>
+          )}
+        </React.Fragment>
       );
     });
   };
