@@ -68,14 +68,40 @@ export default function RankingScreen() {
           </td>
           <td className="name-column">{`${item.nombre} ${item.apellidos}`}</td>
           <td className="percentage-column">{`${item.clasificacion.efficiencia} %`}</td>
-          <td className="num-column">{item.clasificacion.partidosJugados}</td>
-          <td className="num-column">{item.clasificacion.partidosGanados}</td>
-          <td className="num-column">{item.clasificacion.partidosPerdidos}</td>
-          <td className="num-column">{item.clasificacion.puntosAFavor}</td>
-          <td className="num-column">{item.clasificacion.puntosEnContra}</td>
+          {AddExtraCloumnsData(item)}
         </tr>
       );
     });
+  };
+
+  const AddExtraCloumnsData = (item) => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    console.log(`vw: ${vw}`);
+    if (vw > 500) {
+      return (
+        <>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.partidosJugados}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.partidosGanados}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.partidosPerdidos}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.puntosAFavor}
+          </td>
+          <td className="num-column not-on-mobile">
+            {item.clasificacion.puntosEnContra}
+          </td>
+        </>
+      );
+    }
+    return "";
   };
 
   useEffect(() => {
@@ -88,15 +114,57 @@ export default function RankingScreen() {
     );
   }, []);
 
+  const AddPositionTitle = () => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    if (vw > 500) {
+      return "Posición";
+    }
+    return "";
+  };
+
+  const AddExtraCloumnsTitles = () => {
+    var vw = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    if (vw > 500) {
+      return (
+        <>
+          <th id="PJ" className="num-column not-on-mobile">
+            PJ
+          </th>
+          <th id="PG" className="num-column not-on-mobile">
+            PG
+          </th>
+          <th id="PP" className="num-column not-on-mobile">
+            PP
+          </th>
+          <th id="PF" className="num-column not-on-mobile">
+            PF
+          </th>
+          <th id="PC" className="num-column not-on-mobile">
+            PC
+          </th>
+        </>
+      );
+    }
+    return "";
+  };
+
   return (
-    <div id="main-screen">
+    <div id="ranking-main">
       <div id="ranking-container">
         <div id="ranking-info">
-          <h1>Ranking {competition.nombre}</h1>
+          <div className="not-on-mobile">
+            <h1>Ranking {competition.nombre}</h1>
+          </div>
           <table id="ranking-table">
             <tr id="titles">
-              <th id="position-titile" className="position-column">
-                Posición
+              <th id="position-title" className="position-column">
+                {AddPositionTitle()}
               </th>
               <th id="name-title" className="name-column">
                 Nombre
@@ -104,24 +172,10 @@ export default function RankingScreen() {
               <th id="EFF" className="percentage-column">
                 EFF
               </th>
-              <th id="PJ" className="num-column">
-                PJ
-              </th>
-              <th id="PG" className="num-column">
-                PG
-              </th>
-              <th id="PP" className="num-column">
-                PP
-              </th>
-              <th id="PF" className="num-column">
-                PF
-              </th>
-              <th id="PC" className="num-column">
-                PC
-              </th>
+              {AddExtraCloumnsTitles()}
             </tr>
+            {AddTableRows(ranking)}
           </table>
-          <table id="ranking-table">{AddTableRows(ranking)}</table>
         </div>
       </div>
     </div>
