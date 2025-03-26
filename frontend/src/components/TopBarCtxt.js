@@ -66,6 +66,7 @@ export let menuByScreen = {
       { name: "Mis Partidos", link: "/me/matches" },
     ],
     showUserImage: true,
+    showHomeLogo: true,
   },
 };
 
