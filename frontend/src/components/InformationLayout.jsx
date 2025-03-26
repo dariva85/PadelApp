@@ -100,7 +100,11 @@ export default function InformationLayout({ competition }) {
             <h3>{competition.nInscritos} Inscribed</h3>
             <img className="counter-img" src={PersonHeart} />
           </div>
-          <div className="txt-img-aligned">
+          <div
+            className={`txt-img-aligned ${
+              window.innerWidth < 500 ? "hide-on-small-screen" : ""
+            }`}
+          >
             <h3>{competition.maxInscritos} Max</h3>
             <img className="counter-img" src={PersonHeart} />
           </div>
